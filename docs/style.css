@@ -1,5 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Poiret+One&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Kanit:ital,wght@1,500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lemonada:wght@360&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Delius+Unicase:wght@700&display=swap');
 
 
 .caption {
@@ -22,31 +22,31 @@ pre code {
  /*------------- Body and header text---------------- */
 
 .book.font-family-1 {
-  font-family: 'Poiret One', sans-serif;
+  font-family: 'Lemonada', sans-serif;
   font-size: 1.2em;
 }
 
   h1 {
-  font-family: 'Kanit', serif;
+  font-family: 'Delius+Unicase', serif;
   font-size: 2em;
   color: #2f5275;
   text-align: center;
 }
   
   h2, h3, h4 {
-  font-family: 'Poiret One', serif;
+  font-family: 'Lemonada', serif;
   font-size: 1em;
   color: #2f5275;
 }
   
 .title {
-  font-family: 'Kanit', serif;
+  font-family: 'Delius+Unicase', serif;
   font-size: 4em;
   color: #5699cc;
  }
 
 .subtitle {
-  font-family: 'Monoton', serif;
+  font-family: 'Delius+Unicase', serif;
   font-size: 2em;
   color: #2c6793;
 }
