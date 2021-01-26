@@ -52,4 +52,18 @@ a. major purpose of a database is to provide and _ABSTRACT_ view of data while h
 
 b. `DATA MODELS` - the underlying structure of a database; a collection of conceptual tools, data relationships, data semantics, and consistency constraints 
       - all data can be classified into 4 categories: `RELATIONAL MODELS`, `ENTITY RELATIONAL MODEL`, `SEMI-STRUCTURED DATA MODEL`, `OBJECT-BASED MODEL`
+      
+$$\\[.1cm]$$
+      
+c. `RELATIONAL MODEL`- uses a colletion of tables to represent both the data and the relationships among those data 
+
+:::note 
+Tables are also called relations and each table has multiple columns with unique names 
+:::
+
+d. `ENTITY-RELATIONAL (ER) MODEL` - uses a collection of basic objects called _ENTITIES_ and _RELATIONSHIPS_ among those objects 
+
+e. `SEMI-STRUCTURED DATA MODEL` - permits specification of data where individual data items of the same type may have different attributes 
+      -  data items in the models above must have the same set of attributes 
+      - most widely used semi-structured data representations are JSON and extensible markup language (XML)
 

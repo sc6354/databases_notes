@@ -181,6 +181,21 @@
 <li>all data can be classified into 4 categories: <code>RELATIONAL MODELS</code>, <code>ENTITY RELATIONAL MODEL</code>, <code>SEMI-STRUCTURED DATA MODEL</code>, <code>OBJECT-BASED MODEL</code></li>
 </ul></li>
 </ol>
+<p><span class="math display">\[\\[.1cm]\]</span></p>
+<ol start="3" style="list-style-type: lower-alpha">
+<li><code>RELATIONAL MODEL</code>- uses a colletion of tables to represent both the data and the relationships among those data</li>
+</ol>
+<div class="note">
+<p>Tables are also called relations and each table has multiple columns with unique names</p>
+</div>
+<ol start="4" style="list-style-type: lower-alpha">
+<li><p><code>ENTITY-RELATIONAL (ER) MODEL</code> - uses a collection of basic objects called <em>ENTITIES</em> and <em>RELATIONSHIPS</em> among those objects</p></li>
+<li><p><code>SEMI-STRUCTURED DATA MODEL</code> - permits specification of data where individual data items of the same type may have different attributes</p>
+<ul>
+<li>data items in the models above must have the same set of attributes</li>
+<li>most widely used semi-structured data representations are JSON and extensible markup language (XML)</li>
+</ul></li>
+</ol>
 
 </div>
 </div>
@@ -245,6 +260,20 @@ gitbook.start({
 });
 </script>
 
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
 </body>
 
 </html>
