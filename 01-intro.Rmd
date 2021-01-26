@@ -1,11 +1,11 @@
 # Introduction {#intro}
 
 ## Overview {-}
-a. *Database-Maangement System* - collection of interrelated data and a set of programs to access those data 
+a. `DATABASE MANAGEMENT SYSTEM (DBMS)` - collection of interrelated data and a set of programs to access those data 
       - goal is to store and retrieve database info. conveniently and efficiently 
       
       
-b. *Database* - the collection of data that contains info. relevant to the enterprise 
+b. `DATABASE` - the collection of data that contains info. relevant to the enterprise 
 
 ## Database System Applications 
 a. DSMS are used to manage collections of data that are:
@@ -14,6 +14,42 @@ a. DSMS are used to manage collections of data that are:
       - accessed by multiple users and applications at once 
       
 b. DBMs uses ABSTRACTION to manage the COMPLEXITY of a data collection
-      - 
+      - abstraction allows an user to use a complex device/system w/o having to know the details of how the system/device is constructed 
 
-You can label chapter and section titles using `{#label}` after them, e.g., we can reference Chapter \@ref(intro). If you do not manually label them, there will be automatic labels anyway, e.g., Chapter \@ref(methods).
+:::note
+`Some Example Applications`
+
+1. human resources - info. about employees, salaries, payroll taxes, benefits and for generation of paychecks
+2. Credit Card Transactions
+3. Airlines were among the first to use databases in a geographically distributed manner for reservations and schedule info. 
+4. Web-based services such as social media, online retailers, online advertisements 
+5. Document-based for maintaining articles, patents, publications
+6. Navigation systems  
+:::
+
+## Purpose of Database System 
+a. `FILE PROCESSING SYSTEM`- is supported by a conventional operation system; stores permanent records in various files and needs different applications programs to extract records from, and add records to the appropriate files 
+
+b. Many disadvantages of a file processing system:
+      - DATA REDUNDANCY AND INCONSISTENCY- due to different files with different structures and written in different languages by programmers over time 
+      - DIFFICULTLY ACCESSING DATA -  b/c conventional file-processing do _NOT_ allow data to be retrieved in an efficient manner 
+      - DATA ISOLATION - must write a new application program to retrieve data scattered in various formatted files
+      - INTEGRITY PROBLEMS - not being able to satisfy consistency constraints
+      
+            Ex. not being able to the program to enforce new constraints
+      - ATOMICITY PROBLEMS - changes must be atomic (it must happen in its entirety or not at all)
+      
+             Ex. a bank transfer from account A to B. A credit and a debit must occur, not just one 
+           
+      - CONCURRENT-ACCESS ANOMALITIES - when 2 user change the data and both changes are updated leading to 2 different results and supervision is _DIFFICULT_
+      
+:::note
+These difficulties prompted the transitions from file-based apps. to database systems in the 1960s and 1970s
+:::
+
+## View of Data 
+a. major purpose of a database is to provide and _ABSTRACT_ view of data while hiding the details of how data are stored and maintained 
+
+b. `DATA MODELS` - the underlying structure of a database; a collection of conceptual tools, data relationships, data semantics, and consistency constraints 
+      - all data can be classified into 4 categories: `RELATIONAL MODELS`, `ENTITY RELATIONAL MODEL`, `SEMI-STRUCTURED DATA MODEL`, `OBJECT-BASED MODEL`
+

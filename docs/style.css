@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Lemonada:wght@360&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Delius+Unicase:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@900&display=swap');
 
 
 .caption {
@@ -141,5 +142,37 @@ font-family: "Poiret One", sans-serif;
   color: #1c3046;
   opacity: 1;
   text-transform: uppercase;
+}
+
+/* -----------Sidebar div tips------------- */
+/* from r-pkgs.org*/
+
+div.fyi, div.demo, div.note {
+    font-family: "Roboto";
+    font-size: 1.5em;
+    font-weight: bold;
+    padding: 1em;
+    margin: 1em 0;
+    padding-left: 110px;
+    background-size: 100px;
+    background-repeat: no-repeat;
+    background-position: 15px center;
+    min-height: 120px;
+    color: #1f5386;
+    background-color: #bed3ec;
+    border: dashed 7px #dfedff;
+  }
+
+
+div.fyi {
+ background-image: url(".../images/fyi.png");
+}
+
+div.demo {
+  background-image: url(".../images/Live-code.png");
+}
+
+div.note {
+  background-image: url(".../images/lightbulb.png");
 }
 
