@@ -1,44 +1,40 @@
-output:
-  bookdown::html_book:
-    includes:
-      in_header: style.css
-  bookdown::gitbook:
-    includes:
-      before_body: header.html
-    highlight: kate
-    css: style.css
-    config:
-      toc:
-        collapse: section
-        scroll_highlight: yes
-        before: |
-          <li class="toc-logo"><a href="./"><img src="images/cover.PNG"></a></li>
-          <li>Database Notes</li>
-        after: |
-          <li><a href="https://www.linkedin.com/in/susan-chen-12787517a/" target="blank">My Linkedin</a></li>
-          <li><a href = "https://github.com/sc6354/hoca_final_project_exhibition_pamphlet" target="blank">Link to Project Repository</a></li>
-          <li><a>  </a></li>
-          <li><a>  </a></li>
-      download: ["epub"]
-      toolbar:
-        position: statics
-      # changing the default
-      fontsettings:
-        theme: night
-        family: sans
-      sharing:
-        facebook: yes
-        github: yes
-        twitter: yes
-        linkedin: yes
-        weibo: no
-        instapaper: no
-        vk: no
-        all: ['facebook', 'twitter', 'linkedin', 'weibo', 'github']
-      info: yes
-    
-  bookdown::epub_book: default
+bookdown::gitbook:
+  includes:
+    before_body: header.html
+  highlight: kate
+  css: style.css
+  config:
+    toc:
+      collapse: section
+      scroll_highlight: yes
+      before: |
+        <li class="toc-logo"><a href="./"><img src="images/cover.PNG"></a></li>
+        <li>Database Notes</li>
+      after: |
+        <li><a href="https://www.linkedin.com/in/susan-chen-12787517a/" target="blank">My Linkedin</a></li>
+        <li><a href = "https://github.com/sc6354/hoca_final_project_exhibition_pamphlet" target="blank">Link to Project Repository</a></li>
+        <li><a>  </a></li>
+        <li><a>  </a></li>
+    download: ["epub"]
+    toolbar:
+      position: statics
+    # changing the default
+    fontsettings:
+      theme: night
+      family: sans
+    sharing:
+      facebook: yes
+      github: yes
+      twitter: yes
+      linkedin: yes
+      weibo: no
+      instapaper: no
+      vk: no
+      all: ['facebook', 'twitter', 'linkedin', 'weibo', 'github']
+    info: yes
   
+bookdown::epub_book: default
+
 
 
 
