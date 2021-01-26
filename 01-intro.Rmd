@@ -1,3 +1,16 @@
 # Introduction {#intro}
 
+## Overview {-}
+a. *Database-Maangement System* - collection of interrelated data and a set of programs to access those data 
+      - goal is to store and retrieve database info. conveniently and efficiently 
+      
+      
+b. *Database* - the collection of data that contains info. relevant to the enterprise 
+
+## Database System Applications 
+a. DSMS are used to manage collections of data that are:
+      - highly valuable 
+      - relatively large and 
+      - accessed by multiple users and applications at once 
+
 You can label chapter and section titles using `{#label}` after them, e.g., we can reference Chapter \@ref(intro). If you do not manually label them, there will be automatic labels anyway, e.g., Chapter \@ref(methods).

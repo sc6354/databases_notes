@@ -30,7 +30,7 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   <link rel="apple-touch-icon-precomposed" sizes="120x120" href="images/favicon_io/apple-touch-icon.png" />
   <link rel="shortcut icon" href="images/favicon_io/favicon.ico" type="image/x-icon" />
-<link rel="prev" href="course-outline.html"/>
+<link rel="prev" href="index.html"/>
 <link rel="next" href="literature.html"/>
 <script src="libs/header-attrs-2.5/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
@@ -73,8 +73,11 @@
 
 <li class="divider"></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Note to Readers</a></li>
-<li class="chapter" data-level="" data-path="course-outline.html"><a href="course-outline.html"><i class="fa fa-check"></i>Course Outline</a></li>
-<li class="chapter" data-level="1" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>1</b> Introduction</a></li>
+<li class="chapter" data-level="1" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>1</b> Introduction</a>
+<ul>
+<li class="chapter" data-level="" data-path="intro.html"><a href="intro.html#overview"><i class="fa fa-check"></i>Overview</a></li>
+<li class="chapter" data-level="1.1" data-path="intro.html"><a href="intro.html#database-system-applications"><i class="fa fa-check"></i><b>1.1</b> Database System Applications</a></li>
+</ul></li>
 <li class="chapter" data-level="2" data-path="literature.html"><a href="literature.html"><i class="fa fa-check"></i><b>2</b> Literature</a></li>
 <li class="chapter" data-level="3" data-path="methods.html"><a href="methods.html"><i class="fa fa-check"></i><b>3</b> Methods</a></li>
 <li class="chapter" data-level="4" data-path="applications.html"><a href="applications.html"><i class="fa fa-check"></i><b>4</b> Applications</a>
@@ -110,15 +113,36 @@
 <link rel="shortcut icon" href="images/favicon.io/apple-touch-icon.png" />
 <div id="intro" class="section level1" number="1">
 <h1><span class="header-section-number">1</span> Introduction</h1>
+<div id="overview" class="section level2 unnumbered">
+<h2>Overview</h2>
+<ol style="list-style-type: lower-alpha">
+<li><em>Database-Maangement System</em> - collection of interrelated data and a set of programs to access those data
+<ul>
+<li>goal is to store and retrieve database info. conveniently and efficiently</li>
+</ul></li>
+<li><em>Database</em> - the collection of data that contains info. relevant to the enterprise</li>
+</ol>
+</div>
+<div id="database-system-applications" class="section level2" number="1.1">
+<h2><span class="header-section-number">1.1</span> Database System Applications</h2>
+<ol style="list-style-type: lower-alpha">
+<li>DSMS are used to manage collections of data that are:
+<ul>
+<li>highly valuable</li>
+<li>relatively large and</li>
+<li>accessed by multiple users and applications at once</li>
+</ul></li>
+</ol>
 <p>You can label chapter and section titles using <code>{#label}</code> after them, e.g., we can reference Chapter <a href="intro.html#intro">1</a>. If you do not manually label them, there will be automatic labels anyway, e.g., Chapter <a href="methods.html#methods">3</a>.</p>
 
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="course-outline.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 <a href="literature.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
@@ -174,20 +198,6 @@ gitbook.start({
 });
 </script>
 
-<!-- dynamically load mathjax for compatibility with self-contained -->
-<script>
-  (function () {
-    var script = document.createElement("script");
-    script.type = "text/javascript";
-    var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
-    if (location.protocol !== "file:")
-      if (/^https?:/.test(src))
-        src = src.replace(/^https?:/, '');
-    script.src = src;
-    document.getElementsByTagName("head")[0].appendChild(script);
-  })();
-</script>
 </body>
 
 </html>
