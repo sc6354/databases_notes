@@ -8,7 +8,7 @@ bookdown::gitbook:
       collapse: section
       scroll_highlight: yes
       before: |
-        <li class="toc-logo"><a href="./"><img src="images/cover.png"></a></li>
+        <li class="toc-logo"><a href="./"><img src="images/cover.PNG"></a></li>
         <li>Database Notes</li>
       after: |
         <li><a href="https://artspaces.kunstmatrix.com/en/exhibition/3398947/the-chinese-dragon-a-lasting-evolution" target="blank">Exhibition Link</a></li>
