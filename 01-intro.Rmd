@@ -12,5 +12,8 @@ a. DSMS are used to manage collections of data that are:
       - highly valuable 
       - relatively large and 
       - accessed by multiple users and applications at once 
+      
+b. DBMs uses ABSTRACTION to manage the COMPLEXITY of a data collection
+      - 
 
 You can label chapter and section titles using `{#label}` after them, e.g., we can reference Chapter \@ref(intro). If you do not manually label them, there will be automatic labels anyway, e.g., Chapter \@ref(methods).
