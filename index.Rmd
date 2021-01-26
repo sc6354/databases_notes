@@ -2,20 +2,23 @@
 title: "Database Notes"
 author: "Susan Chen"
 date: "1.25.21"
-site: bookdown::bookdown_site
-documentclass: book
-bibliography: [book.bib, packages.bib]
 biblio-style: apalike
-link-citations: true 
-indent: true
-description: "This is the online pamplet to an exhibition of dragons in Chinese art. This is part of a final curation project for History of Chinese Art at NYU Shanghai Fall 2020."
-github-repo: sc6354/hoca_final_project_exhibition_pamphlet
-favicon: images/favicon_io/favicon.ico
+bibliography:
+- book.bib
+- packages.bib
 cover-image: images/cover.PNG
-apple-touch-icon: "images/favicon_io/apple-touch-icon.png"
 apple-touch-icon-size: 120
+description: This is the online pamplet to an exhibition of dragons in Chinese art.
+  This is part of a final curation project for History of Chinese Art at NYU Shanghai
+  Fall 2020.
+documentclass: book
+favicon: images/favicon_io/favicon.ico
+github-repo: sc6354/hoca_final_project_exhibition_pamphlet
+indent: yes
+link-citations: yes
+site: bookdown::bookdown_site
+apple-touch-icon: images/favicon_io/apple-touch-icon.png
 url: https://sc6354.github.io/hoca_final_project_exhibition_pamphlet/
-
 ---
 
 # Note to Readers {-}
