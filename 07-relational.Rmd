@@ -76,8 +76,26 @@ e. 3NF rules:
       - best for most pratical applications 
       - be in 2NF 
       - have no transitive functional dependencies 
-      
+
+:::note 
+Transitive functional dependencies - when changing a non-key column, might cause any of the other non-key columns to change
+:::
 $$\\[.1cm]$$
+
+
+<center>
+![](images/ch7/1nf.jpg){width=75%}
+
+[Example of 1NF]()
+</center>
+
+<center>
+![](images/ch7/2nf.jpg){width=75%}
+
+[Example of 2NF & 3NF]()
+</center>
+$$\\[.1cm]$$
+
 
 f. BCNF:
       - section under construction 
