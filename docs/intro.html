@@ -209,13 +209,16 @@
 <li><p><code>OBJECT-BASED DATA MODELS</code> - extends the relational model w/notions of encapsulation, methods, and object identity</p></li>
 <li><p><code>DATA ABSTRACTION</code>- hiding the complexity of the system from users to simplify their interaction w/the system</p>
 <ul>
-<li>3 levels of abstractions:
-<img src="/images/ch1/levels_of_abstraction.jpg" alt="Levels of Abstraction" /></li>
-<li><code>VIEW LEVEL</code>- the highgest level of abstraction that only describes the part of the database; exist to simplify interaction w/the system and the system may provide multiple views for the same database</li>
-<li><code>LOGICAL LEVEL</code> - describes the entire databse in terms of a small number of relatively simple structures</li>
-<li><code>PHYSICAL LEVEL</code> - the lowest level of abstration that describes how the data is stored in detail</li>
+<li>3 levels of abstractions:</li>
 </ul></li>
 </ol>
+<center>
+<p><img src="images/ch1/levels_of_abstraction.jpg" /></p>
+<a href="">Levels of Abstraction</a>
+</center>
+<pre><code>  - `VIEW LEVEL`- the highgest level of abstraction that only describes the part of the database; exist to simplify interaction w/the system and the system may provide multiple views for the same database
+  - `LOGICAL LEVEL` -  describes the entire databse in terms of a small number of relatively simple structures
+  - `PHYSICAL LEVEL` - the lowest level of abstration that describes how the data is stored in detail </code></pre>
 <div class="note">
 <p>Users at the logical level does not need to be aware of the complex physical structure involved (a.k.a physical data independence). Database adminstrators who decide on what info. to keep uses this level</p>
 </div>

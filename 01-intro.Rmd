@@ -78,7 +78,12 @@ f.  `OBJECT-BASED DATA MODELS` - extends the relational model w/notions of encap
 
 g. `DATA ABSTRACTION`- hiding the complexity of the system from users to simplify their interaction w/the system
       - 3 levels of abstractions:
-      ![Levels of Abstraction](/images/ch1/levels_of_abstraction.jpg)
+      
+<center>
+![](images/ch1/levels_of_abstraction.jpg){}
+
+[Levels of Abstraction]()
+</center>
       - `VIEW LEVEL`- the highgest level of abstraction that only describes the part of the database; exist to simplify interaction w/the system and the system may provide multiple views for the same database
       - `LOGICAL LEVEL` -  describes the entire databse in terms of a small number of relatively simple structures
       - `PHYSICAL LEVEL` - the lowest level of abstration that describes how the data is stored in detail 
