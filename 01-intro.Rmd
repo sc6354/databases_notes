@@ -203,4 +203,34 @@ b. `QUERY PROCESSOR` - includes DDL interpreter, DML compiler, and query evaluat
 
 c. `TRANSACTION MANAGER`- consist of the concurrency-control manager and the recovery manager 
       - concurrency-control manager ensures consistency of the database 
-      - recovery manager ensures durability and atomicity of the database system itself & can perform failure recovery to restore database to state prior to crash/failure  
+      - recovery manager ensures durability and atomicity of the database system itself & can perform failure recovery to restore database to state prior to crash/failure 
+      
+
+## Database & Application Architecture 
+a. Applications that use databases as their backend can be partitioned into 2 or 3 tier parts 
+
+b. `2-TIER APPLICATIONS` - application resides at the client machine, and invokes database system fuctionality at the server machine via query lang. statements
+      - usually in older applications 
+      
+c. `3-TIER ARCHITECTURE` -  client machine acts as front end and does not contain any direct database calls; instead front end communicates with an application server and server than communicates with the database system to access data 
+      - web browsers and mobile apps are the most commonly used application clients 
+      - better security and performance than 2-tier 
+
+<center>
+
+![](images/ch1/2tier_vs_3tier.jpg){}
+
+[2 tier vs 3 tier]()
+</center>
+    
+    
+## Database Users and Administrators 
+
+a. Users are defined by the way they are expected to interact w/the system 
+
+b. `DATABASE ADMINISTRATOR (DBA)` - the person who has central control over the system and performs:
+    - schema definitions
+    - storage structure and access method definition
+    - schema & physical-organizational modification
+    - granting of authorization for data access 
+    - routine maintenance 
