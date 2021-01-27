@@ -104,15 +104,16 @@ $$\\[.1cm]$$
 
 g. 4NF rules:
       - be in 3NF 
-      - table shold not have multivalued dependencies 
+      - table should not have multivalued dependencies 
 
 :::note 
 Conditions for Multi-valued dependencies (all must be true):
-      1. for a dependency A -> B (for a single A), multiple values of B exist 
-      2. have at least 3 columns 
-      3. for the other 2 columns, B & C, they should be independent
+
+1. for a dependency A -> B (for a single A), multiple values of B exist 
+2. have at least 3 columns 
+3. for the other 2 columns, B & C, they should be independent
  
- MVD occurs due to bad database design  
+MVD occurs due to bad database design  
 :::
 
 $$\\[.1cm]$$
