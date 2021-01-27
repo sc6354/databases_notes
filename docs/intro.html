@@ -30,7 +30,7 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   <link rel="apple-touch-icon-precomposed" sizes="120x120" href="images/favicon_io/apple-touch-icon.png" />
   <link rel="shortcut icon" href="images/favicon_io/favicon.ico" type="image/x-icon" />
-<link rel="prev" href="index.html"/>
+<link rel="prev" href="course-outline.html"/>
 <link rel="next" href="literature.html"/>
 <script src="libs/header-attrs-2.5/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
@@ -73,6 +73,7 @@
 
 <li class="divider"></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Note to Readers</a></li>
+<li class="chapter" data-level="" data-path="course-outline.html"><a href="course-outline.html"><i class="fa fa-check"></i>Course Outline</a></li>
 <li class="chapter" data-level="1" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>1</b> Introduction</a>
 <ul>
 <li class="chapter" data-level="" data-path="intro.html"><a href="intro.html#overview"><i class="fa fa-check"></i>Overview</a></li>
@@ -80,6 +81,8 @@
 <li class="chapter" data-level="1.2" data-path="intro.html"><a href="intro.html#purpose-of-database-system"><i class="fa fa-check"></i><b>1.2</b> Purpose of Database System</a></li>
 <li class="chapter" data-level="1.3" data-path="intro.html"><a href="intro.html#view-of-data"><i class="fa fa-check"></i><b>1.3</b> View of Data</a></li>
 <li class="chapter" data-level="1.4" data-path="intro.html"><a href="intro.html#database-languages"><i class="fa fa-check"></i><b>1.4</b> Database Languages</a></li>
+<li class="chapter" data-level="1.5" data-path="intro.html"><a href="intro.html#database-design"><i class="fa fa-check"></i><b>1.5</b> Database Design</a></li>
+<li class="chapter" data-level="1.6" data-path="intro.html"><a href="intro.html#database-engine"><i class="fa fa-check"></i><b>1.6</b> Database Engine</a></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="literature.html"><a href="literature.html"><i class="fa fa-check"></i><b>2</b> Literature</a></li>
 <li class="chapter" data-level="3" data-path="methods.html"><a href="methods.html"><i class="fa fa-check"></i><b>3</b> Methods</a></li>
@@ -266,10 +269,90 @@
 <ul>
 <li>can only be accessed and updated by the database system and not a regular user</li>
 </ul></li>
+</ol>
+<p><span class="math display">\[\\[.1cm]\]</span></p>
+<ol start="5" style="list-style-type: lower-alpha">
 <li><code>DATA-MANIPULATION LANGUAGE</code> - enables user to access or manipulate data accessed by the appropriate data model
 <ul>
 <li>types of access are retrival, insertion, deletion, manipulation</li>
 <li>2 types of DML: <em>PROCEDURAL</em> and <em>DECLARATIVE</em></li>
+</ul></li>
+</ol>
+<p><span class="math display">\[\\[.1cm]\]</span></p>
+<ol start="6" style="list-style-type: lower-alpha">
+<li><code>PROCEDURAL DMLs</code>- user must specify what data to get and how to get it</li>
+</ol>
+<p><span class="math display">\[\\[.1cm]\]</span>
+g. <code>DECLARATIVE (NONPROCEDURAL)</code> - user must specify what data to get but not how
+- the database system will fiqure our an efficient way of retrieving the data</p>
+<p><span class="math display">\[\\[.1cm]\]</span></p>
+<ol start="8" style="list-style-type: lower-alpha">
+<li><code>QUERY</code> - statement requesting retrival of info. and <em>query language</em> is the part of the DML that involves this info. retrieval
+<ul>
+<li>technically incorrect, but DML and queary lang. is often used interchangeably</li>
+<li>most common query language is SQL (a nonprocedural lang.)</li>
+</ul></li>
+</ol>
+<p><span class="math display">\[\\[.1cm]\]</span></p>
+<ol style="list-style-type: lower-roman">
+<li><code>APPLICATION PROGRAMS</code> - programs that use a host lang. such as C/C++, Java, or Python with embedded SQL queries to interact w/ the database
+<ul>
+<li>Open Database Connectivity (ODBC) standards define interfaces for C and other languages</li>
+<li>Java Database Connectivity (JDBC) standards define interface fro Java lang.</li>
+</ul></li>
+</ol>
+</div>
+<div id="database-design" class="section level2" number="1.5">
+<h2><span class="header-section-number">1.5</span> Database Design</h2>
+<ol style="list-style-type: lower-alpha">
+<li><p>Mainly involves the design of the database schema</p></li>
+<li><p>Conceptual Design - provides a detailed overview of the enterprise</p>
+<ul>
+<li><p>confirms all requirements are met and are not in conflict w/each other</p></li>
+<li><p>Normalization - one of the 2 main ways on how to group attributes from various tables</p>
+<pre><code>- normaliztion employs a set of algorithms that takes
+as inputs the set of all attributes and generates a 
+set of table
+- the other way is to use the Entity Relational Model </code></pre></li>
+<li><p><code>SPECIFICATION OF FUNCTIONAL REQUIREMENTS</code> - describes the kind of operations that will be performed on the data</p></li>
+</ul></li>
+</ol>
+<p><span class="math display">\[\\[.1cm]\]</span></p>
+<ol start="3" style="list-style-type: lower-alpha">
+<li><p><code>LOGICAL DESIGN PHASE</code> - the designer maps the high level conceptual schema onto the implementation data model of the database system that will be used</p></li>
+<li><p><code>PHYSICAL DESIGN PHASE</code> - where physical feature of the database are specified</p></li>
+</ol>
+</div>
+<div id="database-engine" class="section level2" number="1.6">
+<h2><span class="header-section-number">1.6</span> Database Engine</h2>
+<div class="note">
+<ul>
+<li><p>a database system is divided into modules that deal w/a part of the system</p></li>
+<li><p>Functional components of the system can be divided into the <code>storage manager</code>, the <code>quesry processor</code>, and <code>transcation management</code></p></li>
+</ul>
+</div>
+<ol style="list-style-type: lower-alpha">
+<li><code>STORAGE MANAGER</code> - storing, retrieving, &amp; updating data in the database
+<ul>
+<li>includes the authorization and integrity manager, transaction manager, file manager, and buffer manager</li>
+<li>also implements several data structures as part of the physical system implementation: data files, data dictionary, indices</li>
+</ul></li>
+</ol>
+<p><span class="math display">\[\\[.1cm]\]</span></p>
+<ol start="2" style="list-style-type: lower-alpha">
+<li><code>QUERY PROCESSOR</code> - includes DDL interpreter, DML compiler, and query evaluation engine</li>
+</ol>
+<div class="note">
+<ul>
+<li><p>compiler translate queries into an evalution plan of low-level instructions that can be understood by the evaluation engine</p></li>
+<li><p>compiler also performs QUERY OPTIMIZATION to pick the lowest cost evaluation plan</p></li>
+</ul>
+</div>
+<ol start="3" style="list-style-type: lower-alpha">
+<li><code>TRANSACTION MANAGER</code>- consist of the concurrency-control manager and the recovery manager
+<ul>
+<li>concurrency-control manager ensures consistency of the database</li>
+<li>recovery manager ensures durability and atomicity of the database system itself &amp; can perform failure recovery to restore database to state prior to crash/failure</li>
 </ul></li>
 </ol>
 
@@ -280,7 +363,7 @@
           </div>
         </div>
       </div>
-<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="course-outline.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 <a href="literature.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>

@@ -127,7 +127,75 @@ User may have all, some, or none of these authorizations
 
 d. `DATA DICTIONARY` - the output of DDL statements that contaion metedata, or data about the data
       - can only be accessed and updated by the database system and not a regular user
-      
+
+$$\\[.1cm]$$
+
 e. `DATA-MANIPULATION LANGUAGE` - enables user to access or manipulate data accessed by the appropriate data model 
       - types of access are retrival, insertion, deletion, manipulation
       - 2 types of DML: _PROCEDURAL_ and _DECLARATIVE_
+ 
+$$\\[.1cm]$$
+
+f. `PROCEDURAL DMLs`- user must specify what data to get and how to get it 
+
+$$\\[.1cm]$$
+g. `DECLARATIVE (NONPROCEDURAL)` - user must specify what data to get but not how
+      - the database system will fiqure our an efficient way of retrieving the data 
+
+$$\\[.1cm]$$      
+
+h. `QUERY` - statement requesting retrival of info. and _query language_ is the part of the DML that involves this info. retrieval 
+      - technically incorrect, but DML and queary lang. is often used interchangeably 
+      - most common query language is SQL (a nonprocedural lang.)
+      
+$$\\[.1cm]$$
+
+i. `APPLICATION PROGRAMS` - programs that use a host lang. such as C/C++, Java, or Python with embedded SQL queries to interact w/ the database 
+      - Open Database Connectivity (ODBC) standards define interfaces for C and other languages 
+      - Java Database Connectivity (JDBC) standards define interface fro Java lang. 
+      
+## Database Design 
+a. Mainly involves the design of the database schema 
+
+b. Conceptual Design - provides a detailed overview of the enterprise 
+      - confirms all requirements are met and are not in conflict w/each other 
+      - Normalization - one of the 2 main ways on how to group attributes from various tables
+      
+            - normaliztion employs a set of algorithms that takes
+            as inputs the set of all attributes and generates a 
+            set of table
+            - the other way is to use the Entity Relational Model 
+      - `SPECIFICATION OF FUNCTIONAL REQUIREMENTS` - describes the kind of operations that will be performed on the data 
+ 
+$$\\[.1cm]$$
+
+c. `LOGICAL DESIGN PHASE` - the designer maps the high level conceptual schema onto the implementation data model of the database system that will be used 
+
+d. `PHYSICAL DESIGN PHASE` - where physical feature of the database are specified 
+
+
+## Database Engine 
+
+:::note 
+* a database system is divided into modules that deal w/a part of the system 
+
+* Functional components of the system can be divided into the `storage manager`, the `quesry processor`, and `transcation management`
+:::
+
+a. `STORAGE MANAGER` - storing, retrieving, & updating data in the database 
+      - includes the authorization and integrity manager, transaction manager, file manager, and buffer manager 
+      - also implements several data structures as part of the physical system implementation: data files, data dictionary, indices 
+      
+$$\\[.1cm]$$
+
+b. `QUERY PROCESSOR` - includes DDL interpreter, DML compiler, and query evaluation engine
+
+:::note 
+* compiler translate queries into an evalution plan of low-level instructions that can be understood by the evaluation engine
+
+* compiler also performs QUERY OPTIMIZATION to pick the lowest cost evaluation plan 
+:::
+
+c. `TRANSACTION MANAGER`- consist of the concurrency-control manager and the recovery manager 
+      - concurrency-control manager ensures consistency of the database 
+      - recovery manager ensures durability and atomicity of the database system itself & can perform failure recovery to restore database to state prior to crash/failure  
