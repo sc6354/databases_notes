@@ -27,7 +27,7 @@ url: https://sc6354.github.io/hoca_final_project_exhibition_pamphlet/
 # Course Outline {-}
 - Week 1:
     - Chapter 1 - [Introduction](https://sc6354.github.io/databases_notes/intro.html)
-    - Chapter 7 - Entity Relationship Model
+    - Chapter 7 - [Entity Relationship Model](https://sc6354.github.io/databases_notes/relational-database-design.html)
 - Week 2:
     - Chapter 2 - Relational Model
     - Chapter 7 - ER and Relational Models
