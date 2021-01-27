@@ -72,7 +72,10 @@
 <li>Database Notes</li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Note to Readers</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Note to Readers</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#reading-guide"><i class="fa fa-check"></i>Reading guide</a></li>
+</ul></li>
 <li class="chapter" data-level="" data-path="course-outline.html"><a href="course-outline.html"><i class="fa fa-check"></i>Course Outline</a></li>
 <li class="chapter" data-level="1" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>1</b> Introduction</a>
 <ul>
@@ -167,7 +170,7 @@
 <li><code>NORMILIZATION</code> - a technique of orgainizing data in a database by decomposing tables to eliminate redunancy, &amp; undesirable characteristics (insertion/update/deletion anomalities)
 <ul>
 <li>the process takes large tables, divides them into smaller tables, and link them using relationships</li>
-<li>proposed by <em>Edgar Codd</em>, inventor of the relational model
+<li>proposed by <strong>Edgar Codd</strong>, inventor of the relational model
 <span class="math display">\[\\[.1cm]\]</span></li>
 </ul></li>
 <li>All the normal forms:
@@ -270,13 +273,9 @@
 <a href="">Example of 5NF</a>
 </center>
 <p><span class="math display">\[\\[.1cm]\]</span></p>
-<pre><code>  - from these 3 decomposed tables, info. is lost 
-  b/c we do NOT know definitive that Ford brought 
-  72XSW from ACME since in the original table, Ford 
-  also brought 72XSW from ALWAT
+<pre><code>  - from these 3 decomposed tables, info. is lost b/c we do NOT know definitive that Ford brought 72XSW from ACME since in the original table, Ford also brought 72XSW from ALWAT
         
-  - thus, the orginal table does not have join
-  dependency and is already in 5NF </code></pre>
+  - thus, the orginal table does not have join dependency and is already in 5NF </code></pre>
 
 </div>
 </div>

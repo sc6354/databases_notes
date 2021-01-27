@@ -22,6 +22,19 @@ url: https://sc6354.github.io/hoca_final_project_exhibition_pamphlet/
 ---
 
 # Note to Readers {-}
+These are my own notes that I wrote while taking Database at NYUSH with Professor Xu in Spring 2021. Hope my notes can be of benefit to you. 
+
+### Reading guide {-}
+
+1. `KEY TERMS` - definition here 
+      - more details about term in the bullet points
+      
+                        
+                        Examples go here 
+  
+:::note 
+These blocks point out other relevant info or big ideas.
+:::
 
 ---
 # Course Outline {-}
@@ -40,5 +53,5 @@ url: https://sc6354.github.io/hoca_final_project_exhibition_pamphlet/
 - Week 8:
     -  Chapter 5 - Advanced SQL
 
-This is a _sample_ book written in **Markdown**. 
+
 
