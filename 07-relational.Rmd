@@ -128,7 +128,7 @@ Join Dependency - when a table can be broken down into 2 seperate tables & no da
 :::
 
 <center>
-![](images/ch7/5nf.jpg){}
+![](images/ch7/5nf.jpg){width=75%}
 
 [Example of 5NF]()
 </center>
