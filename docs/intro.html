@@ -79,6 +79,7 @@
 <li class="chapter" data-level="1.1" data-path="intro.html"><a href="intro.html#database-system-applications"><i class="fa fa-check"></i><b>1.1</b> Database System Applications</a></li>
 <li class="chapter" data-level="1.2" data-path="intro.html"><a href="intro.html#purpose-of-database-system"><i class="fa fa-check"></i><b>1.2</b> Purpose of Database System</a></li>
 <li class="chapter" data-level="1.3" data-path="intro.html"><a href="intro.html#view-of-data"><i class="fa fa-check"></i><b>1.3</b> View of Data</a></li>
+<li class="chapter" data-level="1.4" data-path="intro.html"><a href="intro.html#database-languages"><i class="fa fa-check"></i><b>1.4</b> Database Languages</a></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="literature.html"><a href="literature.html"><i class="fa fa-check"></i><b>2</b> Literature</a></li>
 <li class="chapter" data-level="3" data-path="methods.html"><a href="methods.html"><i class="fa fa-check"></i><b>3</b> Methods</a></li>
@@ -194,6 +195,81 @@
 <ul>
 <li>data items in the models above must have the same set of attributes</li>
 <li>most widely used semi-structured data representations are JSON and extensible markup language (XML)</li>
+</ul></li>
+</ol>
+<p><span class="math display">\[\\[.1cm]\]</span></p>
+<ol start="6" style="list-style-type: lower-alpha">
+<li><p><code>OBJECT-BASED DATA MODELS</code> - extends the relational model w/notions of encapsulation, methods, and object identity</p></li>
+<li><p><code>DATA ABSTRACTION</code>- hiding the complexity of the system from users to simplify their interaction w/the system</p>
+<ul>
+<li>3 levels of abstractions:
+<img src="/images/ch1/levels_of_abstraction.jpg" alt="Levels of Abstraction" /></li>
+<li><code>VIEW LEVEL</code>- the highgest level of abstraction that only describes the part of the database; exist to simplify interaction w/the system and the system may provide multiple views for the same database</li>
+<li><code>LOGICAL LEVEL</code> - describes the entire databse in terms of a small number of relatively simple structures</li>
+<li><code>PHYSICAL LEVEL</code> - the lowest level of abstration that describes how the data is stored in detail</li>
+</ul></li>
+</ol>
+<div class="note">
+<p>Users at the logical level does not need to be aware of the complex physical structure involved (a.k.a physical data independence). Database adminstratorswho decide on what info. to keep uses this level</p>
+</div>
+<ol start="8" style="list-style-type: lower-alpha">
+<li><code>SCHEMA</code> - the overall design of the database
+<ul>
+<li>physical schema -&gt; the design at the physical level</li>
+<li>logical schema -&gt; the design at the logical level</li>
+<li>subschema -&gt; the design at the view level</li>
+</ul></li>
+</ol>
+<div class="note">
+<ul>
+<li><p>logical schema most important b/c programmers use this schema to construct applications</p></li>
+<li><p>applications exhibit <code>PHYSICAL DATA INDEPENDENCE</code> if they do not depend on the physical schema</p></li>
+</ul>
+</div>
+</div>
+<div id="database-languages" class="section level2" number="1.4">
+<h2><span class="header-section-number">1.4</span> Database Languages</h2>
+<ol style="list-style-type: lower-alpha">
+<li>a DBMS provides a <em>data-definition language (DDL)</em> to specify the database schema and a <em>data-manipulation language (DML)</em> to express database queries and update
+<ul>
+<li>in practice DDL and DML are parts of a single database language such as SQL and almost all relational models use SQL</li>
+</ul></li>
+</ol>
+<p><span class="math display">\[\\[.1cm]\]</span></p>
+<ol start="2" style="list-style-type: lower-alpha">
+<li><code>DATA STORAGE AND DEFINITION</code> - a set of statements in a special type of DDL that is used to specify the storage structure an access method
+<ul>
+<li>these statements define the schemas implementation and are hidden from users</li>
+<li>DDL also provides facalities to specify integrity constraints</li>
+</ul></li>
+</ol>
+<p><span class="math display">\[\\[.1cm]\]</span></p>
+<ol start="3" style="list-style-type: lower-alpha">
+<li>Some Constraints:
+<ul>
+<li><p>Domain Constraints - limits an attribute to a domain of possible values it can take on</p>
+<pre><code>Ex. integer types, character types, date/time types </code></pre></li>
+<li><p>Referential Integrity - ensuring that a value that occurs in one relation for a given set of attributes also appears in another set of attribute fro another relation</p>
+<pre><code>Ex. a department listed for a course must actually exist in the university </code></pre></li>
+<li><p>Authorization -limits access among types of user</p>
+<pre><code>- Read authorization - can only read 
+- Insert authorization - insert new data but not change
+- Update authorization - allows modification but not deletions
+- Delete authorization - allows deletion </code></pre></li>
+</ul></li>
+</ol>
+<div class="note">
+<p>User may have all, some, or none of these authorizations</p>
+</div>
+<ol start="4" style="list-style-type: lower-alpha">
+<li><code>DATA DICTIONARY</code> - the output of DDL statements that contaion metedata, or data about the data
+<ul>
+<li>can only be accessed and updated by the database system and not a regular user</li>
+</ul></li>
+<li><code>DATA-MANIPULATION LANGUAGE</code> - enables user to access or manipulate data accessed by the appropriate data model
+<ul>
+<li>types of access are retrival, insertion, deletion, manipulation</li>
+<li>2 types of DML: <em>PROCEDURAL</em> and <em>DECLARATIVE</em></li>
 </ul></li>
 </ol>
 
