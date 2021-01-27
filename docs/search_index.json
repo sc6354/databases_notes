@@ -6,5 +6,6 @@
 ["introduction-to-sql.html", "3 Introduction to SQL", " 3 Introduction to SQL More to come. "],
 ["intermediate-sql.html", "4 Intermediate SQL 4.1 Example one 4.2 Example two", " 4 Intermediate SQL Some significant applications are demonstrated in this chapter. 4.1 Example one 4.2 Example two "],
 ["advanced-sql.html", "5 Advanced SQL", " 5 Advanced SQL We have finished a nice book. "],
-["database-design-using-the-e-r-model.html", "6 Database Design using the E-R Model", " 6 Database Design using the E-R Model "]
+["database-design-using-the-e-r-model.html", "6 Database Design using the E-R Model", " 6 Database Design using the E-R Model "],
+["relational-database-design.html", "7 Relational Database Design", " 7 Relational Database Design "]
 ]
