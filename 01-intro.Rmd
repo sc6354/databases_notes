@@ -53,7 +53,7 @@ These difficulties prompted the transitions from file-based apps. to database sy
 :::
 
 ## View of Data 
-a. major purpose of a database is to provide and _ABSTRACT_ view of data while hiding the details of how data are stored and maintained 
+a. major purpose of a database is to provide and _ABSTRACT_  view of data while hiding the details of how data are stored and maintained 
 
 b. `DATA MODELS` - the underlying structure of a database; a collection of conceptual tools, data relationships, data semantics, and consistency constraints 
       - all data can be classified into 4 categories: `RELATIONAL MODELS`, `ENTITY RELATIONAL MODEL`, `SEMI-STRUCTURED DATA MODEL`, `OBJECT-BASED MODEL`

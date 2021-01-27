@@ -1,1 +1,33 @@
 # Relational Database Design 
+
+## Features of a Good Relational Design
+
+<center>
+![](images/ch7/badDecomposition.jpg){}
+
+[Loss of info. due to a bad Decomposition]()
+</center>
+$$\\[.1cm]$$
+
+a. `LOSSY DECOMPOSITION` - a bad decompositon 
+
+b. `LOSELESS DECOMPOSITION`- no loss of info. by replacing a relation R w/2 relations R~1~ & R~2~
+      - for a lossy decomposition, we would get a superset of the original relation 
+      
+$$\\[.1cm]$$
+
+c. `NORMILIZATION` - goal is to generate a set of tables that allow us to store info. w/o unnecessary redunancy, & yet allows us to retrieve info. easily 
+      - General steps:
+          
+          1. Decide if a table is in "GOOD FORM"
+          2. If NOT, decompose it into a num. of smaller relational schemas in a normal form 
+          
+      
+      
+## Decomposition using Functional Dependencies 
+a. `LEGAL INSTANCE` - of a relation is one that satifies all real-world constraints
+
+        Ex. students & instructors at a university must have an unqiue ID
+        
+        
+        

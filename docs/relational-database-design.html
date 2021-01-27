@@ -95,7 +95,11 @@
 </ul></li>
 <li class="chapter" data-level="5" data-path="advanced-sql.html"><a href="advanced-sql.html"><i class="fa fa-check"></i><b>5</b> Advanced SQL</a></li>
 <li class="chapter" data-level="6" data-path="database-design-using-the-e-r-model.html"><a href="database-design-using-the-e-r-model.html"><i class="fa fa-check"></i><b>6</b> Database Design using the E-R Model</a></li>
-<li class="chapter" data-level="7" data-path="relational-database-design.html"><a href="relational-database-design.html"><i class="fa fa-check"></i><b>7</b> Relational Database Design</a></li>
+<li class="chapter" data-level="7" data-path="relational-database-design.html"><a href="relational-database-design.html"><i class="fa fa-check"></i><b>7</b> Relational Database Design</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="relational-database-design.html"><a href="relational-database-design.html#features-of-a-good-relational-design"><i class="fa fa-check"></i><b>7.1</b> Features of a Good Relational Design</a></li>
+<li class="chapter" data-level="7.2" data-path="relational-database-design.html"><a href="relational-database-design.html#decomposition-using-functional-dependencies"><i class="fa fa-check"></i><b>7.2</b> Decomposition using Functional Dependencies</a></li>
+</ul></li>
 <li class="divider"></li>
 <li><a href="https://www.linkedin.com/in/susan-chen-12787517a/" target="blank">My Linkedin</a></li>
 <li><a href = "https://github.com/sc6354/hoca_final_project_exhibition_pamphlet" target="blank">Link to Project Repository</a></li>
@@ -123,7 +127,40 @@
 <link rel="shortcut icon" href="images/favicon.io/apple-touch-icon.png" />
 <div id="relational-database-design" class="section level1" number="7">
 <h1><span class="header-section-number">7</span> Relational Database Design</h1>
+<div id="features-of-a-good-relational-design" class="section level2" number="7.1">
+<h2><span class="header-section-number">7.1</span> Features of a Good Relational Design</h2>
+<center>
+<p><img src="images/ch7/badDecomposition.jpg" /></p>
+<a href="">Loss of info. due to a bad Decomposition</a>
+</center>
+<p><span class="math display">\[\\[.1cm]\]</span></p>
+<ol style="list-style-type: lower-alpha">
+<li><p><code>LOSSY DECOMPOSITION</code> - a bad decompositon</p></li>
+<li><p><code>LOSELESS DECOMPOSITION</code>- no loss of info. by replacing a relation R w/2 relations R<sub>1</sub> &amp; R<sub>2</sub></p>
+<ul>
+<li>for a lossy decomposition, we would get a superset of the original relation</li>
+</ul></li>
+</ol>
+<p><span class="math display">\[\\[.1cm]\]</span></p>
+<ol start="3" style="list-style-type: lower-alpha">
+<li><code>NORMILIZATION</code> - goal is to generate a set of tables that allow us to store info. w/o unnecessary redunancy, &amp; yet allows us to retrieve info. easily
+<ul>
+<li><p>General steps:</p>
+<ol style="list-style-type: decimal">
+<li>Decide if a table is in “GOOD FORM”</li>
+<li>If NOT, decompose it into a num. of smaller relational schemas in a normal form</li>
+</ol></li>
+</ul></li>
+</ol>
+</div>
+<div id="decomposition-using-functional-dependencies" class="section level2" number="7.2">
+<h2><span class="header-section-number">7.2</span> Decomposition using Functional Dependencies</h2>
+<ol style="list-style-type: lower-alpha">
+<li><p><code>LEGAL INSTANCE</code> - of a relation is one that satifies all real-world constraints</p>
+<pre><code> Ex. students &amp; instructors at a university must have an unqiue ID</code></pre></li>
+</ol>
 
+</div>
 </div>
             </section>
 
