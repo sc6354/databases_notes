@@ -84,7 +84,7 @@ g. `DATA ABSTRACTION`- hiding the complexity of the system from users to simplif
       - `PHYSICAL LEVEL` - the lowest level of abstration that describes how the data is stored in detail 
 
 :::note                  
-Users at the logical level does not need to be aware of the complex physical structure involved (a.k.a physical data independence). Database adminstratorswho decide on what info. to keep uses this level 
+Users at the logical level does not need to be aware of the complex physical structure involved (a.k.a physical data independence). Database adminstrators who decide on what info. to keep uses this level 
 :::
       
 h. `SCHEMA` - the overall design of the database
