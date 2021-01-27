@@ -138,9 +138,9 @@ $$\\[.1cm]$$
 
 f. `PROCEDURAL DMLs`- user must specify what data to get and how to get it 
 
-$$\\[.1cm]$$
+
 g. `DECLARATIVE (NONPROCEDURAL)` - user must specify what data to get but not how
-      - the database system will fiqure our an efficient way of retrieving the data 
+      - the database system will fiqure out an efficient way of retrieving the data 
 
 $$\\[.1cm]$$      
 
