@@ -22,5 +22,15 @@ g. `DOMAIN` - set of permitted values for an attribute of a relation
        
 h. `NULL VALUES` - signifies that a value is __UNKNOWN__ or does not exist 
       - best not to have null values as they will cause difficulties updating & accessing database 
+      
+## Database Schema 
+a. `DATABASE SCHEMA` - the logical design of the database 
+b. `DATABASE INSTANCE` - snapshot of the data in the database at a given time 
 
-
+c. `RELATIONAL SCHEMA` - list of attributes & their corresponding domains 
+      - relational instance - the value of a variable at a given time --> may change 
+      - relational schema does not change 
+      - relational instance and schema are often used interchageably
+            
+            
+            Ex. instructor may mean instructor schema or instructor instance!!!
