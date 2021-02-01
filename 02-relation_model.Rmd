@@ -1,3 +1,26 @@
 # Introduction to the Relational Model 
+__The relational model is the primary model for commerical data processing applications.__
 
-Here is a review of existing methods.
+## Structure of the Relational Databases
+a. A relational database consits of tables
+
+b. generally, a row in a table represents a relationship among a set of values 
+
+c. `RELATION` - a table 
+
+d. `TUPLE` - a row 
+
+e. `ATTRIBUTE` - a column in a table 
+
+f. `RELATIONAL INSTANCE` - refers to a specific instance of a relation, or a specific set of rows 
+      - ordered or unordered does __NOT__ matter as long as the same relations are in the set 
+      
+$$\\[.1cm]$$
+g. `DOMAIN` - set of permitted values for an attribute of a relation 
+            
+      Ex. the domain of salary attribute of the instructor relation is the set of all possible salaries. 
+       
+h. `NULL VALUES` - signifies that a value is __UNKNOWN__ or does not exist 
+      - best not to have null values as they will cause difficulties updating & accessing database 
+
+
