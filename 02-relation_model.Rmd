@@ -81,8 +81,86 @@ a. `RELATIONAL ALGEBRA` - set of operations that take one or two relations as in
 :::note 
 Binary and unary operations can be combined in relational algebra expressions.
 ::: 
+
+$$\\[.1cm]$$
+
+b. `SELECT` - choose rows that satisfy a given predicate 
+      - denoted by $\sigma$ & predicate as a subscript to $\sigma$ 
+      - relation is in parenthese after $\sigma$
+      - Ex. $\sigma$~dept_name='physics'~ (instructors) selects rows of instructor table where instructor is in the Physics department
+      - selection allows mathematical operators
+      - Ex. $\sigma$~salary>90000~ (instructors) 
+      - selction allow connectives (and, or, not)
+      - selection allows comparison btw 2 attributes 
+      - Ex. $\sigma$~dept_name='building'~ (instructors) finds all departments whose name is the same as their building  
+
+$$\\[.1cm]$$
+
+c. `PROJECT` - returns a table w/certain attributes left out 
+      - denoted by $\Pi$
+      - desired attributes are listed in __subscript__ 
+      - table argument follows in __parenthese__ 
+      - Ex. $\Pi$~ID,name,salary~ (instructors) 
+      - project allows operations 
+      - Ex. $\Pi$~ID,name,salary/12~ (instructors) returns monthly salary
+
+$$\\[.1cm]$$
+
+d. `CARTESIAN-PRODUCT` - combines info. from 2 tables 
+      - denoted by __X__, a cross
+      
+$$\\[.1cm]$$
+
+e. `UNION` - all rows that appear in either or both of 2 tables 
+      - denoted by __U__, union symbol 
+      - Ex. $\Pi$~course_ID~ ($\sigma$~semester='Fall'^year=2017~(Section)) __U__  $\Pi$~course_ID~ ($\sigma$~semester='Spring'^year=2018~(Section)) retunn all the courses taught in Fall 2017, Spring 2018, or both 
+
+:::note 
+For union to work:
+
+1. both tables must have teh same arity (# of attributes)
+
+2. if attributes have associated types, they must be the same for both tables
+
+If 1 & 2 are satisfy, we call the tables __compatible relations__. 
+:::
+      
+f. `INTERSECTION` - find rows in both tables
+
+g. `SET-DIFFERENCES` - find rows in one table but are not in another 
+      - denoted by __-__
+      - Ex. $\Pi$~course_ID~ ($\sigma$~semester='Fall'^year=2017~(Section)) __-__  $\Pi$~course_ID~ ($\sigma$~semester='Spring'^year=2018~(Section)) finds all courses taught in Fall 2017 but not in Spring 2018
+      
+$$\\[.1cm]$$
+
+
+h. `ASSIGNMENT` - works like assignment in a programming lang. 
+      - denoted by backward arrow, <-
+      - evaluation of an assignment does __NOT__ result in any relation being displayed to the user 
+      - instead the result is assigned to a table variable 
+      - assignments are __TEMPORARY__; assignments to permanent tables is a database __MODIFICATION__ 
       
       
+<center>
+![](images/ch2/assignment.JPG){}
+
+[Only the final line displays the result. The 2 lines before assigns query results to a temporary relation.]()
+</center>
+
+i. summary:
+      
+<center>
+![](images/ch2/operators.JPG){}
+
+[Relational Algebra Operators]()
+</center>
+
+
+
+
+
+
+
       
       
       

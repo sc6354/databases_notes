@@ -226,6 +226,84 @@ g. <code>DOMAIN</code> - set of permitted values for an attribute of a relation<
 <div class="note">
 <p>Binary and unary operations can be combined in relational algebra expressions.</p>
 </div>
+<p><span class="math display">\[\\[.1cm]\]</span></p>
+<ol start="2" style="list-style-type: lower-alpha">
+<li><code>SELECT</code> - choose rows that satisfy a given predicate
+<ul>
+<li>denoted by <span class="math inline">\(\sigma\)</span> &amp; predicate as a subscript to <span class="math inline">\(\sigma\)</span></li>
+<li>relation is in parenthese after <span class="math inline">\(\sigma\)</span></li>
+<li>Ex. <span class="math inline">\(\sigma\)</span><sub>dept_name=‘physics’</sub> (instructors) selects rows of instructor table where instructor is in the Physics department</li>
+<li>selection allows mathematical operators</li>
+<li>Ex. <span class="math inline">\(\sigma\)</span><sub>salary&gt;90000</sub> (instructors)</li>
+<li>selction allow connectives (and, or, not)</li>
+<li>selection allows comparison btw 2 attributes</li>
+<li>Ex. <span class="math inline">\(\sigma\)</span><sub>dept_name=‘building’</sub> (instructors) finds all departments whose name is the same as their building</li>
+</ul></li>
+</ol>
+<p><span class="math display">\[\\[.1cm]\]</span></p>
+<ol start="3" style="list-style-type: lower-alpha">
+<li><code>PROJECT</code> - returns a table w/certain attributes left out
+<ul>
+<li>denoted by <span class="math inline">\(\Pi\)</span></li>
+<li>desired attributes are listed in <strong>subscript</strong></li>
+<li>table argument follows in <strong>parenthese</strong></li>
+<li>Ex. <span class="math inline">\(\Pi\)</span><sub>ID,name,salary</sub> (instructors)</li>
+<li>project allows operations</li>
+<li>Ex. <span class="math inline">\(\Pi\)</span><sub>ID,name,salary/12</sub> (instructors) returns monthly salary</li>
+</ul></li>
+</ol>
+<p><span class="math display">\[\\[.1cm]\]</span></p>
+<ol start="4" style="list-style-type: lower-alpha">
+<li><code>CARTESIAN-PRODUCT</code> - combines info. from 2 tables
+<ul>
+<li>denoted by <strong>X</strong>, a cross</li>
+</ul></li>
+</ol>
+<p><span class="math display">\[\\[.1cm]\]</span></p>
+<ol start="5" style="list-style-type: lower-alpha">
+<li><code>UNION</code> - all rows that appear in either or both of 2 tables
+<ul>
+<li>denoted by <strong>U</strong>, union symbol</li>
+<li>Ex. <span class="math inline">\(\Pi\)</span><sub>course_ID</sub> (<span class="math inline">\(\sigma\)</span><sub>semester=‘Fall’^year=2017</sub>(Section)) <strong>U</strong> <span class="math inline">\(\Pi\)</span><sub>course_ID</sub> (<span class="math inline">\(\sigma\)</span><sub>semester=‘Spring’^year=2018</sub>(Section)) retunn all the courses taught in Fall 2017, Spring 2018, or both</li>
+</ul></li>
+</ol>
+<div class="note">
+<p>For union to work:</p>
+<ol style="list-style-type: decimal">
+<li><p>both tables must have teh same arity (# of attributes)</p></li>
+<li><p>if attributes have associated types, they must be the same for both tables</p></li>
+</ol>
+<p>If 1 &amp; 2 are satisfy, we call the tables <strong>compatible relations</strong>.</p>
+</div>
+<ol start="6" style="list-style-type: lower-alpha">
+<li><p><code>INTERSECTION</code> - find rows in both tables</p></li>
+<li><p><code>SET-DIFFERENCES</code> - find rows in one table but are not in another</p>
+<ul>
+<li>denoted by <strong>-</strong></li>
+<li>Ex. <span class="math inline">\(\Pi\)</span><sub>course_ID</sub> (<span class="math inline">\(\sigma\)</span><sub>semester=‘Fall’^year=2017</sub>(Section)) <strong>-</strong> <span class="math inline">\(\Pi\)</span><sub>course_ID</sub> (<span class="math inline">\(\sigma\)</span><sub>semester=‘Spring’^year=2018</sub>(Section)) finds all courses taught in Fall 2017 but not in Spring 2018</li>
+</ul></li>
+</ol>
+<p><span class="math display">\[\\[.1cm]\]</span></p>
+<ol start="8" style="list-style-type: lower-alpha">
+<li><code>ASSIGNMENT</code> - works like assignment in a programming lang.
+<ul>
+<li>denoted by backward arrow, &lt;-</li>
+<li>evaluation of an assignment does <strong>NOT</strong> result in any relation being displayed to the user</li>
+<li>instead the result is assigned to a table variable</li>
+<li>assignments are <strong>TEMPORARY</strong>; assignments to permanent tables is a database <strong>MODIFICATION</strong></li>
+</ul></li>
+</ol>
+<center>
+<p><img src="images/ch2/assignment.JPG" /></p>
+<a href="">Only the final line displays the result. The 2 lines before assigns query results to a temporary relation.</a>
+</center>
+<ol style="list-style-type: lower-roman">
+<li>summary:</li>
+</ol>
+<center>
+<p><img src="images/ch2/operators.JPG" /></p>
+<a href="">Relational Algebra Operators</a>
+</center>
 
 </div>
 </div>
