@@ -139,15 +139,152 @@
 <link rel="shortcut icon" href="images/favicon.io/apple-touch-icon.png" />
 <div id="relational-database-design" class="section level1" number="7">
 <h1><span class="header-section-number">7</span> Relational Database Design</h1>
-<p>Placeholder</p>
 <div id="features-of-a-good-relational-design" class="section level2" number="7.1">
 <h2><span class="header-section-number">7.1</span> Features of a Good Relational Design</h2>
+<center>
+<p><img src="images/ch7/badDecomposition.jpg" /></p>
+<a href="">Loss of info. due to a bad Decomposition</a>
+</center>
+<p><span class="math display">\[\\[.1cm]\]</span></p>
+<ol style="list-style-type: lower-alpha">
+<li><p><code>LOSSY DECOMPOSITION</code> - a bad decompositon</p></li>
+<li><p><code>LOSELESS DECOMPOSITION</code>- no loss of info. by replacing a relation R w/2 relations R<sub>1</sub> &amp; R<sub>2</sub></p>
+<ul>
+<li>for a lossy decomposition, we would get a superset of the original relation</li>
+</ul></li>
+</ol>
+<p><span class="math display">\[\\[.1cm]\]</span></p>
+<ol start="3" style="list-style-type: lower-alpha">
+<li><code>NORMILIZATION</code> - goal is to generate a set of tables that allow us to store info. w/o unnecessary redunancy, &amp; yet allows us to retrieve info. easily
+<ul>
+<li><p>General steps:</p>
+<ol style="list-style-type: decimal">
+<li>Decide if a table is in “GOOD FORM”</li>
+<li>If NOT, decompose it into a num. of smaller relational schemas in a normal form</li>
+</ol></li>
+</ul></li>
+</ol>
 </div>
 <div id="decomposition-using-functional-dependencies" class="section level2" number="7.2">
 <h2><span class="header-section-number">7.2</span> Decomposition using Functional Dependencies</h2>
+<ol style="list-style-type: lower-alpha">
+<li><p><code>LEGAL INSTANCE</code> - of a relation is one that satifies all real-world constraints</p>
+<pre><code> Ex. students &amp; instructors at a university must have an unqiue ID</code></pre></li>
+</ol>
 </div>
 <div id="normal-forms" class="section level2" number="7.3">
 <h2><span class="header-section-number">7.3</span> Normal Forms</h2>
+<ol style="list-style-type: lower-alpha">
+<li><code>NORMILIZATION</code> - a technique of orgainizing data in a database by decomposing tables to eliminate redunancy, &amp; undesirable characteristics (insertion/update/deletion anomalities)
+<ul>
+<li>the process takes large tables, divides them into smaller tables, and link them using relationships</li>
+<li>proposed by <strong>Edgar Codd</strong>, inventor of the relational model
+<span class="math display">\[\\[.1cm]\]</span></li>
+</ul></li>
+<li>All the normal forms:
+<ul>
+<li>1NF - ensure atomic and unique values</li>
+<li>2NF - removes partial dependencies</li>
+<li>3NF - remove transitive dependencies</li>
+<li>BCNF/3.5NF</li>
+<li>4NF - remove multi-valued dependencies</li>
+<li>5NF - remove join dependencies</li>
+<li>6NF - not standarized</li>
+</ul></li>
+</ol>
+<p><span class="math display">\[\\[.1cm]\]</span></p>
+<ol start="3" style="list-style-type: lower-alpha">
+<li>1NF rules:
+<ul>
+<li>each cell contain a single value</li>
+<li>each entry is unqiue</li>
+</ul></li>
+</ol>
+<p><span class="math display">\[\\[.1cm]\]</span></p>
+<ol start="4" style="list-style-type: lower-alpha">
+<li>2NF rules:
+<ul>
+<li>be in 1NF</li>
+<li>have a single column primary key</li>
+</ul></li>
+</ol>
+<div class="note">
+<ol style="list-style-type: decimal">
+<li>Primary Key - a single column value used to identify an entry uniquely
+<ul>
+<li>cannot be <em>NULL</em></li>
+<li>must be <em>UNIQUE</em></li>
+<li>should rarely be changed</li>
+<li>must be given a new value when a <em>NEW</em> entry is inserted</li>
+</ul></li>
+<li>Composite Key - key composed of multiple columns to uniquely identify an entry</li>
+</ol>
+</div>
+<p><span class="math display">\[\\[.1cm]\]</span></p>
+<ol start="5" style="list-style-type: lower-alpha">
+<li>3NF rules:
+<ul>
+<li>best for most pratical applications</li>
+<li>be in 2NF</li>
+<li>have no transitive functional dependencies</li>
+</ul></li>
+</ol>
+<div class="note">
+<p>Transitive functional dependencies - when changing a non-key column, might cause any of the other non-key columns to change</p>
+</div>
+<p><span class="math display">\[\\[.1cm]\]</span></p>
+<center>
+<p><img src="images/ch7/1nf.jpg" style="width:75.0%" /></p>
+<a href="">Example of 1NF</a>
+</center>
+<center>
+<p><img src="images/ch7/2nf.jpg" style="width:75.0%" /></p>
+<a href="">Example of 2NF &amp; 3NF</a>
+</center>
+<p><span class="math display">\[\\[.1cm]\]</span></p>
+<ol start="6" style="list-style-type: lower-alpha">
+<li>BCNF:
+<ul>
+<li>section under construction</li>
+</ul></li>
+</ol>
+<p><span class="math display">\[\\[.1cm]\]</span></p>
+<ol start="7" style="list-style-type: lower-alpha">
+<li>4NF rules:
+<ul>
+<li>be in 3NF</li>
+<li>table should not have multivalued dependencies</li>
+</ul></li>
+</ol>
+<div class="note">
+<p>Conditions for Multi-valued dependencies (all must be true):</p>
+<ol style="list-style-type: decimal">
+<li>for a dependency A -&gt; B (for a single A), multiple values of B exist</li>
+<li>have at least 3 columns</li>
+<li>for the other 2 columns, B &amp; C, they should be independent</li>
+</ol>
+<p>MVD occurs due to bad database design</p>
+</div>
+<p><span class="math display">\[\\[.1cm]\]</span></p>
+<ol start="8" style="list-style-type: lower-alpha">
+<li>5NF (a.k.a PJNF or Project Join Normal Dependency) rules:
+<ul>
+<li>be in 4NF</li>
+<li>not have Join Dependency</li>
+</ul></li>
+</ol>
+<div class="note">
+<p>Join Dependency - when a table can be broken down into 2 seperate tables &amp; no data is loss and when the 2 tables can be joined w/o no new entries being created</p>
+</div>
+<center>
+<p><img src="images/ch7/5nf.jpg" style="width:75.0%" /></p>
+<a href="">Example of 5NF</a>
+</center>
+<p><span class="math display">\[\\[.1cm]\]</span></p>
+<pre><code>  - from these 3 decomposed tables, info. is lost b/c we do NOT know definitive that Ford 
+  brought 72XSW from ACME since in the original table, Ford also brought 72XSW from ALWAT
+        
+  - thus, the orginal table does not have join dependency and is already in 5NF </code></pre>
 
 </div>
 </div>
@@ -212,6 +349,20 @@ gitbook.start({
 });
 </script>
 
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
 </body>
 
 </html>
