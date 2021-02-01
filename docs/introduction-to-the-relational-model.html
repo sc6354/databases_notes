@@ -92,6 +92,7 @@
 <li class="chapter" data-level="2" data-path="introduction-to-the-relational-model.html"><a href="introduction-to-the-relational-model.html"><i class="fa fa-check"></i><b>2</b> Introduction to the Relational Model</a>
 <ul>
 <li class="chapter" data-level="2.1" data-path="introduction-to-the-relational-model.html"><a href="introduction-to-the-relational-model.html#structure-of-the-relational-databases"><i class="fa fa-check"></i><b>2.1</b> Structure of the Relational Databases</a></li>
+<li class="chapter" data-level="2.2" data-path="introduction-to-the-relational-model.html"><a href="introduction-to-the-relational-model.html#database-schema"><i class="fa fa-check"></i><b>2.2</b> Database Schema</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="introduction-to-sql.html"><a href="introduction-to-sql.html"><i class="fa fa-check"></i><b>3</b> Introduction to SQL</a></li>
 <li class="chapter" data-level="4" data-path="intermediate-sql.html"><a href="intermediate-sql.html"><i class="fa fa-check"></i><b>4</b> Intermediate SQL</a>
@@ -150,7 +151,28 @@
 </ol>
 <p><span class="math display">\[\\[.1cm]\]</span>
 g. <code>DOMAIN</code> - set of permitted values for an attribute of a relation</p>
-<pre><code>  Ex. the domain of salary attribute of the instructor relation is the set of all possible salaries. </code></pre>
+<pre><code>  Ex. the domain of salary attribute of the instructor relation is the set of all possible salaries. 
+   </code></pre>
+<ol start="8" style="list-style-type: lower-alpha">
+<li><code>NULL VALUES</code> - signifies that a value is <strong>UNKNOWN</strong> or does not exist
+<ul>
+<li>best not to have null values as they will cause difficulties updating &amp; accessing database</li>
+</ul></li>
+</ol>
+</div>
+<div id="database-schema" class="section level2" number="2.2">
+<h2><span class="header-section-number">2.2</span> Database Schema</h2>
+<ol style="list-style-type: lower-alpha">
+<li><p><code>DATABASE SCHEMA</code> - the logical design of the database</p></li>
+<li><p><code>DATABASE INSTANCE</code> - snapshot of the data in the database at a given time</p></li>
+<li><p><code>RELATIONAL SCHEMA</code> - list of attributes &amp; their corresponding domains</p>
+<ul>
+<li><p>relational instance - the value of a variable at a given time –&gt; may change</p></li>
+<li><p>relational schema does not change</p></li>
+<li><p>relational instance and schema are often used interchageably</p>
+<pre><code>Ex. instructor may mean instructor schema or instructor instance!!!</code></pre></li>
+</ul></li>
+</ol>
 
 </div>
 </div>
