@@ -93,6 +93,10 @@
 <ul>
 <li class="chapter" data-level="2.1" data-path="introduction-to-the-relational-model.html"><a href="introduction-to-the-relational-model.html#structure-of-the-relational-databases"><i class="fa fa-check"></i><b>2.1</b> Structure of the Relational Databases</a></li>
 <li class="chapter" data-level="2.2" data-path="introduction-to-the-relational-model.html"><a href="introduction-to-the-relational-model.html#database-schema"><i class="fa fa-check"></i><b>2.2</b> Database Schema</a></li>
+<li class="chapter" data-level="2.3" data-path="introduction-to-the-relational-model.html"><a href="introduction-to-the-relational-model.html#excluded"><i class="fa fa-check"></i><b>2.3</b> EXCLUDED</a></li>
+<li class="chapter" data-level="2.4" data-path="introduction-to-the-relational-model.html"><a href="introduction-to-the-relational-model.html#schema-diagrams"><i class="fa fa-check"></i><b>2.4</b> Schema Diagrams</a></li>
+<li class="chapter" data-level="2.5" data-path="introduction-to-the-relational-model.html"><a href="introduction-to-the-relational-model.html#relational-query-language"><i class="fa fa-check"></i><b>2.5</b> Relational Query Language</a></li>
+<li class="chapter" data-level="2.6" data-path="introduction-to-the-relational-model.html"><a href="introduction-to-the-relational-model.html#relational-algebra"><i class="fa fa-check"></i><b>2.6</b> Relational Algebra</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="introduction-to-sql.html"><a href="introduction-to-sql.html"><i class="fa fa-check"></i><b>3</b> Introduction to SQL</a></li>
 <li class="chapter" data-level="4" data-path="intermediate-sql.html"><a href="intermediate-sql.html"><i class="fa fa-check"></i><b>4</b> Intermediate SQL</a>
@@ -173,6 +177,55 @@ g. <code>DOMAIN</code> - set of permitted values for an attribute of a relation<
 <pre><code>Ex. instructor may mean instructor schema or instructor instance!!!</code></pre></li>
 </ul></li>
 </ol>
+</div>
+<div id="excluded" class="section level2" number="2.3">
+<h2><span class="header-section-number">2.3</span> EXCLUDED</h2>
+</div>
+<div id="schema-diagrams" class="section level2" number="2.4">
+<h2><span class="header-section-number">2.4</span> Schema Diagrams</h2>
+<ol style="list-style-type: lower-alpha">
+<li><code>SCHEMA DIAGRAM</code> - depicts a database schema, all the keys, etc.
+<ul>
+<li>relations are represented by <strong>BOXES</strong> w/name on top and attributes listed inside the box</li>
+<li>primary keys are <strong>UNDERLINED</strong></li>
+<li>foreign key constraints are <strong>ARROWS</strong> from foreign key attribute of referencing relation to the primary key of the referenced table</li>
+<li>referential integrity constraints are <strong>TWO-HEADED ARROWS</strong></li>
+</ul></li>
+</ol>
+<center>
+<p><img src="images/ch2/schemaDiagram.JPG" /></p>
+<a href="">Example of a Schema Diagram</a>
+</center>
+</div>
+<div id="relational-query-language" class="section level2" number="2.5">
+<h2><span class="header-section-number">2.5</span> Relational Query Language</h2>
+<ol style="list-style-type: lower-alpha">
+<li><p><code>QUERY LANG.</code> - a language in which a user request info. from database</p></li>
+<li><p><code>IMPERATIVE QUERY LANG.</code> - user instructs the system to perform a specific sequence of operations on the database to compute the desired results</p></li>
+<li><p><code>FUNCTIONAL QUERY LANG.</code> - the computation is expressed as the evaluation of functions that may operate on the data or results of other functions</p></li>
+<li><p><code>DECLARATIVE QUERY LANG.</code> - user describes the desired info. w/o giving a specific instructions or function calls for obtaining the info.</p>
+<ul>
+<li>desired info. is usually expressed in some form of <strong>mathematical logic</strong></li>
+</ul></li>
+</ol>
+<div class="note">
+<p>Usually query lang. such as SQL have elements of all 3 approaches.</p>
+</div>
+</div>
+<div id="relational-algebra" class="section level2" number="2.6">
+<h2><span class="header-section-number">2.6</span> Relational Algebra</h2>
+<ol style="list-style-type: lower-alpha">
+<li><code>RELATIONAL ALGEBRA</code> - set of operations that take one or two relations as input &amp; produce a new relation
+<ul>
+<li><p>unary operations - operate on <strong>ONE</strong> relation</p>
+<pre><code>Ex. select, project, &amp; rename operations </code></pre></li>
+<li><p>binary operations - operate on a pair of relations</p>
+<pre><code>   Ex. cartesian product, union, set-difference </code></pre></li>
+</ul></li>
+</ol>
+<div class="note">
+<p>Binary and unary operations can be combined in relational algebra expressions.</p>
+</div>
 
 </div>
 </div>

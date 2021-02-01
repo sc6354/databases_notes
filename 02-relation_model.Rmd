@@ -34,3 +34,66 @@ c. `RELATIONAL SCHEMA` - list of attributes & their corresponding domains
             
             
             Ex. instructor may mean instructor schema or instructor instance!!!
+
+
+## EXCLUDED
+
+## Schema Diagrams 
+a. `SCHEMA DIAGRAM` - depicts a database schema, all the keys, etc. 
+      - relations are represented by __BOXES__ w/name on top and attributes listed inside the box 
+      - primary keys are __UNDERLINED__ 
+      - foreign key constraints are __ARROWS__ from foreign key attribute of referencing relation to the primary key of the referenced table 
+      - referential integrity constraints are __TWO-HEADED ARROWS__
+      
+<center>
+![](images/ch2/schemaDiagram.JPG){}
+
+[Example of a Schema Diagram]()
+</center>
+
+## Relational Query Language
+a. `QUERY LANG.` - a language in which a user request info. from database 
+
+b. `IMPERATIVE QUERY LANG.` - user instructs the system to perform a specific sequence of operations on the database to compute the desired results 
+
+c. `FUNCTIONAL QUERY LANG.` - the computation is expressed as the evaluation of functions that may operate on the data or results of other functions
+
+d. `DECLARATIVE QUERY LANG.` - user describes the desired info. w/o giving a specific instructions or function calls for obtaining the info. 
+      - desired info. is usually expressed in some form of __mathematical logic__ 
+      
+:::note 
+Usually query lang. such as SQL have elements of all 3 approaches.
+::: 
+
+
+## Relational Algebra 
+a. `RELATIONAL ALGEBRA` - set of operations that take one or two relations as input & produce a new relation 
+      - unary operations - operate on __ONE__ relation 
+      
+      
+            Ex. select, project, & rename operations 
+      
+   - binary operations - operate on a pair of relations
+    
+      
+            Ex. cartesian product, union, set-difference 
+      
+:::note 
+Binary and unary operations can be combined in relational algebra expressions.
+::: 
+      
+      
+      
+      
+      
+      
+      
+      
+      
+            
+
+
+
+
+
+
