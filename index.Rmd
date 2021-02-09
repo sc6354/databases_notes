@@ -45,7 +45,7 @@ These blocks point out other relevant info or big ideas.
     - Chapter 2 - [Relational Model](https://sc6354.github.io/databases_notes/introduction-to-the-relational-model.html)
     - Chapter 7 - [ER and Relational Models](https://sc6354.github.io/databases_notes/relational-database-design.html)
 - Week 3-5:
-    - Chapter 3 - SQL
+    - Chapter 3 - [SQL](https://sc6354.github.io/databases_notes/introduction-to-sql.html)
 - Week 6: 
     - Chapter 4 - Intermediate SQL
 - Week 7: 
