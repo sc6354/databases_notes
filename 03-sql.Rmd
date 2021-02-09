@@ -98,6 +98,10 @@ d. General meaning of a SQL query:
 This is NOT how SQL queries are excuted. A real implementation would only generate elements of the cartesion product that satisfy the where clause predicates.
 
 :::
+
+
+
+
       
       
       
