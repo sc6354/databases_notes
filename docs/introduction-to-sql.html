@@ -98,7 +98,12 @@
 <li class="chapter" data-level="2.5" data-path="introduction-to-the-relational-model.html"><a href="introduction-to-the-relational-model.html#relational-query-language"><i class="fa fa-check"></i><b>2.5</b> Relational Query Language</a></li>
 <li class="chapter" data-level="2.6" data-path="introduction-to-the-relational-model.html"><a href="introduction-to-the-relational-model.html#relational-algebra"><i class="fa fa-check"></i><b>2.6</b> Relational Algebra</a></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="introduction-to-sql.html"><a href="introduction-to-sql.html"><i class="fa fa-check"></i><b>3</b> Introduction to SQL</a></li>
+<li class="chapter" data-level="3" data-path="introduction-to-sql.html"><a href="introduction-to-sql.html"><i class="fa fa-check"></i><b>3</b> Introduction to SQL</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="introduction-to-sql.html"><a href="introduction-to-sql.html#overview-of-the-original-version-of-sql"><i class="fa fa-check"></i><b>3.1</b> Overview of the original version of SQL</a></li>
+<li class="chapter" data-level="3.2" data-path="introduction-to-sql.html"><a href="introduction-to-sql.html#sql-data-defintion"><i class="fa fa-check"></i><b>3.2</b> SQL Data Defintion</a></li>
+<li class="chapter" data-level="3.3" data-path="introduction-to-sql.html"><a href="introduction-to-sql.html#basic-structure-of-sql-queries"><i class="fa fa-check"></i><b>3.3</b> Basic structure of SQL queries</a></li>
+</ul></li>
 <li class="chapter" data-level="4" data-path="intermediate-sql.html"><a href="intermediate-sql.html"><i class="fa fa-check"></i><b>4</b> Intermediate SQL</a>
 <ul>
 <li class="chapter" data-level="4.1" data-path="intermediate-sql.html"><a href="intermediate-sql.html#example-one"><i class="fa fa-check"></i><b>4.1</b> Example one</a></li>
@@ -139,8 +144,106 @@
 <link rel="shortcut icon" href="images/favicon.io/apple-touch-icon.png" />
 <div id="introduction-to-sql" class="section level1" number="3">
 <h1><span class="header-section-number">3</span> Introduction to SQL</h1>
-<p>More to come.</p>
+<div id="overview-of-the-original-version-of-sql" class="section level2" number="3.1">
+<h2><span class="header-section-number">3.1</span> Overview of the original version of SQL</h2>
+<ol style="list-style-type: lower-alpha">
+<li><p>IBM originally developed SQL, then called <em>Sequel</em>, in 1970s</p></li>
+<li><p>in 1986 - American National Standards Institute (ANSI) &amp; International Organization for Standarization (ISO) published an SQL standard called <strong>SQL-86</strong></p>
+<ul>
+<li>followed by SQL-89, SQL-92, SQL:1999, SQL:2003, SQL:2006, SQL:2008, SQL:2011, &amp; most recently SQL:2016</li>
+</ul></li>
+</ol>
+<p><span class="math display">\[\\[.1cm]\]</span></p>
+<ol start="3" style="list-style-type: lower-alpha">
+<li>SQL has several parts:
+<ol style="list-style-type: decimal">
+<li>DDL - commands for defining, deleting, &amp; modifying relation schemas</li>
+<li>DML - provides ability to query info. from database, &amp; to insert, delete, &amp; modify tuples</li>
+<li>Integrity - commands for specfying integrity constraints that the data must satisfy</li>
+<li>View definitions - SQL DDL has commands fro defining views
+5. Transactions - commands for specfying beginning &amp; end of transactions
+6. Embedded SQL &amp; dynamics SQL - defines how SQL can be embedded w/general programming languages
+7. Authorizations - SQL DDL includes commands for specifying access rights to views and relations</li>
+</ol></li>
+</ol>
+</div>
+<div id="sql-data-defintion" class="section level2" number="3.2">
+<h2><span class="header-section-number">3.2</span> SQL Data Defintion</h2>
+<p>SQL buit-in types:</p>
+<ol style="list-style-type: decimal">
+<li><p><strong>char(n)</strong> - <em>n</em> length character string</p></li>
+<li><p><strong>varchar(n)</strong> - <em>n</em> maximum length varying character string</p></li>
+<li><p><strong>int/integer</strong> - finite subset of integer</p></li>
+<li><p><strong>smallint</strong> - a small integer</p></li>
+<li><p><strong>numeric(p, d)</strong> - a fixed point number w/user-specified precision; <em>p</em> is the number of digits &amp; <em>d</em> is the number of digits after the decimal point</p>
+<pre><code>     Ex. numeric(3,1) can store 44.5 but NOT 444.5</code></pre></li>
+<li><p><strong>real, double</strong> - floating point &amp; double precision floating numbers</p></li>
+<li><p><strong>float(n)</strong> - floating number w/at least <em>n</em> digits</p></li>
+<li><p><strong>nvarchar</strong> - stores multilingual data</p></li>
+</ol>
+<div class="note">
+<p>When comparing a char type to a varchar type, spaces will be added DEPENDING on the database. Thus a comparision of A (char type) = A (varchar type) may return false, so ALWAYS use varchar.</p>
+</div>
+<p><span class="math display">\[\\[.1cm]\]</span></p>
+<ol start="2" style="list-style-type: lower-alpha">
+<li><code>create table</code> - command to create a relation
+<ul>
+<li>general form is</li>
+</ul></li>
+</ol>
+<center>
+<p><img src="images/ch3/createT.JPG" /></p>
+<a href="">where r = name of table, A<sub>i</sub> = attribute, &amp; D<sub>i</sub> = domain of attribute, type of attribute, &amp; constraints</a>
+</center>
+<span class="math display">\[\\[.1cm]\]</span>
+<center>
+<p><img src="images/ch3/queryEX.JPG" /></p>
+<a href="">Query Examples</a>
+</center>
+<p><span class="math display">\[\\[.1cm]\]</span></p>
+<ol start="4" style="list-style-type: lower-alpha">
+<li><p><strong>drop table</strong> <em>r</em> - deletes all info. about table <em>r</em> and removes it from the database</p></li>
+<li><p><strong>delete from</strong> <em>r</em> - deletes all the rows in table <em>r</em> but does <strong>NOT</strong> delete it from the database</p></li>
+<li><p><strong>alter table</strong> <em>r</em> <strong>add</strong> A D - adds atribute <em>A</em> of type <em>D</em> to an existing table <em>r</em> &amp; assigns it null values (the default)</p></li>
+<li><p><strong>alter table</strong> <em>r</em> <strong>drop</strong> A - drop attribute <em>A</em> from table <em>r</em></p>
+<ul>
+<li>many database systems do NOT allow attributes to be dropped despite allowing tables to be dropped</li>
+</ul></li>
+</ol>
+</div>
+<div id="basic-structure-of-sql-queries" class="section level2" number="3.3">
+<h2><span class="header-section-number">3.3</span> Basic structure of SQL queries</h2>
+<ol style="list-style-type: lower-alpha">
+<li><p>Basic structure consists of 3 clauses <strong>select</strong>, <strong>from</strong>, $ <strong>where</strong></p></li>
+<li><p><strong>select</strong> allows duplicates in results</p>
+<ul>
+<li>use <strong>select distinct</strong> to remove duplicates</li>
+<li>use <strong>select all</strong> to explicitly specify duplicates are NOT removed</li>
+<li><strong>select</strong> also allows arthmetic expressions w/+, -, *, &amp; /</li>
+</ul></li>
+</ol>
+<p><span class="math display">\[\\[.1cm]\]</span></p>
+<ol start="3" style="list-style-type: lower-alpha">
+<li><strong>where</strong> - specify the requirement/predicate involving attributes
+<ul>
+<li>allows logical connectiveness <strong>and</strong>, <strong>or</strong>, &amp; <strong>not</strong></li>
+<li>operands can be expressions w/comparsion operators &lt;, &lt;=, &gt;, &gt;=, =, &amp; &lt;&gt;</li>
+</ul></li>
+</ol>
+<p><span class="math display">\[\\[.1cm]\]</span></p>
+<ol start="4" style="list-style-type: lower-alpha">
+<li>General meaning of a SQL query:
+<ol style="list-style-type: decimal">
+<li>generate a cartesian product of the tables listed in the <strong>from</strong> clause</li>
+<li>apply the predicates specified in the <strong>where</strong> clause on the result of step 1</li>
+<li>for each row in teh result of step 2, output the attributes specified in the <strong>select</strong> clause</li>
+</ol></li>
+</ol>
+<div class="note">
+<p>This is NOT how SQL queries are excuted. A real implementation would only generate elements of the cartesion product that satisfy the where clause predicates.</p>
+</div>
 
+</div>
 </div>
             </section>
 

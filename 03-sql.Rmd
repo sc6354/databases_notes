@@ -1,3 +1,104 @@
 # Introduction to SQL 
 
-More to come.
+## Overview of the original version of SQL 
+
+a. IBM originally developed SQL, then called _Sequel_, in 1970s
+
+b. in 1986 - American National Standards Institute (ANSI) & International Organization for Standarization (ISO) published an SQL standard called __SQL-86__
+      - followed by SQL-89, SQL-92, SQL:1999, SQL:2003, SQL:2006, SQL:2008, SQL:2011, & most recently SQL:2016
+ 
+ $$\\[.1cm]$$
+ 
+c. SQL has several parts:
+      1. DDL - commands for defining, deleting, & modifying relation schemas
+      2. DML - provides ability to query info. from database, & to insert, delete, & modify tuples 
+      3. Integrity - commands for specfying integrity constraints that the data must satisfy 
+      4. View definitions - SQL DDL has commands fro defining views
+       5. Transactions - commands for specfying beginning & end of transactions 
+       6. Embedded SQL & dynamics SQL - defines how SQL can be embedded w/general programming languages 
+       7. Authorizations - SQL DDL includes commands for specifying access rights to views and relations 
+       
+
+## SQL Data Defintion
+SQL buit-in types:
+
+1. __char(n)__ - _n_ length character string 
+
+2. __varchar(n)__ - _n_ maximum length varying character string 
+
+3. __int/integer__ - finite subset of integer 
+
+4. __smallint__ - a small integer 
+
+5. __numeric(p, d)__ - a fixed point number w/user-specified precision; _p_ is the number of digits & _d_ is the number of digits after the decimal point 
+
+            Ex. numeric(3,1) can store 44.5 but NOT 444.5
+
+6. __real, double__ - floating point & double precision floating numbers 
+
+7. __float(n)__ - floating number w/at least _n_ digits 
+
+8. __nvarchar__ - stores multilingual data 
+
+:::note 
+When comparing a char type to a varchar type, spaces will be added DEPENDING on the database. Thus a comparision of A (char type) = A (varchar type) may return false, so ALWAYS use varchar. 
+:::
+
+$$\\[.1cm]$$
+
+b. `create table` - command to create a relation 
+      - general form is 
+
+<center>
+![](images/ch3/createT.JPG){}
+
+[where r = name of table, A~i~ = attribute, & D~i~ = domain of attribute, type of attribute, & constraints ]()
+</center>
+
+$$\\[.1cm]$$
+<center>
+![](images/ch3/queryEX.jpg){}
+
+[Query Examples]()
+</center>
+$$\\[.1cm]$$
+
+d. __drop table__ _r_ - deletes all info. about table _r_ and removes it from the database 
+
+e. __delete from__ _r_ - deletes all the rows in  table _r_ but does __NOT__ delete it from the database 
+
+f. __alter table__ _r_ __add__ A D - adds atribute _A_ of type _D_ to an existing table _r_  & assigns it null values (the default)
+
+g. __alter table__ _r_ __drop__ A - drop attribute _A_ from table _r_ 
+      - many database systems do NOT allow attributes to be dropped despite allowing tables to be dropped 
+      
+      
+## Basic structure of SQL queries 
+a. Basic structure consists of 3 clauses __select__, __from__, $ __where__ 
+
+b. __select__ allows duplicates in results 
+      - use __select distinct__ to remove duplicates 
+      - use __select all__ to explicitly specify duplicates are NOT removed 
+      - __select__ also allows arthmetic expressions w/+, -, *, & / 
+      
+$$\\[.1cm]$$
+
+c. __where__ - specify the requirement/predicate involving attributes 
+      - allows logical connectiveness __and__, __or__, & __not__ 
+      - operands can be expressions w/comparsion operators <, <=, >, >=, =, & <>
+
+$$\\[.1cm]$$
+
+d. General meaning of a SQL query:
+      1. generate a cartesian product of the tables listed in the __from__ clause 
+      2. apply the predicates specified in the __where__ clause on the result of step 1 
+      3. for each row in teh result of step 2, output the attributes specified in the __select__ clause 
+      
+:::note 
+This is NOT how SQL queries are excuted. A real implementation would only generate elements of the cartesion product that satisfy the where clause predicates.
+
+:::
+      
+      
+      
+
