@@ -220,19 +220,19 @@
 <div id="basic-structure-of-sql-queries" class="section level2" number="3.3">
 <h2><span class="header-section-number">3.3</span> Basic structure of SQL queries</h2>
 <ol style="list-style-type: lower-alpha">
-<li><p>Basic structure consists of 3 clauses <strong>select</strong>, <strong>from</strong>, $ <strong>where</strong></p></li>
-<li><p><strong>select</strong> allows duplicates in results</p>
+<li><p>Basic structure consists of 3 clauses <strong>SELECT</strong>, <strong>FROM</strong>, $ <strong>WHERE</strong></p></li>
+<li><p><strong>SELECT</strong> allows duplicates in results</p>
 <ul>
-<li>use <strong>select distinct</strong> to remove duplicates</li>
-<li>use <strong>select all</strong> to explicitly specify duplicates are NOT removed</li>
-<li><strong>select</strong> also allows arthmetic expressions w/+, -, *, &amp; /</li>
+<li>use <strong>SELECT DISTINCT</strong> to remove duplicates</li>
+<li>use <strong>SELECT ALL</strong> to explicitly specify duplicates are NOT removed</li>
+<li><strong>SELECT</strong> also allows arthmetic expressions w/+, -, *, &amp; /</li>
 </ul></li>
 </ol>
 <p><span class="math display">\[\\[.1cm]\]</span></p>
 <ol start="3" style="list-style-type: lower-alpha">
-<li><strong>where</strong> - specify the requirement/predicate involving attributes
+<li><strong>WHERE</strong> - specify the requirement/predicate involving attributes
 <ul>
-<li>allows logical connectiveness <strong>and</strong>, <strong>or</strong>, &amp; <strong>not</strong></li>
+<li>allows logical connectiveness <strong>AND</strong>, <strong>OR</strong>, &amp; <strong>NOT</strong></li>
 <li>operands can be expressions w/comparsion operators &lt;, &lt;=, &gt;, &gt;=, =, &amp; &lt;&gt;</li>
 </ul></li>
 </ol>
@@ -240,9 +240,9 @@
 <ol start="4" style="list-style-type: lower-alpha">
 <li>General meaning of a SQL query:
 <ol style="list-style-type: decimal">
-<li>generate a cartesian product of the tables listed in the <strong>from</strong> clause</li>
-<li>apply the predicates specified in the <strong>where</strong> clause on the result of step 1</li>
-<li>for each row in teh result of step 2, output the attributes specified in the <strong>select</strong> clause</li>
+<li>generate a cartesian product of the tables listed in the <strong>FROM</strong> clause</li>
+<li>apply the predicates specified in the <strong>WHERE</strong> clause on the result of step 1</li>
+<li>for each row in teh result of step 2, output the attributes specified in the <strong>SELECT</strong> clause</li>
 </ol></li>
 </ol>
 <div class="note">

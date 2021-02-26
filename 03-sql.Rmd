@@ -74,25 +74,25 @@ g. __alter table__ _r_ __drop__ A - drop attribute _A_ from table _r_
       
       
 ## Basic structure of SQL queries 
-a. Basic structure consists of 3 clauses __select__, __from__, $ __where__ 
+a. Basic structure consists of 3 clauses __SELECT__, __FROM__, $ __WHERE__ 
 
-b. __select__ allows duplicates in results 
-      - use __select distinct__ to remove duplicates 
-      - use __select all__ to explicitly specify duplicates are NOT removed 
-      - __select__ also allows arthmetic expressions w/+, -, *, & / 
+b. __SELECT__ allows duplicates in results 
+      - use __SELECT DISTINCT__ to remove duplicates 
+      - use __SELECT ALL__ to explicitly specify duplicates are NOT removed 
+      - __SELECT__ also allows arthmetic expressions w/+, -, *, & / 
       
 $$\\[.1cm]$$
 
-c. __where__ - specify the requirement/predicate involving attributes 
-      - allows logical connectiveness __and__, __or__, & __not__ 
+c. __WHERE__ - specify the requirement/predicate involving attributes 
+      - allows logical connectiveness __AND__, __OR__, & __NOT__ 
       - operands can be expressions w/comparsion operators <, <=, >, >=, =, & <>
 
 $$\\[.1cm]$$
 
 d. General meaning of a SQL query:
-      1. generate a cartesian product of the tables listed in the __from__ clause 
-      2. apply the predicates specified in the __where__ clause on the result of step 1 
-      3. for each row in teh result of step 2, output the attributes specified in the __select__ clause 
+      1. generate a cartesian product of the tables listed in the __FROM__ clause 
+      2. apply the predicates specified in the __WHERE__ clause on the result of step 1 
+      3. for each row in teh result of step 2, output the attributes specified in the __SELECT__ clause 
       
 :::note 
 This is NOT how SQL queries are executed. A real implementation would only generate elements of the cartesion product that satisfy the where clause predicates.
