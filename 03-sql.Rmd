@@ -14,9 +14,9 @@ c. SQL has several parts:
       2. DML - provides ability to query info. from database, & to insert, delete, & modify tuples 
       3. Integrity - commands for specfying integrity constraints that the data must satisfy 
       4. View definitions - SQL DDL has commands fro defining views
-       5. Transactions - commands for specfying beginning & end of transactions 
-       6. Embedded SQL & dynamics SQL - defines how SQL can be embedded w/general programming languages 
-       7. Authorizations - SQL DDL includes commands for specifying access rights to views and relations 
+      5. Transactions - commands for specfying beginning & end of transactions
+      6. Embedded SQL & dynamics SQL - defines how SQL can be embedded w/general programming languages 
+      7. Authorizations - SQL DDL includes commands for specifying access rights to views and relations 
        
 
 ## SQL Data Defintion
