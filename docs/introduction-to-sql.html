@@ -103,6 +103,12 @@
 <li class="chapter" data-level="3.1" data-path="introduction-to-sql.html"><a href="introduction-to-sql.html#overview-of-the-original-version-of-sql"><i class="fa fa-check"></i><b>3.1</b> Overview of the original version of SQL</a></li>
 <li class="chapter" data-level="3.2" data-path="introduction-to-sql.html"><a href="introduction-to-sql.html#sql-data-defintion"><i class="fa fa-check"></i><b>3.2</b> SQL Data Defintion</a></li>
 <li class="chapter" data-level="3.3" data-path="introduction-to-sql.html"><a href="introduction-to-sql.html#basic-structure-of-sql-queries"><i class="fa fa-check"></i><b>3.3</b> Basic structure of SQL queries</a></li>
+<li class="chapter" data-level="3.4" data-path="introduction-to-sql.html"><a href="introduction-to-sql.html#additional-basic-operations"><i class="fa fa-check"></i><b>3.4</b> Additional Basic Operations</a></li>
+<li class="chapter" data-level="3.5" data-path="introduction-to-sql.html"><a href="introduction-to-sql.html#set-operations"><i class="fa fa-check"></i><b>3.5</b> Set Operations</a></li>
+<li class="chapter" data-level="3.6" data-path="introduction-to-sql.html"><a href="introduction-to-sql.html#null-values"><i class="fa fa-check"></i><b>3.6</b> Null Values</a></li>
+<li class="chapter" data-level="3.7" data-path="introduction-to-sql.html"><a href="introduction-to-sql.html#aggregate-functions"><i class="fa fa-check"></i><b>3.7</b> Aggregate Functions</a></li>
+<li class="chapter" data-level="3.8" data-path="introduction-to-sql.html"><a href="introduction-to-sql.html#nested-subqueries"><i class="fa fa-check"></i><b>3.8</b> Nested Subqueries</a></li>
+<li class="chapter" data-level="3.9" data-path="introduction-to-sql.html"><a href="introduction-to-sql.html#modification-of-the-databases"><i class="fa fa-check"></i><b>3.9</b> Modification of the Databases</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="intermediate-sql.html"><a href="intermediate-sql.html"><i class="fa fa-check"></i><b>4</b> Intermediate SQL</a>
 <ul>
@@ -240,8 +246,264 @@
 </ol></li>
 </ol>
 <div class="note">
-<p>This is NOT how SQL queries are excuted. A real implementation would only generate elements of the cartesion product that satisfy the where clause predicates.</p>
+<p>This is NOT how SQL queries are executed. A real implementation would only generate elements of the cartesion product that satisfy the where clause predicates.</p>
 </div>
+</div>
+<div id="additional-basic-operations" class="section level2" number="3.4">
+<h2><span class="header-section-number">3.4</span> Additional Basic Operations</h2>
+<ol style="list-style-type: lower-alpha">
+<li><code>as</code> clause - used to rename the attributes of a resulting relation
+<ul>
+<li>can be used w/select &amp; from clause</li>
+</ul></li>
+</ol>
+<p><span class="math display">\[\\[.1cm]\]</span></p>
+<ol start="2" style="list-style-type: lower-alpha">
+<li><code>correlation name</code> - an identifier that is used to rename a relation
+<ul>
+<li>a.k.a table alias, correlation variable, tuple variable</li>
+</ul></li>
+</ol>
+<p><span class="math display">\[\\[.1cm]\]</span></p>
+<ol start="3" style="list-style-type: lower-alpha">
+<li>String Operators:
+<ul>
+<li>upper(s) - makes string ‘s’ all <em>uppercase</em></li>
+<li>lower(s) - converts string ‘s’ to all <em>lowercase</em></li>
+<li>trim(s) - removes the space at the end</li>
+<li>like - operator used for pattern matching
+<span class="math display">\[\\[.1cm]\]</span></li>
+</ul></li>
+<li><code>like</code> - used to express patterns
+<ul>
+<li><p>there are 2 special characters for describing patterns: % and _</p></li>
+<li><p>% matches any substring</p></li>
+<li><p>_ matches any character</p></li>
+<li><p>patterns are case <strong>SENSITIVE</strong></p></li>
+<li><p>‘Intro%’ matches any string beginning w/“Intro”</p></li>
+<li><p>‘%Comp%’ mathches any string containing “Comp” as a substring</p></li>
+<li><p>’___’ mathces any string w/exactly 3 characters</p></li>
+<li><p>’___%’ - matches any string of at least 3 characters</p>
+<pre><code>Ex. &quot;Find all the names of all departments whose building names includes the substring &#39;Watons&#39;.
+SELECT dept_name
+FROM department
+WHERE building like &#39;%Watson%&#39; </code></pre></li>
+</ul></li>
+</ol>
+<p><span class="math display">\[\\[.1cm]\]</span></p>
+<ol start="5" style="list-style-type: lower-alpha">
+<li><p><code>escape</code> keyword - used immediately before % and _ to indicate that it is to be treated like a normal character</p>
+<pre><code>  Ex.
+     1. like &#39;ab\%cd%&#39;escape&#39;\&#39; matches all strings beginning w/&quot;ab%cd&quot; 
+     2. like &#39;ab\\cd%&#39;escape&#39;\&#39; matches all strings beginning w/&quot;ab\cd&quot;</code></pre></li>
+<li><p><code>not like</code> - used to search for mismatches</p></li>
+<li><p><code>* (asterisk)</code> - used w/select clause to mean all attributes</p></li>
+<li><p><code>order by</code> - causes the tuples in the result of a query to appear in a sorted order</p>
+<ul>
+<li><p>default is in <em>ascending</em> order so use <strong>desc</strong> for descending order</p></li>
+<li><p>can be used on multiple attributes</p>
+<pre><code>Ex.
+SELECT * 
+FROM instructor
+ORDER BY salary desc, name asc; </code></pre></li>
+</ul></li>
+</ol>
+<p><span class="math display">\[\\[.1cm]\]</span></p>
+<ol style="list-style-type: lower-roman">
+<li><p><code>between</code> - a comparison operator to simplify the where clause that specify that value is less than or equal to a value and greater than or equal to some value</p>
+<pre><code>  Ex.
+  Write this:
+  SELECT name 
+  FROM instructor 
+  WHERE salary between 90000 and 100000; 
+
+  Instead of this:
+  SELECT name 
+  FROM instructor 
+  WHERE salary &lt;= 100000 and salary &gt;= 90000; </code></pre></li>
+</ol>
+<p><span class="math display">\[\\[.1cm]\]</span></p>
+<ol start="10" style="list-style-type: lower-alpha">
+<li><p><code>ROW CONSTRUCTOR</code> - allows comparison operators to be used on tuples; (<span class="math inline">\(a\)</span><sub>1</sub>, <span class="math inline">\(a\)</span><sub>2</sub>) &lt;= (<span class="math inline">\(b\)</span><sub>1</sub>, <span class="math inline">\(b\)</span><sub>2</sub>) is true if <span class="math inline">\(a\)</span><sub>1</sub> &lt;= <span class="math inline">\(b\)</span><sub>1</sub> &amp; <span class="math inline">\(a\)</span><sub>2</sub> &lt;= <span class="math inline">\(b\)</span><sub>2</sub></p>
+<pre><code>  Ex. 
+  Write this:
+  SELECT name, course_id 
+  FROM instructor, teaches
+  WHERE (instructor.ID, dept_name) = (teaches.ID, &#39;Biology&#39;)
+
+  Instead of this:
+  SELECT name, course_id 
+  FROM instructor, teaches
+  WHERE instructor.ID = teaches.ID and dept_name = &#39;Biology&#39;;</code></pre></li>
+</ol>
+</div>
+<div id="set-operations" class="section level2" number="3.5">
+<h2><span class="header-section-number">3.5</span> Set Operations</h2>
+<ol style="list-style-type: lower-alpha">
+<li><code>union</code> - automatically remove duplicates
+<ul>
+<li>use <strong>UNION ALL</strong> to retain all duplicates</li>
+</ul></li>
+</ol>
+<p><span class="math display">\[\\[.1cm]\]</span></p>
+<ol start="2" style="list-style-type: lower-alpha">
+<li><code>intersect</code> - tuple in common btw 2 tables; automatically remove duplicates
+<ul>
+<li><p>use <strong>INTERSECT ALL</strong> to retain all duplicates</p></li>
+<li><p>_ <strong>INTERSECT ALL</strong> returns the <em>minimum</em> number of duplicates in the 2 tables</p>
+<pre><code>Ex. So if 4 sections of ICP 101 were taught in Fall 2017 and 2 sections taught in Spring 2018, then there would be 2 tuples with ICP 101 in the resulting table </code></pre>
+<p><span class="math display">\[\\[.1cm]\]</span><br />
+</p></li>
+</ul></li>
+<li><code>except</code> - outputs all tuples from the first table that is not in the second table; perfroms set difference
+<ul>
+<li>use <strong>EXCEPT ALL</strong> to retain duplicates</li>
+</ul></li>
+</ol>
+<div class="note">
+<p>EXCEPT ALL returns the number of duplicates in table 1 minus the number of duplicates in table 2 if the difference is POSITIVE.</p>
+</div>
+</div>
+<div id="null-values" class="section level2" number="3.6">
+<h2><span class="header-section-number">3.6</span> Null Values</h2>
+<ol style="list-style-type: lower-alpha">
+<li><p><code>NULL VALUES</code> - presents problems for arithmetic operations, comparisons, and set operations</p></li>
+<li><p>the result of any arithmetic expressions (+, -, *, or /) is null if any of the input values is null</p></li>
+<li><p>the result of any comparison w/null values is <em>unknown</em></p>
+<ul>
+<li>boolean operators are extended to deal w/unknowns</li>
+<li>and:
+<ol style="list-style-type: decimal">
+<li>result of true and unknown is unknown</li>
+<li>false and unknown is false</li>
+<li>unknown and unknown is unknown</li>
+</ol></li>
+<li>or:
+<ol style="list-style-type: decimal">
+<li>true or unknown is true</li>
+<li>false or unknown is unknown</li>
+<li>unknown or unknown is unknown</li>
+</ol></li>
+<li>not:
+<ol style="list-style-type: decimal">
+<li>result of not unknown is unknown</li>
+</ol></li>
+</ul></li>
+</ol>
+<p><span class="math display">\[\\[.1cm]\]</span></p>
+<ol start="4" style="list-style-type: lower-alpha">
+<li><p><code>null</code> - a special keyword that can be used in the <em>where</em> clause to test for null values</p>
+<pre><code>  Ex. 
+  WHERE salary is null 
+
+  Alternatively, 
+  WHERE salary is not null -&gt; will select not null values </code></pre></li>
+</ol>
+<p><span class="math display">\[\\[.1cm]\]</span></p>
+<ol start="5" style="list-style-type: lower-alpha">
+<li><p><code>is unknown</code> - another special keyword to test whether the result of a comparison is unknown</p>
+<pre><code>  Ex. 
+  WHERE salary &gt; 100000 is unknown 
+
+  Alternatively, 
+  WHERE salary &gt; 100000 is not unknown </code></pre></li>
+</ol>
+<div class="note">
+<p>unknown &amp; not unknown are not supported by several databases</p>
+</div>
+</div>
+<div id="aggregate-functions" class="section level2" number="3.7">
+<h2><span class="header-section-number">3.7</span> Aggregate Functions</h2>
+<ol style="list-style-type: lower-alpha">
+<li>aggregate functions take a collection of (a set or multiset) of values as input &amp; returns a single value
+<ul>
+<li>SQL offers 5 standard built-in functions</li>
+<li>avg -&gt; average</li>
+<li>min -&gt; minimum</li>
+<li>max -&gt; maximum</li>
+<li>sum -&gt; total</li>
+<li>count -&gt; count</li>
+</ul></li>
+</ol>
+<div class="note">
+<p>sum &amp; avg must have numeric inputs, other functions can operate on nonnumeric datatypes</p>
+</div>
+<p><span class="math display">\[\\[.1cm]\]</span></p>
+<ol start="2" style="list-style-type: lower-alpha">
+<li><p><code>GROUP BY</code> - forms groups using specified attribute(s)</p>
+<pre><code>  Ex. 
+  SELECT dept_name, avg(salary) as avg_salary 
+  FROM instructors 
+  GROUP BY dept_name; </code></pre></li>
+</ol>
+<p><span class="math display">\[\\[.1cm]\]</span></p>
+<ol start="3" style="list-style-type: lower-alpha">
+<li><p><code>HAVING</code> clause - applies conditions to each group rather than on a single row</p>
+<pre><code>  Ex. 
+  SELECT dept_name, avg(salary) as avg_salary 
+  FROM instructors 
+  GROUP BY dept_name
+  HAVING avg(salary) &gt; 42000;</code></pre>
+<ul>
+<li>sequence of operations for queries w/group by &amp; having clauses:
+<ol style="list-style-type: decimal">
+<li>FROM is evaluated first</li>
+<li>if present, WHERE is applied on the resulting table of the from clause</li>
+<li>rows satisfying the WHERE clause are placed into groups in the GROUP BY clause</li>
+<li>if present, HAVING clause is applied to each group &amp; groups that do not satisfy the HAVING clause are removed</li>
+<li>SELECT generates a single tuple for each group by applying the aggregate function</li>
+</ol></li>
+</ul></li>
+</ol>
+<div class="note">
+<p>all aggregate functions except count(*) ignore null in their inputs</p>
+<p>the count of an empty set is 0, while the result of other functions is null</p>
+</div>
+</div>
+<div id="nested-subqueries" class="section level2" number="3.8">
+<h2><span class="header-section-number">3.8</span> Nested Subqueries</h2>
+<ol style="list-style-type: lower-alpha">
+<li><p><code>subquery</code> - a SELECT-FROM-WHERE expression that is nested within another query</p></li>
+<li><p><code>correlated subquery</code> - a subquery that uses a correlation name from an outer query</p></li>
+</ol>
+</div>
+<div id="modification-of-the-databases" class="section level2" number="3.9">
+<h2><span class="header-section-number">3.9</span> Modification of the Databases</h2>
+<ol style="list-style-type: lower-alpha">
+<li><code>delete</code> - used to remove whole tuples only
+<ul>
+<li>delete cannot remove attributes, must be the entire row</li>
+<li>written as:
+DELETE FROM r
+WHERE p;</li>
+<li>p is the predicate &amp; r is the relation</li>
+<li>delete first finds all tuples, t in r for which p(t) is true and then deletes it from r</li>
+<li>WHERE can be omitted, in which all rows in r are deleted</li>
+</ul></li>
+</ol>
+<div class="note">
+<p>delete can only operate on one relation</p>
+<p>if all rows are deleted, the table still exists but is EMPTY</p>
+</div>
+<p><span class="math display">\[\\[.1cm]\]</span></p>
+<ol start="2" style="list-style-type: lower-alpha">
+<li><p><code>INSERT</code> - allows us to add a single tuple or a set of tuples into a relation</p>
+<ul>
+<li>tuples inserted must have the correct num. of attributes</li>
+</ul></li>
+<li><p><code>UPDATE</code> - can change a value in a tuple w/o changing all values</p></li>
+<li><p><code>CASE</code> - allows us to perform multiple updates in a single UPDATE statement, thereby avoiding the problem w/the order of tuples</p>
+<pre><code>  Ex. 
+  general form:
+  UPDATE table
+  SET attribute = CASE
+                    WHEN pred1 then result1
+                    WHEN pred2 then result2
+                    ...
+                    WHEN predN then resultN
+                    else result0
+                    end </code></pre></li>
+</ol>
 
 </div>
 </div>
