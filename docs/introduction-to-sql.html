@@ -472,28 +472,34 @@ the resulting table </code></pre>
 <div id="modification-of-the-databases" class="section level2" number="3.9">
 <h2><span class="header-section-number">3.9</span> Modification of the Databases</h2>
 <ol style="list-style-type: lower-alpha">
-<li><code>delete</code> - used to remove whole tuples only
+<li><code>DELETE</code> - used to remove whole tuples only
 <ul>
-<li>delete cannot remove attributes, must be the entire row</li>
-<li>written as:
+<li><p>DELETE cannot remove attributes, must be the entire row</p>
+<pre><code>General form:
 DELETE FROM r
-WHERE p;</li>
-<li>p is the predicate &amp; r is the relation</li>
-<li>delete first finds all tuples, t in r for which p(t) is true and then deletes it from r</li>
-<li>WHERE can be omitted, in which all rows in r are deleted</li>
+WHERE p; </code></pre></li>
+<li><p>p is the predicate &amp; r is the relation</p></li>
+<li><p>DELETE first finds all tuples, t in r for which p(t) is true and then deletes it from r</p></li>
+<li><p>WHERE can be omitted, in which all rows in r are deleted</p></li>
 </ul></li>
 </ol>
 <div class="note">
-<p>delete can only operate on one relation</p>
+<p>DELETE can only operate on one relation</p>
 <p>if all rows are deleted, the table still exists but is EMPTY</p>
 </div>
 <p><span class="math display">\[\\[.1cm]\]</span></p>
 <ol start="2" style="list-style-type: lower-alpha">
-<li><p><code>INSERT</code> - allows us to add a single tuple or a set of tuples into a relation</p>
+<li><code>INSERT</code> - allows us to add a single tuple or a set of tuples into a relation
 <ul>
 <li>tuples inserted must have the correct num. of attributes</li>
 </ul></li>
-<li><p><code>UPDATE</code> - can change a value in a tuple w/o changing all values</p></li>
+</ol>
+<p><span class="math display">\[\\[.1cm]\]</span></p>
+<ol start="3" style="list-style-type: lower-alpha">
+<li><code>UPDATE</code> - can change a value in a tuple w/o changing all values</li>
+</ol>
+<p><span class="math display">\[\\[.1cm]\]</span></p>
+<ol start="4" style="list-style-type: lower-alpha">
 <li><p><code>CASE</code> - allows us to perform multiple updates in a single UPDATE statement, thereby avoiding the problem w/the order of tuples</p>
 <pre><code>  Ex. 
   general form:

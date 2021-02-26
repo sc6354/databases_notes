@@ -305,17 +305,19 @@ a. `subquery` - a SELECT-FROM-WHERE expression that is nested within another que
 b. `correlated subquery` -  a subquery that uses a correlation name from an outer query 
 
 ## Modification of the Databases 
-a. `delete` - used to remove whole tuples only 
-   - delete cannot remove attributes, must be the entire row
-   - written as:
-      DELETE FROM r
-      WHERE p; 
+a. `DELETE` - used to remove whole tuples only 
+   - DELETE cannot remove attributes, must be the entire row
+   
+      
+         General form:
+         DELETE FROM r
+         WHERE p; 
    - p is the predicate & r is the relation 
-   - delete first finds all tuples, t in r for which p(t) is true and then deletes it from r
+   - DELETE first finds all tuples, t in r for which p(t) is true and then deletes it from r
    - WHERE can be omitted, in which all rows in r are deleted 
    
 :::note 
-delete can only operate on one relation 
+DELETE can only operate on one relation 
 
 if all rows are deleted, the table still exists but is EMPTY
 :::
@@ -324,8 +326,12 @@ $$\\[.1cm]$$
 
 b. `INSERT` -  allows us to add a single tuple or a set of tuples into a relation 
    - tuples inserted must have the correct num. of attributes 
-   
+
+$$\\[.1cm]$$ 
+
 c. `UPDATE` - can change a value in a tuple w/o changing all values
+
+$$\\[.1cm]$$ 
 
 d. `CASE` -  allows us to perform multiple updates in a single UPDATE statement, thereby avoiding the problem w/the order of tuples 
 
