@@ -51,7 +51,7 @@ These blocks point out other relevant info or big ideas.
 - Week 7: 
     - Midterm Review 
 - Week 8:
-    -  Chapter 5 - Advanced SQL
+    -  Chapter 5 - [Advanced SQL](https://sc6354.github.io/databases_notes/advanced-sql.html)
 
 
 
