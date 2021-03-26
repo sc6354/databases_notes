@@ -115,7 +115,13 @@
 <li class="chapter" data-level="4.1" data-path="intermediate-sql.html"><a href="intermediate-sql.html#example-one"><i class="fa fa-check"></i><b>4.1</b> Example one</a></li>
 <li class="chapter" data-level="4.2" data-path="intermediate-sql.html"><a href="intermediate-sql.html#example-two"><i class="fa fa-check"></i><b>4.2</b> Example two</a></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="advanced-sql.html"><a href="advanced-sql.html"><i class="fa fa-check"></i><b>5</b> Advanced SQL</a></li>
+<li class="chapter" data-level="5" data-path="advanced-sql.html"><a href="advanced-sql.html"><i class="fa fa-check"></i><b>5</b> Advanced SQL</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="advanced-sql.html"><a href="advanced-sql.html#accessing-sql-from-a-programming-language"><i class="fa fa-check"></i><b>5.1</b> Accessing SQL from a Programming Language</a></li>
+<li class="chapter" data-level="5.2" data-path="advanced-sql.html"><a href="advanced-sql.html#functions-and-procedures"><i class="fa fa-check"></i><b>5.2</b> Functions and Procedures</a></li>
+<li class="chapter" data-level="5.3" data-path="advanced-sql.html"><a href="advanced-sql.html#triggers"><i class="fa fa-check"></i><b>5.3</b> Triggers</a></li>
+<li class="chapter" data-level="5.4" data-path="advanced-sql.html"><a href="advanced-sql.html#recursive-queries"><i class="fa fa-check"></i><b>5.4</b> Recursive Queries</a></li>
+</ul></li>
 <li class="chapter" data-level="6" data-path="database-design-using-the-e-r-model.html"><a href="database-design-using-the-e-r-model.html"><i class="fa fa-check"></i><b>6</b> Database Design using the E-R Model</a></li>
 <li class="chapter" data-level="7" data-path="relational-database-design.html"><a href="relational-database-design.html"><i class="fa fa-check"></i><b>7</b> Relational Database Design</a>
 <ul>
@@ -150,8 +156,270 @@
 <link rel="shortcut icon" href="images/favicon.io/apple-touch-icon.png" />
 <div id="advanced-sql" class="section level1" number="5">
 <h1><span class="header-section-number">5</span> Advanced SQL</h1>
-<p>We have finished a nice book.</p>
+<div id="accessing-sql-from-a-programming-language" class="section level2" number="5.1">
+<h2><span class="header-section-number">5.1</span> Accessing SQL from a Programming Language</h2>
+<ol style="list-style-type: lower-alpha">
+<li><p>Database programmer must have access to a general programming language b/c…</p>
+<ul>
+<li>NOT all queries can be expressed in SQL</li>
+<li>Nondeclarative actions such as printing a report, or sending the results of a query to a graphical user interface; querying data is just one of the many components of an App.
+<span class="math display">\[\\[.1cm]\]</span></li>
+</ul></li>
+<li><p>There are 2 general approaches to accessing SQL through a general programming language: <strong>Dynamic SQL</strong> or <strong>Embbedded SQL</strong></p></li>
+<li><p><code>DYNAMIC SQL</code> - allows general purpose programs to connect and communicate w/a database server using a colleciton of functions and methods</p>
+<ul>
+<li>JDBC - appplication program interface for Java</li>
+<li>ODBC - for C language, C++, C#, Ruby, Go, PHP, Visual Basic</li>
+<li>Python Database API - for Python</li>
+</ul></li>
+</ol>
+<p><span class="math display">\[\\[.1cm]\]</span></p>
+<ol start="4" style="list-style-type: lower-alpha">
+<li><p><code>EMBEDDED SQL</code> - allows functions calls to connect to database using an API w/dynamic SQL facilities at runtime</p></li>
+<li><p><code>JDBC</code> - defines the API that Java programs use to connect to database servers</p>
+<ul>
+<li>orginally an abbreviation for Java Database Connectivity but full form is no longer used</li>
+</ul></li>
+</ol>
+<p><span class="math display">\[\\[.1cm]\]</span></p>
+<ol start="6" style="list-style-type: lower-alpha">
+<li>Connecting to a Database in JDBC:
+<ul>
+<li>Select which database to use; can be an instance of Oracle running on local machine or PostgreSQL running on another machine</li>
+<li>Open a connection to the database using <strong>getConnection()</strong></li>
+<li><strong>getConnection()</strong> takes 3 parameters: URL/machine name of server, user identifier, and password</li>
+</ul></li>
+</ol>
+<div class="note">
+<p>Before opening a connection, the JDBC driver must be dynamically loaded first w/specified protocol like ‘jdbc:oracle:thin:’ or ‘jdbc:mysql:’</p>
+</div>
+<ol start="7" style="list-style-type: lower-alpha">
+<li>Sending SQL statements to Database System in JDBC:
+<ul>
+<li>the <strong>Statement</strong> class allows the programs to send SQL statements to the database system for execution</li>
+<li>a <strong>Statement</strong> object is NOT the SQL statement itself but rather an object that invokes methods that take in SQL statements as arguments and sends them to the database systems</li>
+<li>use <strong>excuteQuery()</strong> method for query statements</li>
+<li>use <strong>executeUpdate()</strong> method for nonquery statements (UPDATE, CREATE TABLE, INSERT, DELETE)</li>
+</ul></li>
+</ol>
+<p><span class="math display">\[\\[.1cm]\]</span>
+g. Handling Exceptions in JDBC:
+- executing SQL methods can result in an exception
+- the <strong>try {…} catch {…}</strong> construct can catch any JDBC errors
+- <code>SQLexception</code> - SQL-specific exception
+- <code>Exception</code> - regular Java errors</p>
+<p><span class="math display">\[\\[.1cm]\]</span></p>
+<ol start="8" style="list-style-type: lower-alpha">
+<li><code>prepareStatement()</code> - method that allows us to predefine a query statement w/“?” as placeholders for actual values to provided by user
+<ul>
+<li>always use prepared statements when taking an input from the user &amp; adding it to a query</li>
+<li>NEVER create a query by concetanating strings of user entered inputs b/c if user enters certain special characters such as a single quote, the resulting SQL query my be syntactically incorrect</li>
+<li>luckily, <strong>setString()</strong> method checks for this &amp; inserts necessary escape characters to ensure syntactic correctness</li>
+</ul></li>
+</ol>
+<p><span class="math display">\[\\[.1cm]\]</span></p>
+<ol style="list-style-type: lower-roman">
+<li><code>SQL INJECTION</code> - a code injection technique that might destroy your database
+<ul>
+<li><p>one of the most common web hacking techniques</p></li>
+<li><p>the placement of malicious code in SQL statements via web place entered inputs</p></li>
+<li><p>Injection based on <strong>1=1</strong> is always TRUE</p>
+<pre><code>Ex. 
+userID: 105 or 1=1
+Corresponding SQL: SELECT * FROM users WHERE userID=105 OR 1=1</code></pre></li>
+</ul></li>
+</ol>
+<div class="note">
+<p>the sql is valid and will return all rows from the <code>User</code> Table since 1=1 is always True</p>
+</div>
+<ul>
+<li><p>Injection based on "“=”" is always True</p>
+<pre><code>Ex. username: &quot; or &quot;&quot;=&quot;  
+    password: &quot; or &quot;&quot;=&quot; 
+    SQL: SELECT * FROM users WHERE Name=&quot;&quot; or &quot;&quot;=&quot;&quot; AND pass=&quot;&quot; or &quot;&quot;=&quot;&quot;</code></pre></li>
+</ul>
+<div class="note">
+<p>the sql is valid and will return all rows from the <code>User</code> Table b/c “‘=’” is always True</p>
+</div>
+<ul>
+<li><p>injection based on Batched SQL statements (group of 2 or more SQL statements seperated by semicolon)</p>
+<pre><code>Ex. userId: 105; DROP TABLE suppliers
+SQL: SELECT userID FROM User where userId =105; DROP TABLE suppliers</code></pre></li>
+</ul>
+<p><span class="math display">\[\\[.1cm]\]</span></p>
+<ol start="10" style="list-style-type: lower-alpha">
+<li>METADATA FEATURES - Java App does not have declarations for data stored in database &amp; must either have it <em>hard-coded</em> or <em>determine</em> the info. directly at runtime
+<ul>
+<li>when an <strong>executeQuery()</strong> method is executed, it returns a result set object, which contain the method <strong>getMetadata()</strong></li>
+<li><strong>getMetadata()</strong> returns ResultSetMetaData object w/methods to find Metadata info.</li>
+<li><strong>getColumnCount()</strong> returns arity of the result relation</li>
+<li><strong>getColumnName()</strong> returns names of the column</li>
+<li><strong>getColumnTypeName()</strong> returns data types of columns</li>
+<li><strong>getColumns()</strong> returns info. about columns</li>
+<li><strong>getTable()</strong> returns list of all tables in database</li>
+<li><strong>getPrimaryKeys()</strong></li>
+<li><strong>getCrossReferences</strong> returns foreign keys</li>
+</ul></li>
+</ol>
+<p><span class="math display">\[\\[.1cm]\]</span>
+k. Handling Large Object Types:</p>
+<ul>
+<li><p><strong>getBlob()</strong> &amp; <strong>getClob()</strong> are similiar to <strong>getString()</strong>, but returns objects of type Blob &amp; Clob that stores locators for large objects or logical pointers to the actual object in the database</p></li>
+<li><p><strong>getBytes()</strong> or <strong>getSubstring()</strong> fetches data from these objects</p></li>
+<li><p>to update large objects, link an input stream to a Blob or Clob object like this…</p>
+<pre><code>blob.set(int parameterIndex, Input stream inputStream);</code></pre></li>
+</ul>
+<p><span class="math display">\[\\[.1cm]\]</span></p>
+<ol start="12" style="list-style-type: lower-alpha">
+<li><code>OPEN DATABASE CONNECTIVITY (ODBC)</code> - defines an API that apps can use to open a connection w/a database, send queries, &amp; update and get back results
+<ul>
+<li>apps such as GUI, spreadsheets, statistic packages can use ODBC</li>
+</ul></li>
+</ol>
+<p><span class="math display">\[\\[.1cm]\]</span>
+m. <code>EMBEDDED SQL</code>- defines the embeddings of SQL in variety of programming languages</p>
+<ul>
+<li><p>host language - the language to which SQL queries are embedded</p></li>
+<li><p>embbedded SQL - the SQL structures permitted in the host lang.</p></li>
+<li><p><strong>EXEC SQL</strong> is used in host lang. to identify embedded SQL requests to the preprocessor</p>
+<pre><code>Ex. 
+general form: EXEC SQL &lt; embedded SQL &gt;; 
+COBOL: semeicolon is replaced by END-EXEC
+Java: embeddings use #SQL {....}; </code></pre></li>
+<li><p>Apps must connect to database before executing any SQL statements</p>
+<pre><code>Ex. EXEC-SQL connect to server user username using password; </code></pre></li>
+<li><p>Variables of host lang. can be used inside embedded SQL; they are preceded by a colon (:) &amp; must be delcared within the <strong>DECLARE</strong> section</p>
+<pre><code>Ex. :credit_amount</code></pre></li>
+<li><p>to write an embedded SQL query, use ’declare c cursor for <SQL query> where c identifies the query</p>
+<pre><code>Ex. 
+EXEC SQL 
+      declare c cursor for 
+      SELECT ID, name
+      FROM student
+      WHERE tot_cred &gt; :credit_amount
+END_EXEC</code></pre></li>
+</ul>
+<div class="note">
+<p>To actual execute the above query and save the results within a temporary relation, we must “open” it using EXEC-SQL open c;</p>
+</div>
+<p><span class="math display">\[\\[.1cm]\]</span></p>
+<ul>
+<li><p>use a fetch statement to save one row of query results to host lang. variable.</p>
+<pre><code>Ex. EXEC-SQL fetch c into :si, :sn END_EXEC </code></pre></li>
+<li><p>use close statement to delete temporary relation that holds the query results</p>
+<pre><code>Ex. EXEC SQL close c; </code></pre></li>
+</ul>
+</div>
+<div id="functions-and-procedures" class="section level2" number="5.2">
+<h2><span class="header-section-number">5.2</span> Functions and Procedures</h2>
+<ol style="list-style-type: lower-alpha">
+<li>functions &amp; procedures allow business logic to be stored in the database &amp; executed from SQL statements
+<ul>
+<li>they can be defined either by procedural SQL or by an external programming lang.</li>
+<li>SQL syntax for implementation varies across databases</li>
+</ul></li>
+</ol>
+<p><span class="math display">\[\\[.1cm]\]</span></p>
+<ol start="2" style="list-style-type: lower-alpha">
+<li><p><code>FUNCTIONS</code> -</p>
+<pre><code>     -Ex. Function that returns count of instructors in a department.
+     CREATE Function  dept_count(dept_name varchar(20))
+           returns integer 
+           begin 
+           declare d_count integer 
+                 SELECT COUNT(*) into d_count 
+                 FROM instructor
+                 WHERE instructor.dept_name = dept_name
+           return d_count;
+     End
 
+     -Usage:
+     SELECT dept_name, budget
+     FROM department
+     WHERE dept_count(dept_name) &gt;12</code></pre></li>
+</ol>
+<p><span class="math display">\[\\[.1cm]\]</span></p>
+<ol start="3" style="list-style-type: lower-alpha">
+<li><p><code>TABLE FUNCTIONS</code> - functions that return tables as results</p>
+<pre><code>     - Ex
+     CREATE function instructor_of(dept_name char(20))
+           returns table(
+                 ID varchar(5),
+                 name varchar(20),
+                 dept_name varchar(20), 
+                 salary numeric (8,2))
+           return table 
+                 (SELECT ID, name, dept_name, salary
+                 FROM instructor
+                 WHERE instructor.dept_name = instructor_of.dept_name)
+
+     -Usage
+     SELECT * 
+     FROM table (instructor_of(&#39;Music&#39;))</code></pre></li>
+</ol>
+<div class="note">
+<p>Returns all instructors in the music department. For a simple query like this, we probably don’t need a function. Just write a query</p>
+</div>
+<p><span class="math display">\[\\[.1cm]\]</span></p>
+<ol start="4" style="list-style-type: lower-alpha">
+<li><p><code>PARAMETERIZED VIEWS</code> - generalized views created by table-valued functions &amp; their parameters</p></li>
+<li><p><code>PROCEDURES</code> - often referred to as stored procedures; is a reusable unit of SQL statements &amp; logic, compiled &amp; stored together to perfom a specific task</p>
+<pre><code>     Ex. 
+     CREATE procedure dept_count_pro (IN dept_name varchar(20), OUT d_count integer)
+           begin 
+                 SELECT COUNT(*) into d_count 
+                 FROM instructor
+                 WHERE instructor.dept_name = dept_count_proc.dept_name
+           end </code></pre></li>
+</ol>
+<p><span class="math display">\[\\[.1cm]\]</span></p>
+<ol start="6" style="list-style-type: lower-alpha">
+<li><p>Procedures can be invoked either from an SQL procedure or embedded SQL via a ‘cal’ statement</p>
+<pre><code>     Ex. 
+     Declare d_count integer,
+     call dept_count_proc(&#39;Physic&#39;, d_count);</code></pre></li>
+</ol>
+<div class="note">
+<p>Functions &amp; Procedures can have the same name as other functions and procedures as long as the number of arguments are different or at least one argument is different</p>
+</div>
+<p><span class="math display">\[\\[.1cm]\]</span></p>
+<ol start="7" style="list-style-type: lower-alpha">
+<li><code>PERSISTENT STORAGE MODULE (PSM)</code>- gives SQL almost all the power of a general programming lang.</li>
+</ol>
+</div>
+<div id="triggers" class="section level2" number="5.3">
+<h2><span class="header-section-number">5.3</span> Triggers</h2>
+<ol style="list-style-type: lower-alpha">
+<li><p><code>TRIGGERS</code> - a statement that the system executes automatically as a side effect of a modification to the database</p></li>
+<li><p>to define a trigger, we must</p>
+<ul>
+<li>specify the conditions under which a trigger is to be executed</li>
+<li>specify the actions to be taken when the trigger is called</li>
+</ul></li>
+</ol>
+<p><span class="math display">\[\\[.1cm]\]</span></p>
+<ol start="3" style="list-style-type: lower-alpha">
+<li><p>Triggers can be activated before an event (INSERT, UPDATE, or DELETE)</p></li>
+<li><p>Statement-level triggers</p>
+<ul>
+<li>use ‘for each statement’ instead of ‘for each row’ when executing a single action for all rows affected by the transaction</li>
+<li>use ‘referencing old table’ or ‘referencing new table’ to refer to temporary tables w/affected rows</li>
+</ul></li>
+</ol>
+<p><span class="math display">\[\\[.1cm]\]</span></p>
+<ol start="5" style="list-style-type: lower-alpha">
+<li><p>Triggers can be disable or enabled; default is enabled upon creation</p></li>
+<li><p>Triggers can be dropped, which removes it permanently</p></li>
+</ol>
+</div>
+<div id="recursive-queries" class="section level2" number="5.4">
+<h2><span class="header-section-number">5.4</span> Recursive Queries</h2>
+<ol style="list-style-type: lower-alpha">
+<li><p>Any recursive view must be a union of 2 subqueries: a base query that is NOT recursive &amp; a recursive query that uses a recursive view</p></li>
+<li><p><code>FIXED POINT</code> - of the recursive view is the resultant view where not more new tuples are added</p></li>
+</ol>
+
+</div>
 </div>
             </section>
 

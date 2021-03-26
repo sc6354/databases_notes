@@ -1,3 +1,284 @@
 # Advanced SQL
 
-We have finished a nice book.
+## Accessing SQL from a Programming Language
+
+a. Database programmer must have access to a general programming language b/c...
+      - NOT all queries can be expressed in SQL
+      - Nondeclarative actions such as printing a report, or sending the results of a query to a graphical user interface; querying data is just one of the many components of an App. 
+$$\\[.1cm]$$ 
+
+b. There are 2 general approaches to accessing SQL through a general programming language: __Dynamic SQL__ or __Embbedded SQL__
+
+c. `DYNAMIC SQL` - allows general purpose programs to connect and communicate w/a database server using a colleciton of functions and methods
+      - JDBC - appplication program interface for Java 
+      - ODBC - for C language, C++, C#, Ruby, Go, PHP, Visual Basic
+      - Python Database API - for Python
+
+$$\\[.1cm]$$ 
+
+d. `EMBEDDED SQL` - allows functions calls to connect to database using an API w/dynamic SQL facilities at runtime 
+
+e. `JDBC` - defines the API that Java programs use to connect to database servers
+      - orginally an abbreviation for Java Database Connectivity but full form is no longer used 
+      
+$$\\[.1cm]$$ 
+
+f. Connecting to a Database in JDBC:
+      - Select which database to use; can be an instance of Oracle running on local machine or PostgreSQL running on another machine 
+      - Open a connection to the database using __getConnection()__ 
+      - __getConnection()__ takes 3 parameters: URL/machine name of server, user identifier, and password
+
+:::note 
+Before opening a connection, the JDBC driver must be dynamically loaded first w/specified protocol like 'jdbc:oracle:thin:' or 'jdbc:mysql:'
+:::
+
+g. Sending SQL statements to Database System in JDBC:
+      - the __Statement__ class allows the programs to send SQL statements to the database system for execution 
+      - a __Statement__ object is NOT the SQL statement itself but rather an object that invokes methods that take in SQL statements as arguments and sends them to the database systems 
+      - use __excuteQuery()__ method for query statements 
+      - use __executeUpdate()__ method for nonquery statements (UPDATE, CREATE TABLE, INSERT, DELETE)
+      
+$$\\[.1cm]$$ 
+g. Handling Exceptions in JDBC:
+      - executing SQL methods can result in an exception 
+      - the __try {...} catch {...}__ construct can catch any JDBC errors
+      - `SQLexception` - SQL-specific exception 
+      - `Exception` - regular Java errors 
+
+$$\\[.1cm]$$ 
+
+h. `prepareStatement()` - method that allows us to predefine a query statement w/"?" as placeholders for actual values to provided by user 
+      - always use prepared statements when taking an input from the user & adding it to a query 
+      - NEVER create a query by concetanating strings of user entered inputs b/c if user enters certain special characters such as a single quote, the resulting SQL query my be syntactically incorrect 
+      - luckily, __setString()__ method checks for this & inserts necessary escape characters to ensure syntactic correctness
+      
+$$\\[.1cm]$$ 
+
+i. `SQL INJECTION` - a code injection technique that might destroy your database 
+      - one of the most common web hacking techniques 
+      - the placement of malicious code in SQL statements via web place entered inputs 
+      - Injection based on __1=1__ is always TRUE 
+      
+            
+            Ex. 
+            userID: 105 or 1=1
+            Corresponding SQL: SELECT * FROM users WHERE userID=105 OR 1=1
+          
+:::note 
+the sql is valid and will return all rows from the `User` Table since 1=1 is always True 
+:::
+
+- Injection based on ""="" is always True
+
+      Ex. username: " or ""="  
+          password: " or ""=" 
+          SQL: SELECT * FROM users WHERE Name="" or ""="" AND pass="" or ""=""
+          
+:::note 
+the sql is valid and will return all rows from the `User` Table b/c "'='" is always True 
+:::
+
+
+- injection based on Batched SQL statements (group of 2 or more SQL statements seperated by semicolon)
+            
+      Ex. userId: 105; DROP TABLE suppliers
+      SQL: SELECT userID FROM User where userId =105; DROP TABLE suppliers
+
+$$\\[.1cm]$$ 
+
+j. METADATA FEATURES - Java App does not have declarations for data stored in database & must either have it _hard-coded_ or _determine_ the info. directly at runtime 
+      - when an __executeQuery()__  method is executed, it returns a result set object, which contain the method __getMetadata()__ 
+      - __getMetadata()__ returns ResultSetMetaData object w/methods to find Metadata info. 
+      - __getColumnCount()__ returns arity of the result relation
+      - __getColumnName()__ returns names of the column 
+      - __getColumnTypeName()__ returns data types of columns 
+      - __getColumns()__ returns info. about columns
+      - __getTable()__ returns list of all tables in database
+      - __getPrimaryKeys()__ 
+      - __getCrossReferences__ returns foreign keys 
+      
+$$\\[.1cm]$$ 
+k. Handling Large Object Types:
+
+- __getBlob()__ & __getClob()__ are similiar to __getString()__, but returns objects of type Blob & Clob that stores locators for large objects or logical pointers to the actual object in the database
+- __getBytes()__ or __getSubstring()__ fetches data from these objects
+- to update large objects, link an input stream to a Blob or Clob object like this...
+      
+      blob.set(int parameterIndex, Input stream inputStream);
+      
+$$\\[.1cm]$$       
+
+l. `OPEN DATABASE CONNECTIVITY (ODBC)` - defines an API that apps can use to open a connection w/a database, send queries, & update and get back results
+      - apps such as GUI, spreadsheets, statistic packages can use ODBC
+      
+$$\\[.1cm]$$ 
+m. `EMBEDDED SQL`- defines the embeddings of SQL in variety of programming languages
+      
+- host language - the language to which SQL queries are embedded
+      
+- embbedded SQL - the SQL structures permitted in the host lang. 
+      
+- __EXEC SQL__ is used in host lang. to identify embedded SQL requests to the preprocessor
+            
+            
+      Ex. 
+      general form: EXEC SQL < embedded SQL >; 
+      COBOL: semeicolon is replaced by END-EXEC
+      Java: embeddings use #SQL {....}; 
+      
+- Apps must connect to database before executing any SQL statements
+      
+      Ex. EXEC-SQL connect to server user username using password; 
+
+- Variables of host lang. can be used inside embedded SQL; they are preceded by a colon (:) & must be delcared within the __DECLARE__ section 
+
+      Ex. :credit_amount
+      
+- to write an embedded SQL query, use 'declare c cursor for <SQL query> where c identifies the query 
+
+      Ex. 
+      EXEC SQL 
+            declare c cursor for 
+            SELECT ID, name
+            FROM student
+            WHERE tot_cred > :credit_amount
+      END_EXEC
+      
+:::note 
+To actual execute the above query and save the results within a temporary relation, we must "open" it using EXEC-SQL open c; 
+:::
+
+$$\\[.1cm]$$ 
+
+- use a fetch statement to save one row of query results to host lang. variable. 
+
+      Ex. EXEC-SQL fetch c into :si, :sn END_EXEC 
+      
+- use close statement to delete temporary relation that holds the query results 
+      
+      Ex. EXEC SQL close c; 
+      
+      
+## Functions and Procedures 
+a. functions & procedures allow business logic to be stored in the database & executed from SQL statements 
+      - they can be defined either by procedural SQL or by an external programming lang. 
+      - SQL syntax for implementation varies across databases
+      
+$$\\[.1cm]$$ 
+
+b. `FUNCTIONS` - 
+      
+            -Ex. Function that returns count of instructors in a department.
+            CREATE Function  dept_count(dept_name varchar(20))
+                  returns integer 
+                  begin 
+                  declare d_count integer 
+                        SELECT COUNT(*) into d_count 
+                        FROM instructor
+                        WHERE instructor.dept_name = dept_name
+                  return d_count;
+            End
+            
+            -Usage:
+            SELECT dept_name, budget
+            FROM department
+            WHERE dept_count(dept_name) >12
+            
+$$\\[.1cm]$$ 
+
+c. `TABLE FUNCTIONS` - functions that return tables as results 
+
+            - Ex
+            CREATE function instructor_of(dept_name char(20))
+                  returns table(
+                        ID varchar(5),
+                        name varchar(20),
+                        dept_name varchar(20), 
+                        salary numeric (8,2))
+                  return table 
+                        (SELECT ID, name, dept_name, salary
+                        FROM instructor
+                        WHERE instructor.dept_name = instructor_of.dept_name)
+                        
+            -Usage
+            SELECT * 
+            FROM table (instructor_of('Music'))
+            
+:::note
+Returns all instructors in the music department. For a simple query like this, we probably don't need a function. Just write a query 
+:::
+
+$$\\[.1cm]$$ 
+
+d. `PARAMETERIZED VIEWS` - generalized views created by table-valued functions & their parameters
+
+e. `PROCEDURES` -  often referred to as stored procedures; is a reusable unit of SQL statements & logic, compiled & stored together to perfom a specific task 
+      
+            Ex. 
+            CREATE procedure dept_count_pro (IN dept_name varchar(20), OUT d_count integer)
+                  begin 
+                        SELECT COUNT(*) into d_count 
+                        FROM instructor
+                        WHERE instructor.dept_name = dept_count_proc.dept_name
+                  end 
+      
+$$\\[.1cm]$$ 
+
+f. Procedures can be invoked either from an SQL procedure or embedded SQL via a 'cal' statement 
+      
+            Ex. 
+            Declare d_count integer,
+            call dept_count_proc('Physic', d_count);
+            
+:::note
+Functions & Procedures can have the same name as other functions and procedures as long as the number of arguments are different or at least one argument is different 
+:::
+
+$$\\[.1cm]$$ 
+
+g. `PERSISTENT STORAGE MODULE (PSM)`- gives SQL almost all the power of a general programming lang. 
+
+## Triggers
+a. `TRIGGERS` - a statement that the system executes automatically as a side effect of a modification to the database 
+
+b. to define a trigger, we must 
+      - specify the conditions under which a trigger is to be executed 
+      - specify the actions to be taken when the trigger is called
+      
+$$\\[.1cm]$$ 
+
+c. Triggers can be activated before an event (INSERT, UPDATE, or DELETE)
+
+d. Statement-level triggers 
+      - use 'for each statement' instead of 'for each row' when executing a single action for all rows affected by the transaction
+      - use 'referencing old table' or 'referencing new table' to refer to temporary tables w/affected rows
+      
+$$\\[.1cm]$$ 
+
+e. Triggers can be disable or enabled; default is enabled upon creation 
+
+f. Triggers can be dropped, which removes it permanently 
+
+## Recursive Queries 
+a. Any recursive view must be a union of 2 subqueries: a base query that is NOT recursive & a recursive query that uses a recursive view 
+
+b. `FIXED POINT` - of the recursive view is the resultant view where not more new tuples are added
+      
+      
+      
+      
+      
+      
+
+      
+      
+      
+      
+      
+      
+
+
+
+
+
+
