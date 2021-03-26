@@ -259,10 +259,38 @@ e. Triggers can be disable or enabled; default is enabled upon creation
 
 f. Triggers can be dropped, which removes it permanently 
 
+g. Triggers were used earlier for tasks such as
+      - Maintaining summary data (e.g., total salary of each department)
+      - Replicating databases by recording changes to special relations (called change or delta relations) and having a separate process that applies the changes over to a replica
+$$\\[.1cm]$$ 
+
+h. There are better ways of doing these now:
+      - Databases today provide built in materialized view facilities to maintain summary data
+      - Databases provide built-in support for replication
+$$\\[.1cm]$$ 
+
+i. Encapsulation facilities can be used instead of triggers in many cases
+      - Define methods to update fields
+      - Carry out actions as part of the update methods instead of through a trigger 
+ $$\\[.1cm]$$  
+ 
+j. Risk of unintended execution of triggers, for example, when
+      - Loading data from a backup copy
+      - Replicating updates at a remote site
+      - Trigger execution can be disabled before such actions.
+
+$$\\[.1cm]$$ 
+
+k. Other risks with triggers:
+      - Error leading to failure of critical transactions that set off the trigger
+      - Cascading execution
+
 ## Recursive Queries 
 a. Any recursive view must be a union of 2 subqueries: a base query that is NOT recursive & a recursive query that uses a recursive view 
 
 b. `FIXED POINT` - of the recursive view is the resultant view where not more new tuples are added
+
+c. Recursive views make it possible to write queries, such as transitive closure queries, that cannot be written without recursion or iteration.
       
       
       

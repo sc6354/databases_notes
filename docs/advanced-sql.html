@@ -76,7 +76,6 @@
 <ul>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html#reading-guide"><i class="fa fa-check"></i>Reading guide</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="course-outline.html"><a href="course-outline.html"><i class="fa fa-check"></i>Course Outline</a></li>
 <li class="chapter" data-level="1" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>1</b> Introduction</a>
 <ul>
 <li class="chapter" data-level="" data-path="intro.html"><a href="intro.html#overview"><i class="fa fa-check"></i>Overview</a></li>
@@ -410,6 +409,38 @@ END_EXEC</code></pre></li>
 <ol start="5" style="list-style-type: lower-alpha">
 <li><p>Triggers can be disable or enabled; default is enabled upon creation</p></li>
 <li><p>Triggers can be dropped, which removes it permanently</p></li>
+<li><p>Triggers were used earlier for tasks such as</p>
+<ul>
+<li>Maintaining summary data (e.g., total salary of each department)</li>
+<li>Replicating databases by recording changes to special relations (called change or delta relations) and having a separate process that applies the changes over to a replica
+<span class="math display">\[\\[.1cm]\]</span></li>
+</ul></li>
+<li><p>There are better ways of doing these now:</p>
+<ul>
+<li>Databases today provide built in materialized view facilities to maintain summary data</li>
+<li>Databases provide built-in support for replication
+<span class="math display">\[\\[.1cm]\]</span></li>
+</ul></li>
+<li><p>Encapsulation facilities can be used instead of triggers in many cases</p>
+<ul>
+<li>Define methods to update fields</li>
+<li>Carry out actions as part of the update methods instead of through a trigger
+<span class="math display">\[\\[.1cm]\]</span></li>
+</ul></li>
+<li><p>Risk of unintended execution of triggers, for example, when</p>
+<ul>
+<li>Loading data from a backup copy</li>
+<li>Replicating updates at a remote site</li>
+<li>Trigger execution can be disabled before such actions.</li>
+</ul></li>
+</ol>
+<p><span class="math display">\[\\[.1cm]\]</span></p>
+<ol start="11" style="list-style-type: lower-alpha">
+<li>Other risks with triggers:
+<ul>
+<li>Error leading to failure of critical transactions that set off the trigger</li>
+<li>Cascading execution</li>
+</ul></li>
 </ol>
 </div>
 <div id="recursive-queries" class="section level2" number="5.4">
@@ -417,6 +448,7 @@ END_EXEC</code></pre></li>
 <ol style="list-style-type: lower-alpha">
 <li><p>Any recursive view must be a union of 2 subqueries: a base query that is NOT recursive &amp; a recursive query that uses a recursive view</p></li>
 <li><p><code>FIXED POINT</code> - of the recursive view is the resultant view where not more new tuples are added</p></li>
+<li><p>Recursive views make it possible to write queries, such as transitive closure queries, that cannot be written without recursion or iteration.</p></li>
 </ol>
 
 </div>
