@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Database Notes</title>
+  <title>9 Application Development | Database Notes</title>
   <meta name="description" content="This is the online pamplet to an exhibition of dragons in Chinese art. This is part of a final curation project for History of Chinese Art at NYU Shanghai Fall 2020." />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Database Notes" />
+  <meta property="og:title" content="9 Application Development | Database Notes" />
   <meta property="og:type" content="book" />
   <meta property="og:url" content="https://sc6354.github.io/hoca_final_project_exhibition_pamphlet/" />
   <meta property="og:image" content="https://sc6354.github.io/hoca_final_project_exhibition_pamphlet/images/cover.PNG" />
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="sc6354/hoca_final_project_exhibition_pamphlet" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Database Notes" />
+  <meta name="twitter:title" content="9 Application Development | Database Notes" />
   
   <meta name="twitter:description" content="This is the online pamplet to an exhibition of dragons in Chinese art. This is part of a final curation project for History of Chinese Art at NYU Shanghai Fall 2020." />
   <meta name="twitter:image" content="https://sc6354.github.io/hoca_final_project_exhibition_pamphlet/images/cover.PNG" />
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   <link rel="apple-touch-icon-precomposed" sizes="120x120" href="images/favicon_io/apple-touch-icon.png" />
   <link rel="shortcut icon" href="images/favicon_io/favicon.ico" type="image/x-icon" />
+<link rel="prev" href="skipped-ch-8.html"/>
 
-<link rel="next" href="course-outline.html"/>
 <script src="libs/header-attrs-2.7/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -158,27 +158,65 @@
             <section class="normal" id="section-">
 <link href="style.css" rel="stylesheet">
 <link rel="shortcut icon" href="images/favicon.io/apple-touch-icon.png" />
-<div id="header">
-<h1 class="title">Database Notes</h1>
-<p class="author"><em>Susan Chen</em></p>
-<p class="date"><em>1.25.21</em></p>
-</div>
-<div id="note-to-readers" class="section level1 unnumbered">
-<h1>Note to Readers</h1>
-<p>These are my own notes that I wrote while taking Database at NYUSH with Professor Xu in Spring 2021. Hope my notes can be of benefit to you.</p>
-<div id="reading-guide" class="section level3 unnumbered">
-<h3>Reading guide</h3>
-<ol style="list-style-type: decimal">
-<li><code>KEY TERMS</code> - definition here
+<div id="application-development" class="section level1" number="9">
+<h1><span class="header-section-number">9</span> Application Development</h1>
+<div id="application-programs-user-interfaces" class="section level2" number="9.1">
+<h2><span class="header-section-number">9.1</span> Application Programs &amp; User Interfaces</h2>
+<ol style="list-style-type: lower-alpha">
+<li>Client-server-architecture - a personal directory communicates w/a shared databases
 <ul>
-<li><p>more details about term in the bullet points</p>
-<pre><code>            Examples go here </code></pre></li>
+<li><p>two big drawbacks:</p>
+<pre><code>1. Security risks b/c user machines had direct access to database 
+2. any changes/updates to app/database required all copies of the app to be updated </code></pre></li>
 </ul></li>
 </ol>
-<div class="note">
-<p>These blocks point out other relevant info or big ideas.</p>
+<p><span class="math display">\[\\[.1cm]\]</span></p>
+<ol start="2" style="list-style-type: lower-alpha">
+<li>2 approaches to avoid client-server architecture problems:
+<ul>
+<li>web browsers</li>
+<li>application programs installed on individual (usual mobile) devices</li>
+</ul></li>
+</ol>
 </div>
-<hr />
+<div id="web-fundamentals" class="section level2" number="9.2">
+<h2><span class="header-section-number">9.2</span> Web Fundamentals</h2>
+<ol style="list-style-type: lower-alpha">
+<li><code>WEB BROWSERS</code> = de facto standard user interface to database b/c…
+<ul>
+<li>they allow large num. of users to access database anywhere</li>
+<li>avoid the need to download/install specialized code while also providing a good GUI</li>
+</ul></li>
+</ol>
+<p><span class="math display">\[\\[.1cm]\]</span></p>
+<ol start="2" style="list-style-type: lower-alpha">
+<li>HTTP protocol is connectionless
+<ul>
+<li>connectionless means that once the server replies to a request, the server closes the connection w/the client and forgets all about the requests</li>
+<li>in contrast, Unix logins and JDBC/ODBC connections stay connected until the client disconnects; this retains user authentication &amp; other info.</li>
+<li>connectionless reduces load on server since operating systems have tight limits on num. of open connections on a machine</li>
+</ul></li>
+</ol>
+<p><span class="math display">\[\\[.1cm]\]</span></p>
+<ol start="3" style="list-style-type: lower-alpha">
+<li>Info. services like user authentication needs session info.
+<ul>
+<li>authentication should be done only once per session</li>
+<li>the solution is to use a cookie
+<span class="math display">\[\\[.1cm]\]</span></li>
+</ul></li>
+<li><code>COOKIE</code> - a small piece of text containing identifying info.
+<ul>
+<li>sent by server to browser on first interaction to identify session</li>
+<li>the text is part of the HTTP protocol that creates the cookie on further interactions</li>
+<li>server saves info. about the cookie it issued, &amp; uses it when serving a request like authentication info and displaying user preferences from same machine</li>
+</ul></li>
+</ol>
+<p><span class="math display">\[\\[.1cm]\]</span></p>
+<ol start="5" style="list-style-type: lower-alpha">
+<li>Cookies can be stored permanently or for a limited time</li>
+</ol>
+
 </div>
 </div>
             </section>
@@ -186,8 +224,8 @@
           </div>
         </div>
       </div>
+<a href="skipped-ch-8.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 
-<a href="course-outline.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

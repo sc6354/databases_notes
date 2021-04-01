@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>2 Introduction to the Relational Model | Database Notes</title>
+  <title>1 Introduction | Database Notes</title>
   <meta name="description" content="This is the online pamplet to an exhibition of dragons in Chinese art. This is part of a final curation project for History of Chinese Art at NYU Shanghai Fall 2020." />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="2 Introduction to the Relational Model | Database Notes" />
+  <meta property="og:title" content="1 Introduction | Database Notes" />
   <meta property="og:type" content="book" />
   <meta property="og:url" content="https://sc6354.github.io/hoca_final_project_exhibition_pamphlet/" />
   <meta property="og:image" content="https://sc6354.github.io/hoca_final_project_exhibition_pamphlet/images/cover.PNG" />
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="sc6354/hoca_final_project_exhibition_pamphlet" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="2 Introduction to the Relational Model | Database Notes" />
+  <meta name="twitter:title" content="1 Introduction | Database Notes" />
   
   <meta name="twitter:description" content="This is the online pamplet to an exhibition of dragons in Chinese art. This is part of a final curation project for History of Chinese Art at NYU Shanghai Fall 2020." />
   <meta name="twitter:image" content="https://sc6354.github.io/hoca_final_project_exhibition_pamphlet/images/cover.PNG" />
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   <link rel="apple-touch-icon-precomposed" sizes="120x120" href="images/favicon_io/apple-touch-icon.png" />
   <link rel="shortcut icon" href="images/favicon_io/favicon.ico" type="image/x-icon" />
-<link rel="prev" href="introduction.html"/>
-<link rel="next" href="introduction-to-sql.html"/>
+<link rel="prev" href="course-outline.html"/>
+<link rel="next" href="introduction-to-the-relational-model.html"/>
 <script src="libs/header-attrs-2.7/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -158,173 +158,281 @@
             <section class="normal" id="section-">
 <link href="style.css" rel="stylesheet">
 <link rel="shortcut icon" href="images/favicon.io/apple-touch-icon.png" />
-<div id="introduction-to-the-relational-model" class="section level1" number="2">
-<h1><span class="header-section-number">2</span> Introduction to the Relational Model</h1>
-<p><strong>The relational model is the primary model for commerical data processing applications.</strong></p>
-<div id="structure-of-the-relational-databases" class="section level2" number="2.1">
-<h2><span class="header-section-number">2.1</span> Structure of the Relational Databases</h2>
+<div id="introduction" class="section level1" number="1">
+<h1><span class="header-section-number">1</span> Introduction</h1>
+<div id="overview" class="section level2 unnumbered">
+<h2>Overview</h2>
 <ol style="list-style-type: lower-alpha">
-<li><p>A relational database consits of tables</p></li>
-<li><p>generally, a row in a table represents a relationship among a set of values</p></li>
-<li><p><code>RELATION</code> - a table</p></li>
-<li><p><code>TUPLE</code> - a row</p></li>
-<li><p><code>ATTRIBUTE</code> - a column in a table</p></li>
-<li><p><code>RELATIONAL INSTANCE</code> - refers to a specific instance of a relation, or a specific set of rows</p>
+<li><code>DATABASE MANAGEMENT SYSTEM (DBMS)</code> - collection of interrelated data and a set of programs to access those data
 <ul>
-<li>ordered or unordered does <strong>NOT</strong> matter as long as the same relations are in the set</li>
+<li>goal is to store and retrieve database info. conveniently and efficiently</li>
 </ul></li>
-</ol>
-<p><span class="math display">\[\\[.1cm]\]</span>
-g. <code>DOMAIN</code> - set of permitted values for an attribute of a relation</p>
-<pre><code>  Ex. the domain of salary attribute of the instructor relation is the set of all possible salaries. 
-   </code></pre>
-<ol start="8" style="list-style-type: lower-alpha">
-<li><code>NULL VALUES</code> - signifies that a value is <strong>UNKNOWN</strong> or does not exist
-<ul>
-<li>best not to have null values as they will cause difficulties updating &amp; accessing database</li>
-</ul></li>
+<li><code>DATABASE</code> - the collection of data that contains info. relevant to the enterprise</li>
 </ol>
 </div>
-<div id="database-schema" class="section level2" number="2.2">
-<h2><span class="header-section-number">2.2</span> Database Schema</h2>
+<div id="database-system-applications" class="section level2" number="1.1">
+<h2><span class="header-section-number">1.1</span> Database System Applications</h2>
 <ol style="list-style-type: lower-alpha">
-<li><p><code>DATABASE SCHEMA</code> - the logical design of the database</p></li>
-<li><p><code>DATABASE INSTANCE</code> - snapshot of the data in the database at a given time</p></li>
-<li><p><code>RELATIONAL SCHEMA</code> - list of attributes &amp; their corresponding domains</p>
+<li>DSMS are used to manage collections of data that are:
 <ul>
-<li><p>relational instance - the value of a variable at a given time –&gt; may change</p></li>
-<li><p>relational schema does not change</p></li>
-<li><p>relational instance and schema are often used interchageably</p>
-<pre><code>Ex. instructor may mean instructor schema or instructor instance!!!</code></pre></li>
+<li>highly valuable</li>
+<li>relatively large and</li>
+<li>accessed by multiple users and applications at once</li>
 </ul></li>
-</ol>
-</div>
-<div id="excluded" class="section level2" number="2.3">
-<h2><span class="header-section-number">2.3</span> EXCLUDED</h2>
-</div>
-<div id="schema-diagrams" class="section level2" number="2.4">
-<h2><span class="header-section-number">2.4</span> Schema Diagrams</h2>
-<ol style="list-style-type: lower-alpha">
-<li><code>SCHEMA DIAGRAM</code> - depicts a database schema, all the keys, etc.
+<li>DBMs uses ABSTRACTION to manage the COMPLEXITY of a data collection
 <ul>
-<li>relations are represented by <strong>BOXES</strong> w/name on top and attributes listed inside the box</li>
-<li>primary keys are <strong>UNDERLINED</strong></li>
-<li>foreign key constraints are <strong>ARROWS</strong> from foreign key attribute of referencing relation to the primary key of the referenced table</li>
-<li>referential integrity constraints are <strong>TWO-HEADED ARROWS</strong></li>
-</ul></li>
-</ol>
-<center>
-<p><img src="images/ch2/schemaDiagram.JPG" /></p>
-<a href="">Example of a Schema Diagram</a>
-</center>
-</div>
-<div id="relational-query-language" class="section level2" number="2.5">
-<h2><span class="header-section-number">2.5</span> Relational Query Language</h2>
-<ol style="list-style-type: lower-alpha">
-<li><p><code>QUERY LANG.</code> - a language in which a user request info. from database</p></li>
-<li><p><code>IMPERATIVE QUERY LANG.</code> - user instructs the system to perform a specific sequence of operations on the database to compute the desired results</p></li>
-<li><p><code>FUNCTIONAL QUERY LANG.</code> - the computation is expressed as the evaluation of functions that may operate on the data or results of other functions</p></li>
-<li><p><code>DECLARATIVE QUERY LANG.</code> - user describes the desired info. w/o giving a specific instructions or function calls for obtaining the info.</p>
-<ul>
-<li>desired info. is usually expressed in some form of <strong>mathematical logic</strong></li>
+<li>abstraction allows an user to use a complex device/system w/o having to know the details of how the system/device is constructed</li>
 </ul></li>
 </ol>
 <div class="note">
-<p>Usually query lang. such as SQL have elements of all 3 approaches.</p>
+<p><code>Some Example Applications</code></p>
+<ol style="list-style-type: decimal">
+<li>human resources - info. about employees, salaries, payroll taxes, benefits and for generation of paychecks</li>
+<li>Credit Card Transactions</li>
+<li>Airlines were among the first to use databases in a geographically distributed manner for reservations and schedule info.</li>
+<li>Web-based services such as social media, online retailers, online advertisements</li>
+<li>Document-based for maintaining articles, patents, publications</li>
+<li>Navigation systems<br />
+</li>
+</ol>
 </div>
 </div>
-<div id="relational-algebra" class="section level2" number="2.6">
-<h2><span class="header-section-number">2.6</span> Relational Algebra</h2>
+<div id="purpose-of-database-system" class="section level2" number="1.2">
+<h2><span class="header-section-number">1.2</span> Purpose of Database System</h2>
 <ol style="list-style-type: lower-alpha">
-<li><code>RELATIONAL ALGEBRA</code> - set of operations that take one or two relations as input &amp; produce a new relation
+<li><p><code>FILE PROCESSING SYSTEM</code>- is supported by a conventional operation system; stores permanent records in various files and needs different applications programs to extract records from, and add records to the appropriate files</p></li>
+<li><p>Many disadvantages of a file processing system:</p>
 <ul>
-<li><p>unary operations - operate on <strong>ONE</strong> relation</p>
-<pre><code>Ex. select, project, &amp; rename operations </code></pre></li>
-<li><p>binary operations - operate on a pair of relations</p>
-<pre><code>   Ex. cartesian product, union, set-difference </code></pre></li>
+<li><p>DATA REDUNDANCY AND INCONSISTENCY- due to different files with different structures and written in different languages by programmers over time</p></li>
+<li><p>DIFFICULTLY ACCESSING DATA - b/c conventional file-processing do <em>NOT</em> allow data to be retrieved in an efficient manner</p></li>
+<li><p>DATA ISOLATION - must write a new application program to retrieve data scattered in various formatted files</p></li>
+<li><p>INTEGRITY PROBLEMS - not being able to satisfy consistency constraints</p>
+<pre><code>Ex. not being able to the program to enforce new constraints</code></pre></li>
+<li><p>ATOMICITY PROBLEMS - changes must be atomic (it must happen in its entirety or not at all)</p>
+<pre><code> Ex. a bank transfer from account A to B. A credit and a debit must occur, not just one </code></pre></li>
+<li><p>CONCURRENT-ACCESS ANOMALITIES - when 2 user change the data and both changes are updated leading to 2 different results and supervision is <em>DIFFICULT</em></p></li>
 </ul></li>
 </ol>
 <div class="note">
-<p>Binary and unary operations can be combined in relational algebra expressions.</p>
+<p>These difficulties prompted the transitions from file-based apps. to database systems in the 1960s and 1970s</p>
 </div>
-<p><span class="math display">\[\\[.1cm]\]</span></p>
-<ol start="2" style="list-style-type: lower-alpha">
-<li><code>SELECT</code> - choose rows that satisfy a given predicate
+</div>
+<div id="view-of-data" class="section level2" number="1.3">
+<h2><span class="header-section-number">1.3</span> View of Data</h2>
+<ol style="list-style-type: lower-alpha">
+<li><p>major purpose of a database is to provide and <em>ABSTRACT</em> view of data while hiding the details of how data are stored and maintained</p></li>
+<li><p><code>DATA MODELS</code> - the underlying structure of a database; a collection of conceptual tools, data relationships, data semantics, and consistency constraints</p>
 <ul>
-<li>denoted by <span class="math inline">\(\sigma\)</span> &amp; predicate as a subscript to <span class="math inline">\(\sigma\)</span></li>
-<li>relation is in parenthese after <span class="math inline">\(\sigma\)</span></li>
-<li>Ex. <span class="math inline">\(\sigma\)</span><sub>dept_name=‘physics’</sub> (instructors) selects rows of instructor table where instructor is in the Physics department</li>
-<li>selection allows mathematical operators</li>
-<li>Ex. <span class="math inline">\(\sigma\)</span><sub>salary&gt;90000</sub> (instructors)</li>
-<li>selction allow connectives (and, or, not)</li>
-<li>selection allows comparison btw 2 attributes</li>
-<li>Ex. <span class="math inline">\(\sigma\)</span><sub>dept_name=‘building’</sub> (instructors) finds all departments whose name is the same as their building</li>
+<li>all data can be classified into 4 categories: <code>RELATIONAL MODELS</code>, <code>ENTITY RELATIONAL MODEL</code>, <code>SEMI-STRUCTURED DATA MODEL</code>, <code>OBJECT-BASED MODEL</code></li>
 </ul></li>
 </ol>
 <p><span class="math display">\[\\[.1cm]\]</span></p>
 <ol start="3" style="list-style-type: lower-alpha">
-<li><code>PROJECT</code> - returns a table w/certain attributes left out
+<li><code>RELATIONAL MODEL</code>- uses a colletion of tables to represent both the data and the relationships among those data</li>
+</ol>
+<div class="note">
+<p>Tables are also called relations and each table has multiple columns with unique names</p>
+</div>
+<ol start="4" style="list-style-type: lower-alpha">
+<li><p><code>ENTITY-RELATIONAL (ER) MODEL</code> - uses a collection of basic objects called <em>ENTITIES</em> and <em>RELATIONSHIPS</em> among those objects</p></li>
+<li><p><code>SEMI-STRUCTURED DATA MODEL</code> - permits specification of data where individual data items of the same type may have different attributes</p>
 <ul>
-<li>denoted by <span class="math inline">\(\Pi\)</span></li>
-<li>desired attributes are listed in <strong>subscript</strong></li>
-<li>table argument follows in <strong>parenthese</strong></li>
-<li>Ex. <span class="math inline">\(\Pi\)</span><sub>ID,name,salary</sub> (instructors)</li>
-<li>project allows operations</li>
-<li>Ex. <span class="math inline">\(\Pi\)</span><sub>ID,name,salary/12</sub> (instructors) returns monthly salary</li>
+<li>data items in the models above must have the same set of attributes</li>
+<li>most widely used semi-structured data representations are JSON and extensible markup language (XML)</li>
 </ul></li>
 </ol>
 <p><span class="math display">\[\\[.1cm]\]</span></p>
-<ol start="4" style="list-style-type: lower-alpha">
-<li><code>CARTESIAN-PRODUCT</code> - combines info. from 2 tables
+<ol start="6" style="list-style-type: lower-alpha">
+<li><p><code>OBJECT-BASED DATA MODELS</code> - extends the relational model w/notions of encapsulation, methods, and object identity</p></li>
+<li><p><code>DATA ABSTRACTION</code>- hiding the complexity of the system from users to simplify their interaction w/the system</p>
 <ul>
-<li>denoted by <strong>X</strong>, a cross</li>
+<li>3 levels of abstractions:</li>
+</ul></li>
+</ol>
+<center>
+<p><img src="images/ch1/levels_of_abstraction.jpg" /></p>
+<a href="">Levels of Abstraction</a>
+</center>
+<pre><code>  - `VIEW LEVEL`- the highgest level of abstraction that only describes the part of the database; exist to simplify interaction w/the system and the system may provide multiple views for the same database
+  - `LOGICAL LEVEL` -  describes the entire databse in terms of a small number of relatively simple structures
+  - `PHYSICAL LEVEL` - the lowest level of abstration that describes how the data is stored in detail </code></pre>
+<div class="note">
+<p>Users at the logical level does not need to be aware of the complex physical structure involved (a.k.a physical data independence). Database adminstrators who decide on what info. to keep uses this level</p>
+</div>
+<ol start="8" style="list-style-type: lower-alpha">
+<li><code>SCHEMA</code> - the overall design of the database
+<ul>
+<li>physical schema -&gt; the design at the physical level</li>
+<li>logical schema -&gt; the design at the logical level</li>
+<li>subschema -&gt; the design at the view level</li>
+</ul></li>
+</ol>
+<div class="note">
+<ul>
+<li><p>logical schema most important b/c programmers use this schema to construct applications</p></li>
+<li><p>applications exhibit <code>PHYSICAL DATA INDEPENDENCE</code> if they do not depend on the physical schema</p></li>
+</ul>
+</div>
+</div>
+<div id="database-languages" class="section level2" number="1.4">
+<h2><span class="header-section-number">1.4</span> Database Languages</h2>
+<ol style="list-style-type: lower-alpha">
+<li>a DBMS provides a <em>data-definition language (DDL)</em> to specify the database schema and a <em>data-manipulation language (DML)</em> to express database queries and update
+<ul>
+<li>in practice DDL and DML are parts of a single database language such as SQL and almost all relational models use SQL</li>
+</ul></li>
+</ol>
+<p><span class="math display">\[\\[.1cm]\]</span></p>
+<ol start="2" style="list-style-type: lower-alpha">
+<li><code>DATA STORAGE AND DEFINITION</code> - a set of statements in a special type of DDL that is used to specify the storage structure an access method
+<ul>
+<li>these statements define the schemas implementation and are hidden from users</li>
+<li>DDL also provides facalities to specify integrity constraints</li>
+</ul></li>
+</ol>
+<p><span class="math display">\[\\[.1cm]\]</span></p>
+<ol start="3" style="list-style-type: lower-alpha">
+<li>Some Constraints:
+<ul>
+<li><p>Domain Constraints - limits an attribute to a domain of possible values it can take on</p>
+<pre><code>Ex. integer types, character types, date/time types </code></pre></li>
+<li><p>Referential Integrity - ensuring that a value that occurs in one relation for a given set of attributes also appears in another set of attribute fro another relation</p>
+<pre><code>Ex. a department listed for a course must actually exist in the university </code></pre></li>
+<li><p>Authorization -limits access among types of user</p>
+<pre><code>- Read authorization - can only read 
+- Insert authorization - insert new data but not change
+- Update authorization - allows modification but not deletions
+- Delete authorization - allows deletion </code></pre></li>
+</ul></li>
+</ol>
+<div class="note">
+<p>User may have all, some, or none of these authorizations</p>
+</div>
+<ol start="4" style="list-style-type: lower-alpha">
+<li><code>DATA DICTIONARY</code> - the output of DDL statements that contaion metedata, or data about the data
+<ul>
+<li>can only be accessed and updated by the database system and not a regular user</li>
 </ul></li>
 </ol>
 <p><span class="math display">\[\\[.1cm]\]</span></p>
 <ol start="5" style="list-style-type: lower-alpha">
-<li><code>UNION</code> - all rows that appear in either or both of 2 tables
+<li><code>DATA-MANIPULATION LANGUAGE</code> - enables user to access or manipulate data accessed by the appropriate data model
 <ul>
-<li>denoted by <strong>U</strong>, union symbol</li>
-<li>Ex. <span class="math inline">\(\Pi\)</span><sub>course_ID</sub> (<span class="math inline">\(\sigma\)</span><sub>semester=‘Fall’^year=2017</sub>(Section)) <strong>U</strong> <span class="math inline">\(\Pi\)</span><sub>course_ID</sub> (<span class="math inline">\(\sigma\)</span><sub>semester=‘Spring’^year=2018</sub>(Section)) retunn all the courses taught in Fall 2017, Spring 2018, or both</li>
+<li>types of access are retrival, insertion, deletion, manipulation</li>
+<li>2 types of DML: <em>PROCEDURAL</em> and <em>DECLARATIVE</em></li>
 </ul></li>
 </ol>
-<div class="note">
-<p>For union to work:</p>
-<ol style="list-style-type: decimal">
-<li><p>both tables must have teh same arity (# of attributes)</p></li>
-<li><p>if attributes have associated types, they must be the same for both tables</p></li>
-</ol>
-<p>If 1 &amp; 2 are satisfy, we call the tables <strong>compatible relations</strong>.</p>
-</div>
+<p><span class="math display">\[\\[.1cm]\]</span></p>
 <ol start="6" style="list-style-type: lower-alpha">
-<li><p><code>INTERSECTION</code> - find rows in both tables</p></li>
-<li><p><code>SET-DIFFERENCES</code> - find rows in one table but are not in another</p>
+<li><p><code>PROCEDURAL DMLs</code>- user must specify what data to get and how to get it</p></li>
+<li><p><code>DECLARATIVE (NONPROCEDURAL)</code> - user must specify what data to get but not how</p>
 <ul>
-<li>denoted by <strong>-</strong></li>
-<li>Ex. <span class="math inline">\(\Pi\)</span><sub>course_ID</sub> (<span class="math inline">\(\sigma\)</span><sub>semester=‘Fall’^year=2017</sub>(Section)) <strong>-</strong> <span class="math inline">\(\Pi\)</span><sub>course_ID</sub> (<span class="math inline">\(\sigma\)</span><sub>semester=‘Spring’^year=2018</sub>(Section)) finds all courses taught in Fall 2017 but not in Spring 2018</li>
+<li>the database system will fiqure out an efficient way of retrieving the data</li>
 </ul></li>
 </ol>
 <p><span class="math display">\[\\[.1cm]\]</span></p>
 <ol start="8" style="list-style-type: lower-alpha">
-<li><code>ASSIGNMENT</code> - works like assignment in a programming lang.
+<li><code>QUERY</code> - statement requesting retrival of info. and <em>query language</em> is the part of the DML that involves this info. retrieval
 <ul>
-<li>denoted by backward arrow, &lt;-</li>
-<li>evaluation of an assignment does <strong>NOT</strong> result in any relation being displayed to the user</li>
-<li>instead the result is assigned to a table variable</li>
-<li>assignments are <strong>TEMPORARY</strong>; assignments to permanent tables is a database <strong>MODIFICATION</strong></li>
+<li>technically incorrect, but DML and queary lang. is often used interchangeably</li>
+<li>most common query language is SQL (a nonprocedural lang.)</li>
+</ul></li>
+</ol>
+<p><span class="math display">\[\\[.1cm]\]</span></p>
+<ol style="list-style-type: lower-roman">
+<li><code>APPLICATION PROGRAMS</code> - programs that use a host lang. such as C/C++, Java, or Python with embedded SQL queries to interact w/ the database
+<ul>
+<li>Open Database Connectivity (ODBC) standards define interfaces for C and other languages</li>
+<li>Java Database Connectivity (JDBC) standards define interface fro Java lang.</li>
+</ul></li>
+</ol>
+</div>
+<div id="database-design" class="section level2" number="1.5">
+<h2><span class="header-section-number">1.5</span> Database Design</h2>
+<ol style="list-style-type: lower-alpha">
+<li><p>Mainly involves the design of the database schema</p></li>
+<li><p>Conceptual Design - provides a detailed overview of the enterprise</p>
+<ul>
+<li><p>confirms all requirements are met and are not in conflict w/each other</p></li>
+<li><p>Normalization - one of the 2 main ways on how to group attributes from various tables</p>
+<pre><code>- normaliztion employs a set of algorithms that takes
+as inputs the set of all attributes and generates a 
+set of table
+- the other way is to use the Entity Relational Model </code></pre></li>
+<li><p><code>SPECIFICATION OF FUNCTIONAL REQUIREMENTS</code> - describes the kind of operations that will be performed on the data</p></li>
+</ul></li>
+</ol>
+<p><span class="math display">\[\\[.1cm]\]</span></p>
+<ol start="3" style="list-style-type: lower-alpha">
+<li><p><code>LOGICAL DESIGN PHASE</code> - the designer maps the high level conceptual schema onto the implementation data model of the database system that will be used</p></li>
+<li><p><code>PHYSICAL DESIGN PHASE</code> - where physical feature of the database are specified</p></li>
+</ol>
+</div>
+<div id="database-engine" class="section level2" number="1.6">
+<h2><span class="header-section-number">1.6</span> Database Engine</h2>
+<div class="note">
+<ul>
+<li><p>a database system is divided into modules that deal w/a part of the system</p></li>
+<li><p>Functional components of the system can be divided into the <code>storage manager</code>, the <code>quesry processor</code>, and <code>transcation management</code></p></li>
+</ul>
+</div>
+<ol style="list-style-type: lower-alpha">
+<li><code>STORAGE MANAGER</code> - storing, retrieving, &amp; updating data in the database
+<ul>
+<li>includes the authorization and integrity manager, transaction manager, file manager, and buffer manager</li>
+<li>also implements several data structures as part of the physical system implementation: data files, data dictionary, indices</li>
+</ul></li>
+</ol>
+<p><span class="math display">\[\\[.1cm]\]</span></p>
+<ol start="2" style="list-style-type: lower-alpha">
+<li><code>QUERY PROCESSOR</code> - includes DDL interpreter, DML compiler, and query evaluation engine</li>
+</ol>
+<div class="note">
+<ul>
+<li><p>compiler translate queries into an evalution plan of low-level instructions that can be understood by the evaluation engine</p></li>
+<li><p>compiler also performs QUERY OPTIMIZATION to pick the lowest cost evaluation plan</p></li>
+</ul>
+</div>
+<ol start="3" style="list-style-type: lower-alpha">
+<li><code>TRANSACTION MANAGER</code>- consist of the concurrency-control manager and the recovery manager
+<ul>
+<li>concurrency-control manager ensures consistency of the database</li>
+<li>recovery manager ensures durability and atomicity of the database system itself &amp; can perform failure recovery to restore database to state prior to crash/failure</li>
+</ul></li>
+</ol>
+</div>
+<div id="database-application-architecture" class="section level2" number="1.7">
+<h2><span class="header-section-number">1.7</span> Database &amp; Application Architecture</h2>
+<ol style="list-style-type: lower-alpha">
+<li><p>Applications that use databases as their backend can be partitioned into 2 or 3 tier parts</p></li>
+<li><p><code>2-TIER APPLICATIONS</code> - application resides at the client machine, and invokes database system fuctionality at the server machine via query lang. statements</p>
+<ul>
+<li>usually in older applications</li>
+</ul></li>
+<li><p><code>3-TIER ARCHITECTURE</code> - client machine acts as front end and does not contain any direct database calls; instead front end communicates with an application server and server than communicates with the database system to access data</p>
+<ul>
+<li>web browsers and mobile apps are the most commonly used application clients</li>
+<li>better security and performance than 2-tier</li>
 </ul></li>
 </ol>
 <center>
-<p><img src="images/ch2/assignment.JPG" /></p>
-<a href="">Only the final line displays the result. The 2 lines before assigns query results to a temporary relation.</a>
+<p><img src="images/ch1/2tier_vs_3tier.jpg" /></p>
+<a href="">2 tier vs 3 tier</a>
 </center>
-<ol style="list-style-type: lower-roman">
-<li>summary:</li>
+</div>
+<div id="database-users-and-administrators" class="section level2" number="1.8">
+<h2><span class="header-section-number">1.8</span> Database Users and Administrators</h2>
+<ol style="list-style-type: lower-alpha">
+<li><p>Users are defined by the way they are expected to interact w/the system</p></li>
+<li><p><code>DATABASE ADMINISTRATOR (DBA)</code> - the person who has central control over the system and performs:</p>
+<ul>
+<li>schema definitions</li>
+<li>storage structure and access method definition</li>
+<li>schema &amp; physical-organizational modification</li>
+<li>granting of authorization for data access</li>
+<li>routine maintenance</li>
+</ul></li>
 </ol>
-<center>
-<p><img src="images/ch2/operators.JPG" /></p>
-<a href="">Relational Algebra Operators</a>
-</center>
 
 </div>
 </div>
@@ -333,8 +441,8 @@ g. <code>DOMAIN</code> - set of permitted values for an attribute of a relation<
           </div>
         </div>
       </div>
-<a href="introduction.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="introduction-to-sql.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="course-outline.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="introduction-to-the-relational-model.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

@@ -1,0 +1,54 @@
+# Application Development 
+
+## Application Programs & User Interfaces
+
+a. Client-server-architecture - a personal directory communicates w/a shared databases
+      - two big drawbacks:
+            
+            1. Security risks b/c user machines had direct access to database 
+            2. any changes/updates to app/database required all copies of the app to be updated 
+  
+ $$\\[.1cm]$$
+ 
+ b. 2 approaches to avoid client-server architecture problems:
+      - web browsers
+      - application programs installed on individual (usual mobile) devices
+      
+## Web Fundamentals 
+a.   `WEB BROWSERS` = de facto standard user interface to database b/c...
+      - they allow large num. of users to access database anywhere 
+      - avoid the need to download/install specialized code while also providing a good GUI 
+
+$$\\[.1cm]$$
+
+b. HTTP protocol is connectionless 
+      -  connectionless means that once the server replies to a request, the server closes the connection w/the client and forgets all about the requests
+      - in contrast, Unix logins and JDBC/ODBC connections stay connected until the client disconnects; this retains user authentication & other info. 
+      - connectionless reduces load on server since operating systems have tight limits on num. of open connections on a machine
+
+$$\\[.1cm]$$
+
+c. Info. services like user authentication needs session info. 
+      - authentication should be done only once per session 
+      - the solution is to use a cookie 
+$$\\[.1cm]$$
+
+d. `COOKIE` - a small piece of text containing identifying info. 
+      - sent by server to browser on first interaction to identify session 
+      - the text is part of the HTTP protocol that creates the cookie on further interactions 
+      - server saves info. about the cookie it issued, & uses it when serving a request like authentication info and displaying user preferences from same machine 
+      
+$$\\[.1cm]$$
+
+e. Cookies can be stored permanently or for a limited time
+
+
+
+
+
+
+
+
+
+
+

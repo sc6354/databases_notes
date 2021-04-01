@@ -52,6 +52,20 @@ These blocks point out other relevant info or big ideas.
     - Midterm Review 
 - Week 8:
     -  Chapter 5 - [Advanced SQL](https://sc6354.github.io/databases_notes/advanced-sql.html)
+- Week 9: 
+    - Chapter 9 - [Application Development]
+- Week 10: 
+    - Python/Flask 
+- Week 11:
+    - Chapter 12 - [Storage] 
+    - Chapter 14 - [Transactions]
+- Week 12: 
+    - Chapter 15 - [Concurrency]
+- Week 13:
+    - Chapter 11 - [Indexing/Hashing]
+- Week 14:
+    - Final Project Demo 
+    
 
 
 

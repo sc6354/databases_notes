@@ -1,9 +1,5 @@
----
-output:
-  word_document: default
-  html_document: default
----
-# Introduction {#intro}
+
+# Introduction
 
 ## Overview {-}
 a. `DATABASE MANAGEMENT SYSTEM (DBMS)` - collection of interrelated data and a set of programs to access those data 
