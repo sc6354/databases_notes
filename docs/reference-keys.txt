@@ -41,3 +41,8 @@ skipped-ch.-8
 application-development
 application-programs-user-interfaces
 web-fundamentals
+servlets
+skipped-ch.-10
+indexing
+storage
+overview-of-physical-storage-media

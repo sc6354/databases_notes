@@ -31,7 +31,7 @@
   <link rel="apple-touch-icon-precomposed" sizes="120x120" href="images/favicon_io/apple-touch-icon.png" />
   <link rel="shortcut icon" href="images/favicon_io/favicon.ico" type="image/x-icon" />
 <link rel="prev" href="skipped-ch-8.html"/>
-
+<link rel="next" href="skipped-ch-10.html"/>
 <script src="libs/header-attrs-2.7/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -132,6 +132,13 @@
 <ul>
 <li class="chapter" data-level="9.1" data-path="application-development.html"><a href="application-development.html#application-programs-user-interfaces"><i class="fa fa-check"></i><b>9.1</b> Application Programs &amp; User Interfaces</a></li>
 <li class="chapter" data-level="9.2" data-path="application-development.html"><a href="application-development.html#web-fundamentals"><i class="fa fa-check"></i><b>9.2</b> Web Fundamentals</a></li>
+<li class="chapter" data-level="9.3" data-path="application-development.html"><a href="application-development.html#servlets"><i class="fa fa-check"></i><b>9.3</b> Servlets</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="skipped-ch-10.html"><a href="skipped-ch-10.html"><i class="fa fa-check"></i><b>10</b> Skipped Ch. 10</a></li>
+<li class="chapter" data-level="11" data-path="indexing.html"><a href="indexing.html"><i class="fa fa-check"></i><b>11</b> indexing</a></li>
+<li class="chapter" data-level="12" data-path="storage.html"><a href="storage.html"><i class="fa fa-check"></i><b>12</b> Storage</a>
+<ul>
+<li class="chapter" data-level="12.1" data-path="storage.html"><a href="storage.html#overview-of-physical-storage-media"><i class="fa fa-check"></i><b>12.1</b> Overview of Physical Storage Media</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://www.linkedin.com/in/susan-chen-12787517a/" target="blank">My Linkedin</a></li>
@@ -216,6 +223,36 @@
 <ol start="5" style="list-style-type: lower-alpha">
 <li>Cookies can be stored permanently or for a limited time</li>
 </ol>
+</div>
+<div id="servlets" class="section level2" number="9.3">
+<h2><span class="header-section-number">9.3</span> Servlets</h2>
+<ol style="list-style-type: lower-alpha">
+<li><p><code>SERVLETS</code> - defines an application programming interfaces for communication btw the web/application servers and application program</p>
+<pre><code>Ex. Methods to get parameter values from web forms &amp; to send HTML text back to client </code></pre></li>
+</ol>
+<p><span class="math display">\[\\[.1cm]\]</span></p>
+<ol start="2" style="list-style-type: lower-alpha">
+<li>Application programs (aka servlet) is loaded into the server
+<ul>
+<li>each request spawns a new thread in the server &amp; the thread is closed once the request is serviced</li>
+<li>programmer creates a class that from Http servlet and overrides methods like doGet, doPost</li>
+</ul></li>
+</ol>
+<p><span class="math display">\[\\[.1cm]\]</span></p>
+<ol start="3" style="list-style-type: lower-alpha">
+<li>Servlet API supports handling of sessions
+<ul>
+<li>sets a cookie on first interaction w/browser &amp; uses it to identify further session</li>
+</ul></li>
+</ol>
+<p><span class="math display">\[\\[.1cm]\]</span></p>
+<ol start="4" style="list-style-type: lower-alpha">
+<li>servlets run inside application servers such as Apache Tomcat, Glassfish, JBoss, BEA Weblogic, IBM websphere, &amp; Oracle Application Servers
+<ul>
+<li>these app. servers support deployment &amp; monitoring of servlets</li>
+<li>some can even support objects, parallel processing across multiple application servers, etc.</li>
+</ul></li>
+</ol>
 
 </div>
 </div>
@@ -224,8 +261,8 @@
           </div>
         </div>
       </div>
-<a href="skipped-ch-8.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-
+<a href="skipped-ch-8.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="skipped-ch-10.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

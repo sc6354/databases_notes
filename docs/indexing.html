@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>2 Introduction to the Relational Model | Database Notes</title>
+  <title>11 indexing | Database Notes</title>
   <meta name="description" content="This is the online pamplet to an exhibition of dragons in Chinese art. This is part of a final curation project for History of Chinese Art at NYU Shanghai Fall 2020." />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="2 Introduction to the Relational Model | Database Notes" />
+  <meta property="og:title" content="11 indexing | Database Notes" />
   <meta property="og:type" content="book" />
   <meta property="og:url" content="https://sc6354.github.io/hoca_final_project_exhibition_pamphlet/" />
   <meta property="og:image" content="https://sc6354.github.io/hoca_final_project_exhibition_pamphlet/images/cover.PNG" />
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="sc6354/hoca_final_project_exhibition_pamphlet" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="2 Introduction to the Relational Model | Database Notes" />
+  <meta name="twitter:title" content="11 indexing | Database Notes" />
   
   <meta name="twitter:description" content="This is the online pamplet to an exhibition of dragons in Chinese art. This is part of a final curation project for History of Chinese Art at NYU Shanghai Fall 2020." />
   <meta name="twitter:image" content="https://sc6354.github.io/hoca_final_project_exhibition_pamphlet/images/cover.PNG" />
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   <link rel="apple-touch-icon-precomposed" sizes="120x120" href="images/favicon_io/apple-touch-icon.png" />
   <link rel="shortcut icon" href="images/favicon_io/favicon.ico" type="image/x-icon" />
-<link rel="prev" href="introduction.html"/>
-<link rel="next" href="introduction-to-sql.html"/>
+<link rel="prev" href="skipped-ch-10.html"/>
+<link rel="next" href="storage.html"/>
 <script src="libs/header-attrs-2.7/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -165,183 +165,18 @@
             <section class="normal" id="section-">
 <link href="style.css" rel="stylesheet">
 <link rel="shortcut icon" href="images/favicon.io/apple-touch-icon.png" />
-<div id="introduction-to-the-relational-model" class="section level1" number="2">
-<h1><span class="header-section-number">2</span> Introduction to the Relational Model</h1>
-<p><strong>The relational model is the primary model for commerical data processing applications.</strong></p>
-<div id="structure-of-the-relational-databases" class="section level2" number="2.1">
-<h2><span class="header-section-number">2.1</span> Structure of the Relational Databases</h2>
-<ol style="list-style-type: lower-alpha">
-<li><p>A relational database consits of tables</p></li>
-<li><p>generally, a row in a table represents a relationship among a set of values</p></li>
-<li><p><code>RELATION</code> - a table</p></li>
-<li><p><code>TUPLE</code> - a row</p></li>
-<li><p><code>ATTRIBUTE</code> - a column in a table</p></li>
-<li><p><code>RELATIONAL INSTANCE</code> - refers to a specific instance of a relation, or a specific set of rows</p>
-<ul>
-<li>ordered or unordered does <strong>NOT</strong> matter as long as the same relations are in the set</li>
-</ul></li>
-</ol>
-<p><span class="math display">\[\\[.1cm]\]</span>
-g. <code>DOMAIN</code> - set of permitted values for an attribute of a relation</p>
-<pre><code>  Ex. the domain of salary attribute of the instructor relation is the set of all possible salaries. 
-   </code></pre>
-<ol start="8" style="list-style-type: lower-alpha">
-<li><code>NULL VALUES</code> - signifies that a value is <strong>UNKNOWN</strong> or does not exist
-<ul>
-<li>best not to have null values as they will cause difficulties updating &amp; accessing database</li>
-</ul></li>
-</ol>
-</div>
-<div id="database-schema" class="section level2" number="2.2">
-<h2><span class="header-section-number">2.2</span> Database Schema</h2>
-<ol style="list-style-type: lower-alpha">
-<li><p><code>DATABASE SCHEMA</code> - the logical design of the database</p></li>
-<li><p><code>DATABASE INSTANCE</code> - snapshot of the data in the database at a given time</p></li>
-<li><p><code>RELATIONAL SCHEMA</code> - list of attributes &amp; their corresponding domains</p>
-<ul>
-<li><p>relational instance - the value of a variable at a given time –&gt; may change</p></li>
-<li><p>relational schema does not change</p></li>
-<li><p>relational instance and schema are often used interchageably</p>
-<pre><code>Ex. instructor may mean instructor schema or instructor instance!!!</code></pre></li>
-</ul></li>
-</ol>
-</div>
-<div id="excluded" class="section level2" number="2.3">
-<h2><span class="header-section-number">2.3</span> EXCLUDED</h2>
-</div>
-<div id="schema-diagrams" class="section level2" number="2.4">
-<h2><span class="header-section-number">2.4</span> Schema Diagrams</h2>
-<ol style="list-style-type: lower-alpha">
-<li><code>SCHEMA DIAGRAM</code> - depicts a database schema, all the keys, etc.
-<ul>
-<li>relations are represented by <strong>BOXES</strong> w/name on top and attributes listed inside the box</li>
-<li>primary keys are <strong>UNDERLINED</strong></li>
-<li>foreign key constraints are <strong>ARROWS</strong> from foreign key attribute of referencing relation to the primary key of the referenced table</li>
-<li>referential integrity constraints are <strong>TWO-HEADED ARROWS</strong></li>
-</ul></li>
-</ol>
-<center>
-<p><img src="images/ch2/schemaDiagram.JPG" /></p>
-<a href="">Example of a Schema Diagram</a>
-</center>
-</div>
-<div id="relational-query-language" class="section level2" number="2.5">
-<h2><span class="header-section-number">2.5</span> Relational Query Language</h2>
-<ol style="list-style-type: lower-alpha">
-<li><p><code>QUERY LANG.</code> - a language in which a user request info. from database</p></li>
-<li><p><code>IMPERATIVE QUERY LANG.</code> - user instructs the system to perform a specific sequence of operations on the database to compute the desired results</p></li>
-<li><p><code>FUNCTIONAL QUERY LANG.</code> - the computation is expressed as the evaluation of functions that may operate on the data or results of other functions</p></li>
-<li><p><code>DECLARATIVE QUERY LANG.</code> - user describes the desired info. w/o giving a specific instructions or function calls for obtaining the info.</p>
-<ul>
-<li>desired info. is usually expressed in some form of <strong>mathematical logic</strong></li>
-</ul></li>
-</ol>
-<div class="note">
-<p>Usually query lang. such as SQL have elements of all 3 approaches.</p>
-</div>
-</div>
-<div id="relational-algebra" class="section level2" number="2.6">
-<h2><span class="header-section-number">2.6</span> Relational Algebra</h2>
-<ol style="list-style-type: lower-alpha">
-<li><code>RELATIONAL ALGEBRA</code> - set of operations that take one or two relations as input &amp; produce a new relation
-<ul>
-<li><p>unary operations - operate on <strong>ONE</strong> relation</p>
-<pre><code>Ex. select, project, &amp; rename operations </code></pre></li>
-<li><p>binary operations - operate on a pair of relations</p>
-<pre><code>   Ex. cartesian product, union, set-difference </code></pre></li>
-</ul></li>
-</ol>
-<div class="note">
-<p>Binary and unary operations can be combined in relational algebra expressions.</p>
-</div>
-<p><span class="math display">\[\\[.1cm]\]</span></p>
-<ol start="2" style="list-style-type: lower-alpha">
-<li><code>SELECT</code> - choose rows that satisfy a given predicate
-<ul>
-<li>denoted by <span class="math inline">\(\sigma\)</span> &amp; predicate as a subscript to <span class="math inline">\(\sigma\)</span></li>
-<li>relation is in parenthese after <span class="math inline">\(\sigma\)</span></li>
-<li>Ex. <span class="math inline">\(\sigma\)</span><sub>dept_name=‘physics’</sub> (instructors) selects rows of instructor table where instructor is in the Physics department</li>
-<li>selection allows mathematical operators</li>
-<li>Ex. <span class="math inline">\(\sigma\)</span><sub>salary&gt;90000</sub> (instructors)</li>
-<li>selction allow connectives (and, or, not)</li>
-<li>selection allows comparison btw 2 attributes</li>
-<li>Ex. <span class="math inline">\(\sigma\)</span><sub>dept_name=‘building’</sub> (instructors) finds all departments whose name is the same as their building</li>
-</ul></li>
-</ol>
-<p><span class="math display">\[\\[.1cm]\]</span></p>
-<ol start="3" style="list-style-type: lower-alpha">
-<li><code>PROJECT</code> - returns a table w/certain attributes left out
-<ul>
-<li>denoted by <span class="math inline">\(\Pi\)</span></li>
-<li>desired attributes are listed in <strong>subscript</strong></li>
-<li>table argument follows in <strong>parenthese</strong></li>
-<li>Ex. <span class="math inline">\(\Pi\)</span><sub>ID,name,salary</sub> (instructors)</li>
-<li>project allows operations</li>
-<li>Ex. <span class="math inline">\(\Pi\)</span><sub>ID,name,salary/12</sub> (instructors) returns monthly salary</li>
-</ul></li>
-</ol>
-<p><span class="math display">\[\\[.1cm]\]</span></p>
-<ol start="4" style="list-style-type: lower-alpha">
-<li><code>CARTESIAN-PRODUCT</code> - combines info. from 2 tables
-<ul>
-<li>denoted by <strong>X</strong>, a cross</li>
-</ul></li>
-</ol>
-<p><span class="math display">\[\\[.1cm]\]</span></p>
-<ol start="5" style="list-style-type: lower-alpha">
-<li><code>UNION</code> - all rows that appear in either or both of 2 tables
-<ul>
-<li>denoted by <strong>U</strong>, union symbol</li>
-<li>Ex. <span class="math inline">\(\Pi\)</span><sub>course_ID</sub> (<span class="math inline">\(\sigma\)</span><sub>semester=‘Fall’^year=2017</sub>(Section)) <strong>U</strong> <span class="math inline">\(\Pi\)</span><sub>course_ID</sub> (<span class="math inline">\(\sigma\)</span><sub>semester=‘Spring’^year=2018</sub>(Section)) retunn all the courses taught in Fall 2017, Spring 2018, or both</li>
-</ul></li>
-</ol>
-<div class="note">
-<p>For union to work:</p>
-<ol style="list-style-type: decimal">
-<li><p>both tables must have teh same arity (# of attributes)</p></li>
-<li><p>if attributes have associated types, they must be the same for both tables</p></li>
-</ol>
-<p>If 1 &amp; 2 are satisfy, we call the tables <strong>compatible relations</strong>.</p>
-</div>
-<ol start="6" style="list-style-type: lower-alpha">
-<li><p><code>INTERSECTION</code> - find rows in both tables</p></li>
-<li><p><code>SET-DIFFERENCES</code> - find rows in one table but are not in another</p>
-<ul>
-<li>denoted by <strong>-</strong></li>
-<li>Ex. <span class="math inline">\(\Pi\)</span><sub>course_ID</sub> (<span class="math inline">\(\sigma\)</span><sub>semester=‘Fall’^year=2017</sub>(Section)) <strong>-</strong> <span class="math inline">\(\Pi\)</span><sub>course_ID</sub> (<span class="math inline">\(\sigma\)</span><sub>semester=‘Spring’^year=2018</sub>(Section)) finds all courses taught in Fall 2017 but not in Spring 2018</li>
-</ul></li>
-</ol>
-<p><span class="math display">\[\\[.1cm]\]</span></p>
-<ol start="8" style="list-style-type: lower-alpha">
-<li><code>ASSIGNMENT</code> - works like assignment in a programming lang.
-<ul>
-<li>denoted by backward arrow, &lt;-</li>
-<li>evaluation of an assignment does <strong>NOT</strong> result in any relation being displayed to the user</li>
-<li>instead the result is assigned to a table variable</li>
-<li>assignments are <strong>TEMPORARY</strong>; assignments to permanent tables is a database <strong>MODIFICATION</strong></li>
-</ul></li>
-</ol>
-<center>
-<p><img src="images/ch2/assignment.JPG" /></p>
-<a href="">Only the final line displays the result. The 2 lines before assigns query results to a temporary relation.</a>
-</center>
-<ol style="list-style-type: lower-roman">
-<li>summary:</li>
-</ol>
-<center>
-<p><img src="images/ch2/operators.JPG" /></p>
-<a href="">Relational Algebra Operators</a>
-</center>
+<div id="indexing" class="section level1" number="11">
+<h1><span class="header-section-number">11</span> indexing</h1>
+<p>more to come.</p>
 
-</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="introduction.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="introduction-to-sql.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="skipped-ch-10.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="storage.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

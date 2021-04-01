@@ -42,9 +42,28 @@ $$\\[.1cm]$$
 
 e. Cookies can be stored permanently or for a limited time
 
+## Servlets 
+a. `SERVLETS` - defines an application programming interfaces for communication btw the web/application servers and application program 
+      
+       Ex. Methods to get parameter values from web forms & to send HTML text back to client 
+            
+ $$\\[.1cm]$$   
+ 
+ b. Application programs (aka servlet) is loaded into the server
+      -  each request spawns a new thread in the server & the thread is closed once the request is serviced 
+      - programmer creates a class that from Http servlet and overrides methods like doGet, doPost 
 
+$$\\[.1cm]$$
 
+c. Servlet API supports handling of sessions
+      - sets a cookie on first interaction w/browser & uses it to identify further session 
+      
+$$\\[.1cm]$$
 
+d. servlets run inside application servers such as Apache Tomcat, Glassfish, JBoss, BEA Weblogic, IBM websphere, & Oracle Application Servers
+      - these app. servers support deployment & monitoring of servlets 
+      - some can even support objects, parallel processing across multiple application servers, etc. 
+            
 
 
 
