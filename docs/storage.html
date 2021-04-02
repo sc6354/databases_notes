@@ -139,6 +139,11 @@
 <li class="chapter" data-level="12" data-path="storage.html"><a href="storage.html"><i class="fa fa-check"></i><b>12</b> Storage</a>
 <ul>
 <li class="chapter" data-level="12.1" data-path="storage.html"><a href="storage.html#overview-of-physical-storage-media"><i class="fa fa-check"></i><b>12.1</b> Overview of Physical Storage Media</a></li>
+<li class="chapter" data-level="12.2" data-path="storage.html"><a href="storage.html#storage-interfaces"><i class="fa fa-check"></i><b>12.2</b> Storage Interfaces</a></li>
+<li class="chapter" data-level="12.3" data-path="storage.html"><a href="storage.html#magnetic-disks"><i class="fa fa-check"></i><b>12.3</b> Magnetic Disks</a></li>
+<li class="chapter" data-level="12.4" data-path="storage.html"><a href="storage.html#performance-measurement-of-disks"><i class="fa fa-check"></i><b>12.4</b> Performance measurement of disks</a></li>
+<li class="chapter" data-level="12.5" data-path="storage.html"><a href="storage.html#flash-storage"><i class="fa fa-check"></i><b>12.5</b> Flash Storage</a></li>
+<li class="chapter" data-level="12.6" data-path="storage.html"><a href="storage.html#optimization-of-disk-block-access"><i class="fa fa-check"></i><b>12.6</b> Optimization of Disk-block Access</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://www.linkedin.com/in/susan-chen-12787517a/" target="blank">My Linkedin</a></li>
@@ -245,6 +250,194 @@ b. Available Mediums:
 <a href="">Storage Hierarchy</a>
 </center>
 <p><span class="math display">\[\\[.1cm]\]</span></p>
+</div>
+<div id="storage-interfaces" class="section level2" number="12.2">
+<h2><span class="header-section-number">12.2</span> Storage Interfaces</h2>
+<ol style="list-style-type: lower-alpha">
+<li><p>disk interface standard types:</p>
+<ul>
+<li>SATA (serial ATA) - supports data transfers speeds of up to 6 gigabits/sec</li>
+<li>SAS (serial attached SCSI) - supports 12 gigabits/sec</li>
+<li>NVMe (non-volatile memory express interface) - works w/PCIe connectors to support lower latency &amp; higher transfer rates</li>
+<li>support data transfer rate of up to 24 gigabits/sec</li>
+</ul></li>
+<li><p>Disks usually connect directly to computer</p></li>
+<li><p><code>STORAGE AREA NETWORKS</code> - a large # of disks are connected by a high speed network to a number servers</p></li>
+<li><p><code>NETWORK ATTACHED STORAGE (NAS)</code> - instead of networked storage appearing to be a large disk, it provides a file system interface using networked file system protocols such as NFS or CIFs</p></li>
+<li><p><code>CLOUD STORAGE</code> - data is stored in the cloud and accessed via an API</p></li>
+</ol>
+</div>
+<div id="magnetic-disks" class="section level2" number="12.3">
+<h2><span class="header-section-number">12.3</span> Magnetic Disks</h2>
+<ol style="list-style-type: lower-alpha">
+<li>Surface of platter divided into circular tracks
+<ul>
+<li>over 50K-100K tracks per platter on typical hard disks</li>
+</ul></li>
+<li>Each track is divided into sectors
+<ul>
+<li>A sector is the smallest unit of data that can be read or written</li>
+<li>typically sector size is 512 bytes</li>
+<li>Typical sectors per track: 500 to 1000 (on inner tracks) to 1000 to 2000 (on outer tracks)</li>
+</ul></li>
+<li>To read/write a sector
+<ul>
+<li>disk arm swings to position head on right track</li>
+<li>platter spins continually; data is read/written as sector passes under head</li>
+</ul></li>
+</ol>
+<p><span class="math display">\[\\[.1cm]\]</span></p>
+<ol start="4" style="list-style-type: lower-alpha">
+<li>Head-disk assemblies
+<ul>
+<li>multiple disk platters on a single spindle (1 to 5 usually)</li>
+<li>one head per platter, mounted on a common arm</li>
+</ul></li>
+</ol>
+<p><span class="math display">\[\\[.1cm]\]</span></p>
+<ol start="5" style="list-style-type: lower-alpha">
+<li><p>Cylinder i consists of ith track of all the platters</p></li>
+<li><p>Disk controller – interfaces between the computer system and
+the disk drive hardware</p>
+<ul>
+<li>accepts high-level commands to read or write a sector</li>
+<li>initiates actions such as moving the disk arm to the right track and actually reading or writing the data</li>
+<li>Computes and attaches checksums to each sector to verify that
+data is read back correctly
+<ul>
+<li>If data is corrupted, with very high probability stored checksum won’t match recomputed checksum</li>
+</ul></li>
+<li>Ensures successful writing by reading back sector after writing it</li>
+<li>Performs remapping of bad sectors</li>
+</ul></li>
+</ol>
+</div>
+<div id="performance-measurement-of-disks" class="section level2" number="12.4">
+<h2><span class="header-section-number">12.4</span> Performance measurement of disks</h2>
+<ol style="list-style-type: lower-alpha">
+<li><code>ACCESS TIME</code> – the time it takes from when a read or write request is issued to when data transfer begins. Consists of:
+<ul>
+<li>Seek time – time it takes to reposition the arm over the correct track</li>
+<li>Average seek time is 1/2 the worst case seek time.
+<ul>
+<li>Would be 1/3 if all tracks had the same number of sectors, and we ignore the time to start and stop arm movement</li>
+</ul></li>
+<li>4 to 10 milliseconds on typical disks</li>
+<li>Rotational latency – time it takes for the sector to be accessed to appear under the head
+<ul>
+<li>4 to 11 milliseconds on typical disks (5400 to 15000 r.p.m.)</li>
+<li>Average latency is 1/2 of the above latency.</li>
+</ul></li>
+<li>Overall latency is 5 to 20 msec depending on disk model</li>
+</ul></li>
+</ol>
+<p><span class="math display">\[\\[.1cm]\]</span></p>
+<ol start="2" style="list-style-type: lower-alpha">
+<li><code>DATA TRANSFER RATE</code> – the rate at which data can be retrieved from or stored to the disk.
+<ul>
+<li>25 to 200 MB per second max rate, lower for inner tracks</li>
+</ul></li>
+</ol>
+<p><span class="math display">\[\\[.1cm]\]</span></p>
+<ol start="3" style="list-style-type: lower-alpha">
+<li>Disk block is a logical unit for storage allocation and retrieval
+<ul>
+<li>4 to 16 kilobytes typically</li>
+<li>Smaller blocks: more transfers from disk</li>
+<li>Larger blocks: more space wasted due to partially filled blocks</li>
+</ul></li>
+</ol>
+<p><span class="math display">\[\\[.1cm]\]</span></p>
+<ol start="4" style="list-style-type: lower-alpha">
+<li><code>I/O OPERATIONS PER SECOND (IOPS)</code> - Number of random block reads that a disk can support per second
+<ul>
+<li>50 to 200 IOPS on current generation magnetic disks</li>
+</ul></li>
+</ol>
+<p><span class="math display">\[\\[.1cm]\]</span></p>
+<ol start="5" style="list-style-type: lower-alpha">
+<li><code>MEAN TIME TO FAILURE (MTTF)</code> – the average time the disk is expected to run continuously without any failure
+<ul>
+<li><p>Typically 3 to 5 years</p></li>
+<li><p>Probability of failure of new disks is quite low, corresponding to a “theoretical MTTF” of 500,000 to 1,200,000 hours for a new disk</p>
+<pre><code>Ex. an MTTF of 1,200,000 hours for a new disk means that given 1000 
+relatively new disks, on an average one will fail every 1200 hours</code></pre></li>
+<li><p>MTTF decreases as disk ages</p></li>
+</ul></li>
+</ol>
+</div>
+<div id="flash-storage" class="section level2" number="12.5">
+<h2><span class="header-section-number">12.5</span> Flash Storage</h2>
+<ol style="list-style-type: lower-alpha">
+<li><p>two main types: NOR flash vs NAND flash</p></li>
+<li><p>NAND flash</p>
+<ul>
+<li>used widely for storage, cheaper than NOR flash</li>
+<li>requires page-at-a-time read (page: 512 bytes to 4 KB)
+- 20 to 100 microseconds for a page read
+- Not much difference between sequential and random
+read</li>
+<li>Page can only be written once and must be erased to allow rewrite</li>
+</ul></li>
+</ol>
+<p><span class="math display">\[\\[.1cm]\]</span></p>
+<ol start="3" style="list-style-type: lower-alpha">
+<li>Solid state disks
+<ul>
+<li>Use standard block-oriented disk interfaces, but store data on
+multiple flash storage devices internally</li>
+<li>Transfer rate of up to 500 MB/sec using SATA, and up to 3 GB/sec using NVMe PCIe</li>
+</ul></li>
+</ol>
+<p><span class="math display">\[\\[.1cm]\]</span>
+d. Erase happens in units of erase block
+- Takes 2 to 5millisecs
+- Erase block typically 256 KB to 1 MB (128 to 256 pages)</p>
+<p><span class="math display">\[\\[.1cm]\]</span></p>
+<ol start="5" style="list-style-type: lower-alpha">
+<li><p>Remapping of logical page addresses to physical page addresses
+avoids waiting for erase</p></li>
+<li><p>Flash translation table tracks mapping also stored in a label field of flash page</p>
+<ul>
+<li>remapping carried out by flash translation layer</li>
+</ul></li>
+</ol>
+<p><span class="math display">\[\\[.1cm]\]</span></p>
+<ol start="7" style="list-style-type: lower-alpha">
+<li>After 100,000 to 1,000,000 erases, erase block becomes unreliable
+and cannot be used</li>
+</ol>
+</div>
+<div id="optimization-of-disk-block-access" class="section level2" number="12.6">
+<h2><span class="header-section-number">12.6</span> Optimization of Disk-block Access</h2>
+<ol style="list-style-type: lower-alpha">
+<li><p>A database file is partitioned into fixed-length storage units called blocks. Blocks are units of both storage allocation and data transfer.</p></li>
+<li><p>Database system seeks to minimize the number of block transfers between the disk and memory</p>
+<ul>
+<li>this can be done by keeping as many blocks as possible in main memory</li>
+</ul></li>
+</ol>
+<p><span class="math display">\[\\[.1cm]\]</span></p>
+<ol start="3" style="list-style-type: lower-alpha">
+<li><p><code>BUFFER</code> – portion of main memory available to store copies of disk blocks.</p></li>
+<li><p><code>BUFFERING</code>- temporarily storing data read from blocks in an in-memory buffer, to satisfy future requests</p>
+<ul>
+<li>done by both the operating system and the database system</li>
+</ul></li>
+</ol>
+<p><span class="math display">\[\\[.1cm]\]</span></p>
+<ol start="5" style="list-style-type: lower-alpha">
+<li><p><code>READ-AHEAD</code> - Read extra blocks from a track in anticipation that
+they will be requested soon</p></li>
+<li><p><code>Disk-arm-scheduling algorithms</code> re-order block requests so that
+disk arm movement is minimized</p></li>
+<li><p><code>FILE ORGANIZATION</code>- organize blocks in a way that corresponds closely to the way we expect data to be accessed</p>
+<pre><code>  Ex. If we expect a file to be accessed sequentially, then we should ideally keep 
+  all the blocks of the file sequentially on adjacent cylinders. </code></pre>
+<ul>
+<li>disks hide the exact block location from the operating system but use a logical numbers blocks in consecutive order</li>
+</ul></li>
+</ol>
 
 </div>
 </div>

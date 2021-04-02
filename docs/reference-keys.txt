@@ -46,3 +46,8 @@ skipped-ch.-10
 indexing
 storage
 overview-of-physical-storage-media
+storage-interfaces
+magnetic-disks
+performance-measurement-of-disks
+flash-storage
+optimization-of-disk-block-access
