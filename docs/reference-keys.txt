@@ -57,3 +57,4 @@ transaction-concept
 a-simple-transaction-model
 atomicity-and-durability
 isolation
+serializability

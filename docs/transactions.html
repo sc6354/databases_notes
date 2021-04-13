@@ -151,6 +151,7 @@
 <li class="chapter" data-level="14.2" data-path="transactions.html"><a href="transactions.html#a-simple-transaction-model"><i class="fa fa-check"></i><b>14.2</b> A Simple Transaction Model</a></li>
 <li class="chapter" data-level="14.3" data-path="transactions.html"><a href="transactions.html#atomicity-and-durability"><i class="fa fa-check"></i><b>14.3</b> Atomicity and Durability</a></li>
 <li class="chapter" data-level="14.4" data-path="transactions.html"><a href="transactions.html#isolation"><i class="fa fa-check"></i><b>14.4</b> Isolation</a></li>
+<li class="chapter" data-level="14.5" data-path="transactions.html"><a href="transactions.html#serializability"><i class="fa fa-check"></i><b>14.5</b> Serializability</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://www.linkedin.com/in/susan-chen-12787517a/" target="blank">My Linkedin</a></li>
@@ -270,7 +271,70 @@
 </ol>
 <p><span class="math display">\[\\[.1cm]\]</span></p>
 <ol start="4" style="list-style-type: lower-alpha">
-<li>Schedules - execution sequences that helps identify isolation-abiding transactions and database consistency</li>
+<li><p>Schedules - execution sequences that helps identify isolation-abiding transactions and database consistency</p></li>
+<li><p>Serial v. Concurrent Schedules:</p>
+<ul>
+<li>serial schedules are one where the instructions belonging to one single transaction appear together in that schedule</li>
+<li>concurrent schedules are ones where instructions are executed concurrently</li>
+<li>Ex.</li>
+</ul></li>
+</ol>
+<center>
+<p><img src="images/ch14/schedule1.png" style="width:25.0%" /></p>
+<a href="">Schedule 1 - a serial schedule where T1 is followed by T2</a>
+</center>
+<p><span class="math display">\[\\[.1cm]\]</span></p>
+<center>
+<p><img src="images/ch14/schedule2.png" style="width:25.0%" /></p>
+<a href="">Schedule 2 - a serial schedule where T2 is followed by T1</a>
+</center>
+<p><span class="math display">\[\\[.1cm]\]</span></p>
+<center>
+<p><img src="images/ch14/schedule3.png" style="width:25.0%" /></p>
+<a href="">Schedule 3 - a concurrent schedule equivalent to schedule 1</a>
+</center>
+<span class="math display">\[\\[.1cm]\]</span>
+<center>
+<p><img src="images/ch14/schedule4.png" style="width:25.0%" /></p>
+<a href="">Schedule 4 - a concurrent schedule resulting in an inconsistent state</a>
+</center>
+<p><span class="math display">\[\\[.1cm]\]</span></p>
+<ol start="6" style="list-style-type: lower-alpha">
+<li><code>SERIALIZABLE</code> - if a concurrent schedule can be equivalent to s serial schedule</li>
+</ol>
+</div>
+<div id="serializability" class="section level2" number="14.5">
+<h2><span class="header-section-number">14.5</span> Serializability</h2>
+<ol style="list-style-type: lower-alpha">
+<li>Different forms of schedule equivalence give rise to
+the notions of:
+<ul>
+<li>conflict serializability</li>
+<li>view serializability</li>
+</ul></li>
+</ol>
+<p><span class="math display">\[\\[.1cm]\]</span></p>
+<ol start="2" style="list-style-type: lower-alpha">
+<li><p>conflict - two instruction commands are in conflict iff their transactions are different and at least one of the commands is a write(…) instruction</p>
+<pre><code>     Ex. 
+     1) i = read(Q), j = read(Q). l and j don’t conflict.
+     2) i = read(Q), j = write(Q). They conflict.
+     3. i = write(Q), j = read(Q). They conflict
+     4. i = write(Q), j = write(Q). They conflict</code></pre></li>
+<li><p>If <strong>i</strong> and <strong>j</strong> are consecutive instructions are from different transactions and do <em>not conflict</em>, we can swap the order of <strong>i</strong> and <strong>j</strong> to produce a new schedule</p>
+<pre><code>     Ex. 
+     • Swap the read(B) instruction of T1 with the read(A) instruction of T2. 
+     • Swap the write(B) instruction of T1 with the write(A) instruction of T2. 
+     • Swap the write(B) instruction of T1 with the read(A) instruction of T2.</code></pre></li>
+</ol>
+<center>
+<p><img src="images/ch14/schedule5.png" style="width:25.0%" /></p>
+<a href="">Schedule 5 - same as schedule 3 after swapping nonconflicting instructions</a>
+</center>
+<p><span class="math display">\[\\[.1cm]\]</span></p>
+<ol start="4" style="list-style-type: lower-alpha">
+<li></li>
+<li></li>
 </ol>
 
 </div>

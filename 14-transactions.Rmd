@@ -87,7 +87,78 @@ $$\\[.1cm]$$
 
 d. Schedules - execution sequences that helps identify isolation-abiding transactions and database consistency 
 
+e. Serial v. Concurrent Schedules:
+      - serial schedules are one where the instructions belonging to one single transaction appear together in that schedule
+      - concurrent schedules are ones where instructions are executed concurrently 
+      - Ex. 
 
+<center>
+![](images/ch14/schedule1.png){width=25%}
+
+[Schedule 1 - a serial schedule where T1 is followed by T2]()
+</center>
+
+$$\\[.1cm]$$
+
+<center>
+![](images/ch14/schedule2.png){width=25%}
+
+[Schedule 2 - a serial schedule where T2 is followed by T1]()
+</center>
+
+$$\\[.1cm]$$
+
+<center>
+![](images/ch14/schedule3.png){width=25%}
+
+[Schedule 3 - a concurrent schedule equivalent to schedule 1]()
+</center>
+
+$$\\[.1cm]$$
+<center>
+![](images/ch14/schedule4.png){width=25%}
+
+[Schedule 4 - a concurrent schedule resulting in an inconsistent state]()
+</center>
+
+$$\\[.1cm]$$
+
+f. `SERIALIZABLE` - if a concurrent schedule can be equivalent to s serial schedule 
+
+## Serializability 
+a. Different forms of schedule equivalence give rise to
+the notions of:
+      - conflict serializability
+      - view serializability 
+      
+$$\\[.1cm]$$
+
+b. conflict - two instruction commands are in conflict iff their transactions are different and at least one of the commands is a write(...) instruction
+
+            Ex. 
+            1) i = read(Q), j = read(Q). l and j don’t conflict.
+            2) i = read(Q), j = write(Q). They conflict.
+            3. i = write(Q), j = read(Q). They conflict
+            4. i = write(Q), j = write(Q). They conflict
+
+c. If __i__ and __j__ are consecutive instructions are from different transactions and do _not conflict_, we can swap the order of __i__ and __j__ to produce a new schedule 
+
+            Ex. 
+            • Swap the read(B) instruction of T1 with the read(A) instruction of T2. 
+            • Swap the write(B) instruction of T1 with the write(A) instruction of T2. 
+            • Swap the write(B) instruction of T1 with the read(A) instruction of T2.
+            
+<center>
+![](images/ch14/schedule5.png){width=25%}
+
+[Schedule 5 - same as schedule 3 after swapping nonconflicting instructions]()
+</center>
+
+$$\\[.1cm]$$
+
+d. 
+
+e. 
 
 
 
