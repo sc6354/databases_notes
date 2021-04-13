@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Database Notes</title>
+  <title>14 Transactions | Database Notes</title>
   <meta name="description" content="This is the online pamplet to an exhibition of dragons in Chinese art. This is part of a final curation project for History of Chinese Art at NYU Shanghai Fall 2020." />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Database Notes" />
+  <meta property="og:title" content="14 Transactions | Database Notes" />
   <meta property="og:type" content="book" />
   <meta property="og:url" content="https://sc6354.github.io/hoca_final_project_exhibition_pamphlet/" />
   <meta property="og:image" content="https://sc6354.github.io/hoca_final_project_exhibition_pamphlet/images/cover.PNG" />
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="sc6354/hoca_final_project_exhibition_pamphlet" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Database Notes" />
+  <meta name="twitter:title" content="14 Transactions | Database Notes" />
   
   <meta name="twitter:description" content="This is the online pamplet to an exhibition of dragons in Chinese art. This is part of a final curation project for History of Chinese Art at NYU Shanghai Fall 2020." />
   <meta name="twitter:image" content="https://sc6354.github.io/hoca_final_project_exhibition_pamphlet/images/cover.PNG" />
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   <link rel="apple-touch-icon-precomposed" sizes="120x120" href="images/favicon_io/apple-touch-icon.png" />
   <link rel="shortcut icon" href="images/favicon_io/favicon.ico" type="image/x-icon" />
+<link rel="prev" href="skipped.html"/>
 
-<link rel="next" href="course-outline.html"/>
 <script src="libs/header-attrs-2.7/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -74,7 +74,6 @@
 <ul>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html#reading-guide"><i class="fa fa-check"></i>Reading guide</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="course-outline.html"><a href="course-outline.html"><i class="fa fa-check"></i>Course Outline</a></li>
 <li class="chapter" data-level="1" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>1</b> Introduction</a>
 <ul>
 <li class="chapter" data-level="" data-path="introduction.html"><a href="introduction.html#overview"><i class="fa fa-check"></i>Overview</a></li>
@@ -149,6 +148,9 @@
 <li class="chapter" data-level="14" data-path="transactions.html"><a href="transactions.html"><i class="fa fa-check"></i><b>14</b> Transactions</a>
 <ul>
 <li class="chapter" data-level="14.1" data-path="transactions.html"><a href="transactions.html#transaction-concept"><i class="fa fa-check"></i><b>14.1</b> Transaction Concept</a></li>
+<li class="chapter" data-level="14.2" data-path="transactions.html"><a href="transactions.html#a-simple-transaction-model"><i class="fa fa-check"></i><b>14.2</b> A Simple Transaction Model</a></li>
+<li class="chapter" data-level="14.3" data-path="transactions.html"><a href="transactions.html#atomicity-and-durability"><i class="fa fa-check"></i><b>14.3</b> Atomicity and Durability</a></li>
+<li class="chapter" data-level="14.4" data-path="transactions.html"><a href="transactions.html#isolation"><i class="fa fa-check"></i><b>14.4</b> Isolation</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://www.linkedin.com/in/susan-chen-12787517a/" target="blank">My Linkedin</a></li>
@@ -175,27 +177,102 @@
             <section class="normal" id="section-">
 <link href="style.css" rel="stylesheet">
 <link rel="shortcut icon" href="images/favicon.io/apple-touch-icon.png" />
-<div id="header">
-<h1 class="title">Database Notes</h1>
-<p class="author"><em>Susan Chen</em></p>
-<p class="date"><em>1.25.21</em></p>
-</div>
-<div id="note-to-readers" class="section level1 unnumbered">
-<h1>Note to Readers</h1>
-<p>These are my own notes that I wrote while taking Database at NYUSH with Professor Xu in Spring 2021. Hope my notes can be of benefit to you.</p>
-<div id="reading-guide" class="section level3 unnumbered">
-<h3>Reading guide</h3>
-<ol style="list-style-type: decimal">
-<li><code>KEY TERMS</code> - definition here
+<div id="transactions" class="section level1" number="14">
+<h1><span class="header-section-number">14</span> Transactions</h1>
+<div id="transaction-concept" class="section level2" number="14.1">
+<h2><span class="header-section-number">14.1</span> Transaction Concept</h2>
+<ol style="list-style-type: lower-alpha">
+<li><code>TRANSACTION</code> - a unit of program execution that accesses and possibly updates various data items.
 <ul>
-<li><p>more details about term in the bullet points</p>
-<pre><code>            Examples go here </code></pre></li>
+<li>usually initiated by a data-manipulation language, or programming language w/embedded database accesses</li>
+<li>transactions are grouped btw function calls, <em>begin transaction</em> and <em>end transaction</em></li>
+<li>one transaction is every step btw the begin and end calls</li>
+<li>a transaction must execute in it entirety or not at all</li>
 </ul></li>
 </ol>
-<div class="note">
-<p>These blocks point out other relevant info or big ideas.</p>
+<p><span class="math display">\[\\[.1cm]\]</span></p>
+<ol start="2" style="list-style-type: lower-alpha">
+<li><p><code>ATOMICITY</code> - this ‘all-or-none’ property of transaction</p></li>
+<li><p><code>ISOLATION</code> - ensuring that transactions operate properly w/o interference from concurrently executing database statements</p></li>
+<li><p><code>DURABILITY</code> - ensuring that the transaction’s actions remain even after system crashes</p></li>
+<li><p><code>CONSISTENCY</code> - execution of a transaction in isolation preserves the consistency of the database</p></li>
+</ol>
 </div>
-<hr />
+<div id="a-simple-transaction-model" class="section level2" number="14.2">
+<h2><span class="header-section-number">14.2</span> A Simple Transaction Model</h2>
+<ol style="list-style-type: lower-alpha">
+<li><p>consistency is the responsibility of the application programmer who codes the transaction</p></li>
+<li><p>atomicity and durability is handled by a component of the database called the recovery system</p></li>
+<li><p>isolation is maintained by the concurrency-control system component of a databse.</p>
+<ul>
+<li>isolation makes sure that concurrenct executions results in the same resulting state as the end state where all transactions were ran in a serial order, one after another</li>
+</ul></li>
+</ol>
+<p><span class="math display">\[\\[.1cm]\]</span></p>
+<ol start="4" style="list-style-type: lower-alpha">
+<li>types of storage:
+<ul>
+<li>volatile storage - main memory and cache memory do not usually survive system crashes but has fast access to data</li>
+<li>non-volatiel storage - secondary and tertiary storage survives system crashes but has slower access to data</li>
+<li>stable storage - storage that replicates info. in several non-volatile disks with independent failure modes; info in stable storage is theoretically <em>never</em> lost</li>
+</ul></li>
+</ol>
+<p><span class="math display">\[\\[.1cm]\]</span></p>
+<ol start="5" style="list-style-type: lower-alpha">
+<li><p>for a transaction to be durable, changes need to be written to stable storage</p></li>
+<li><p>for a transaction to be atomic, log records need to be written to stable storage before any changes are made to database</p></li>
+</ol>
+</div>
+<div id="atomicity-and-durability" class="section level2" number="14.3">
+<h2><span class="header-section-number">14.3</span> Atomicity and Durability</h2>
+<ol style="list-style-type: lower-alpha">
+<li><p><code>ABORTED</code> - to halt execution of a transcation</p></li>
+<li><p><code>ROLLED BACK</code> - when changes caused by an aborted transaction have been undone</p>
+<ul>
+<li>this is typically done by recovery system and a log</li>
+<li>first, record the identifier of the transaction performing the change; the identifier of the data item being modified; the old values; and then the new values</li>
+<li>after everything is recorded, the database is modified</li>
+</ul></li>
+</ol>
+<p><span class="math display">\[\\[.1cm]\]</span></p>
+<p>c.<code>COMMITTED</code> - a successfully execution of a transaction</p>
+<p>d.<code>COMPENSATING TRANSACTION</code> - the only way to undo the effects of a committed transaction
+- not always possible to create such a compensating transaction so usually the user writes and executes a compensating transaction</p>
+<p><span class="math display">\[\\[.1cm]\]</span></p>
+<ol start="5" style="list-style-type: lower-alpha">
+<li>a <em>successful</em> execution is one where the transaction enters the committed state and not the other 4 states</li>
+</ol>
+<center>
+<p><img src="images/ch14/state_diagram.png" /></p>
+<a href="">State diagram of a transaction</a>
+</center>
+<span class="math display">\[\\[.1cm]\]</span>
+<span class="math display">\[\\[.1cm]\]</span>
+<center>
+<p><img src="images/ch14/states.png" /></p>
+<a href="">State diagram of a transaction</a>
+</center>
+</div>
+<div id="isolation" class="section level2" number="14.4">
+<h2><span class="header-section-number">14.4</span> Isolation</h2>
+<ol style="list-style-type: lower-alpha">
+<li><p>allowing multiple transactions to update data at once can cause consistency problems</p></li>
+<li><p>but concurrency has two big benefits:</p>
+<ul>
+<li>Improved throughput and resource utilization - the num. of transactions executed in a given time is higher and the processor and disk spends less time idle</li>
+<li>Recudes waiting time - some transactions operate on different parts of the databases and are short, so its better to let them share CPU cycles and disk accesses<br />
+<span class="math display">\[\\[.1cm]\]</span></li>
+</ul></li>
+<li><p><code>CONCURRENCY-CONTROL SCHEMES</code> - variety of mechanism employed by the database system to control the interaction among concurrent transactions and to prevent them from destroying the consistency of the database</p>
+<ul>
+<li>individually, each transaction may be correct but when ran concurrently, they still can violated the isolation property and cause inconsistency</li>
+</ul></li>
+</ol>
+<p><span class="math display">\[\\[.1cm]\]</span></p>
+<ol start="4" style="list-style-type: lower-alpha">
+<li>Schedules - execution sequences that helps identify isolation-abiding transactions and database consistency</li>
+</ol>
+
 </div>
 </div>
             </section>
@@ -203,8 +280,8 @@
           </div>
         </div>
       </div>
+<a href="skipped.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 
-<a href="course-outline.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

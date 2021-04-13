@@ -51,3 +51,9 @@ magnetic-disks
 performance-measurement-of-disks
 flash-storage
 optimization-of-disk-block-access
+skipped
+transactions
+transaction-concept
+a-simple-transaction-model
+atomicity-and-durability
+isolation
