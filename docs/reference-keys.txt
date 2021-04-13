@@ -58,3 +58,6 @@ a-simple-transaction-model
 atomicity-and-durability
 isolation
 serializability
+isolation-and-atomicity
+storages
+transaction-isolation-levels

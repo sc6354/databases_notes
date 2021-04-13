@@ -26,18 +26,18 @@ b. atomicity and durability is handled by a component of the database called the
 c. isolation is maintained by the concurrency-control system component of a databse. 
       - isolation makes sure that concurrenct executions results in  the same resulting state as the end state where all transactions were ran in a serial order, one after another
 
-$$\\[.1cm]$$     
 
-d. types of storage:
+## Storages
+a. types of storage:
       - volatile storage - main memory and cache memory do not usually survive system crashes but has fast access to data 
       - non-volatiel storage - secondary and tertiary storage survives system crashes but has slower access to data 
       - stable storage - storage that replicates info. in several non-volatile disks with independent failure modes; info in stable storage is theoretically _never_ lost 
 
 $$\\[.1cm]$$     
 
-e. for a transaction to be durable, changes need to be written to stable storage 
+b. for a transaction to be durable, changes need to be written to stable storage 
 
-f. for a transaction to be atomic, log records need to be written to stable storage before any changes are made to database 
+c. for a transaction to be atomic, log records need to be written to stable storage before any changes are made to database 
 
 
 ## Atomicity and Durability 
@@ -60,7 +60,7 @@ $$\\[.1cm]$$
 e. a _successful_ execution is one where the transaction enters the committed state and not the other 4 states
 
 <center>
-![](images/ch14/state_diagram.png){}
+![](images/ch14/state_diagram.png){width=65%}
 
 [State diagram of a transaction]()
 </center>
@@ -69,7 +69,7 @@ $$\\[.1cm]$$
 <center>
 ![](images/ch14/states.png){}
 
-[State diagram of a transaction]()
+[States of a transaction]()
 </center>
 
 ## Isolation 
@@ -118,7 +118,7 @@ $$\\[.1cm]$$
 <center>
 ![](images/ch14/schedule4.png){width=25%}
 
-[Schedule 4 - a concurrent schedule resulting in an inconsistent state]()
+[Schedule 4 - a concurrent schedule resulting in an inconsistent state that does not preserve the value of A+B]()
 </center>
 
 $$\\[.1cm]$$
@@ -156,9 +156,93 @@ c. If __i__ and __j__ are consecutive instructions are from different transactio
 
 $$\\[.1cm]$$
 
-d. 
+d. `CONFLICT EQUIVALENT` - when a schedule can be transformed into another schedule by a series of swaps on nonflicting instructions 
 
-e. 
+e. a schedule S is conflict serializable if it is conflict
+equivalent to a serial schedule
+
+f. Schedule 3 can be transformed into Schedule 6, a serial schedule
+where T2 follows T1, by series of swaps of non-conflicting instructions. Therefore Schedule 3 is conflict serializable.
+
+<center>
+![](images/ch14/schedule6.png){width=75%}
+
+[Schedule 6 - a serial schedule that is equivalent to schedule 3]()
+</center>
+
+$$\\[.1cm]$$
+g. `PRECEDENCE GRAPH` -  a direct graph used for testing serializability where the vertices are the transactions
+      - Ex. 
+<center>
+![](images/ch14/precedence1.png){width=75%}
+
+[(a) is the precedence graph of schedule 1 and (b) is the precedence graph of schedule 2. (a) only has a single edge from T1 -> T2 because all instructions of T1 are executed before the first instruction of T2. Same logic for (b).]()
+</center>
+
+$$\\[.1cm]$$
+h. If a graph contains a cycle, then the schedule is not conflict serializable.
+      - EX.
+<center>
+![](images/ch14/precedence2.png){width=50%}
+
+[This recedence graph for schedule 4 has T1 -> T2 b/c T1 executes read(A) before T2 executes write(A). It also contains the edge T2 -> T1 b/c T2 executes read(B) before T1 executes write(B).]()
+</center>
+
+$$\\[.1cm]$$
+i. However, some non-serializable schedules can still maintain consistency 
+      - Ex. 
+<center>
+![](images/ch14/schedule6.png){width=75%}
+
+[Schedule 7 - a nonserial schedule that maintains consistency and returns the same values as the serial schedule, <T1, T5>]()
+</center>
+
+## Isolation and Atomicity
+a. If T1 fails, we need to undo the effects of T1 to ensure atomicity 
+
+b. IF T2 is dependent on T1 (i.e. T2 reads data written by T2), then T2 must also be aborted 
+
+c.`RECOVERABLE SCHEDULE` - a schedule where for each pair of transactions T1 and T2, where T2 reads data previously written by T1, the commit for T1 must appear before the commit for T2
+      - EX. 
+      
+<center>
+![](images/ch14/schedule9.png){width=25%}
+
+[a partial (has no commit or abort operation after T6) and nonrecoverable (T7 commits before T6) schedule]()
+</center>
+
+$$\\[.1cm]$$
+d.`CASCADING ROLLBACK` – a single transaction failure leads to a series of
+transaction rollbacks. Consider the following schedule where none of
+the transactions has yet committed (so the schedule is recoverable)
+      - EX. 
+<center>
+![](images/ch14/schedule10.png){width=50%}
+
+[If T8 fails, T9 and T10 must also be rolled back.Can lead to the undoing of a significant amount of work]()
+</center>
+
+$$\\[.1cm]$$
+
+e. `CASCADELESS SCHEDULES` — schedules where cascading rollbacks cannot occur
+      - For each pair of transactions T1 and T2 such that T2 reads a data item
+previously written by T1, the commit of T1 must appear before the read operation of T2
+      - every cascadeless schedule is also recoverable
+      - best to restrict the schedules to those that are cascadeless
+
+## Transaction Isolation Levels 
+a. database systems offer isolation levels weaker than serializability to allow less re- striction of concurrency and thus improved performance 
+      - this introduces a risk of inconsistency that some applications find acceptable
+
+$$\\[.1cm]$$
+b. SQL allows a transaction to specify the level it may executed in
+
+c. the isolation levels in SQL are
+      - serializable is the default & only allows serializable execution
+      - repeatable read allows only commited data to be read and requires that repeated reads of the same record must return the same value
+      - read committed allows only commited data to be read & successive reads of record may return different (but committed) values 
+      - read uncommitted allows uncommitted data to be read; lowest isolation level allowed by SQL 
+
 
 
 

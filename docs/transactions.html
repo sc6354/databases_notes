@@ -149,9 +149,12 @@
 <ul>
 <li class="chapter" data-level="14.1" data-path="transactions.html"><a href="transactions.html#transaction-concept"><i class="fa fa-check"></i><b>14.1</b> Transaction Concept</a></li>
 <li class="chapter" data-level="14.2" data-path="transactions.html"><a href="transactions.html#a-simple-transaction-model"><i class="fa fa-check"></i><b>14.2</b> A Simple Transaction Model</a></li>
-<li class="chapter" data-level="14.3" data-path="transactions.html"><a href="transactions.html#atomicity-and-durability"><i class="fa fa-check"></i><b>14.3</b> Atomicity and Durability</a></li>
-<li class="chapter" data-level="14.4" data-path="transactions.html"><a href="transactions.html#isolation"><i class="fa fa-check"></i><b>14.4</b> Isolation</a></li>
-<li class="chapter" data-level="14.5" data-path="transactions.html"><a href="transactions.html#serializability"><i class="fa fa-check"></i><b>14.5</b> Serializability</a></li>
+<li class="chapter" data-level="14.3" data-path="transactions.html"><a href="transactions.html#storages"><i class="fa fa-check"></i><b>14.3</b> Storages</a></li>
+<li class="chapter" data-level="14.4" data-path="transactions.html"><a href="transactions.html#atomicity-and-durability"><i class="fa fa-check"></i><b>14.4</b> Atomicity and Durability</a></li>
+<li class="chapter" data-level="14.5" data-path="transactions.html"><a href="transactions.html#isolation"><i class="fa fa-check"></i><b>14.5</b> Isolation</a></li>
+<li class="chapter" data-level="14.6" data-path="transactions.html"><a href="transactions.html#serializability"><i class="fa fa-check"></i><b>14.6</b> Serializability</a></li>
+<li class="chapter" data-level="14.7" data-path="transactions.html"><a href="transactions.html#isolation-and-atomicity"><i class="fa fa-check"></i><b>14.7</b> Isolation and Atomicity</a></li>
+<li class="chapter" data-level="14.8" data-path="transactions.html"><a href="transactions.html#transaction-isolation-levels"><i class="fa fa-check"></i><b>14.8</b> Transaction Isolation Levels</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://www.linkedin.com/in/susan-chen-12787517a/" target="blank">My Linkedin</a></li>
@@ -209,8 +212,10 @@
 <li>isolation makes sure that concurrenct executions results in the same resulting state as the end state where all transactions were ran in a serial order, one after another</li>
 </ul></li>
 </ol>
-<p><span class="math display">\[\\[.1cm]\]</span></p>
-<ol start="4" style="list-style-type: lower-alpha">
+</div>
+<div id="storages" class="section level2" number="14.3">
+<h2><span class="header-section-number">14.3</span> Storages</h2>
+<ol style="list-style-type: lower-alpha">
 <li>types of storage:
 <ul>
 <li>volatile storage - main memory and cache memory do not usually survive system crashes but has fast access to data</li>
@@ -219,13 +224,13 @@
 </ul></li>
 </ol>
 <p><span class="math display">\[\\[.1cm]\]</span></p>
-<ol start="5" style="list-style-type: lower-alpha">
+<ol start="2" style="list-style-type: lower-alpha">
 <li><p>for a transaction to be durable, changes need to be written to stable storage</p></li>
 <li><p>for a transaction to be atomic, log records need to be written to stable storage before any changes are made to database</p></li>
 </ol>
 </div>
-<div id="atomicity-and-durability" class="section level2" number="14.3">
-<h2><span class="header-section-number">14.3</span> Atomicity and Durability</h2>
+<div id="atomicity-and-durability" class="section level2" number="14.4">
+<h2><span class="header-section-number">14.4</span> Atomicity and Durability</h2>
 <ol style="list-style-type: lower-alpha">
 <li><p><code>ABORTED</code> - to halt execution of a transcation</p></li>
 <li><p><code>ROLLED BACK</code> - when changes caused by an aborted transaction have been undone</p>
@@ -244,18 +249,18 @@
 <li>a <em>successful</em> execution is one where the transaction enters the committed state and not the other 4 states</li>
 </ol>
 <center>
-<p><img src="images/ch14/state_diagram.png" /></p>
+<p><img src="images/ch14/state_diagram.png" style="width:65.0%" /></p>
 <a href="">State diagram of a transaction</a>
 </center>
 <span class="math display">\[\\[.1cm]\]</span>
 <span class="math display">\[\\[.1cm]\]</span>
 <center>
 <p><img src="images/ch14/states.png" /></p>
-<a href="">State diagram of a transaction</a>
+<a href="">States of a transaction</a>
 </center>
 </div>
-<div id="isolation" class="section level2" number="14.4">
-<h2><span class="header-section-number">14.4</span> Isolation</h2>
+<div id="isolation" class="section level2" number="14.5">
+<h2><span class="header-section-number">14.5</span> Isolation</h2>
 <ol style="list-style-type: lower-alpha">
 <li><p>allowing multiple transactions to update data at once can cause consistency problems</p></li>
 <li><p>but concurrency has two big benefits:</p>
@@ -296,15 +301,15 @@
 <span class="math display">\[\\[.1cm]\]</span>
 <center>
 <p><img src="images/ch14/schedule4.png" style="width:25.0%" /></p>
-<a href="">Schedule 4 - a concurrent schedule resulting in an inconsistent state</a>
+<a href="">Schedule 4 - a concurrent schedule resulting in an inconsistent state that does not preserve the value of A+B</a>
 </center>
 <p><span class="math display">\[\\[.1cm]\]</span></p>
 <ol start="6" style="list-style-type: lower-alpha">
 <li><code>SERIALIZABLE</code> - if a concurrent schedule can be equivalent to s serial schedule</li>
 </ol>
 </div>
-<div id="serializability" class="section level2" number="14.5">
-<h2><span class="header-section-number">14.5</span> Serializability</h2>
+<div id="serializability" class="section level2" number="14.6">
+<h2><span class="header-section-number">14.6</span> Serializability</h2>
 <ol style="list-style-type: lower-alpha">
 <li>Different forms of schedule equivalence give rise to
 the notions of:
@@ -333,8 +338,88 @@ the notions of:
 </center>
 <p><span class="math display">\[\\[.1cm]\]</span></p>
 <ol start="4" style="list-style-type: lower-alpha">
-<li></li>
-<li></li>
+<li><p><code>CONFLICT EQUIVALENT</code> - when a schedule can be transformed into another schedule by a series of swaps on nonflicting instructions</p></li>
+<li><p>a schedule S is conflict serializable if it is conflict
+equivalent to a serial schedule</p></li>
+<li><p>Schedule 3 can be transformed into Schedule 6, a serial schedule
+where T2 follows T1, by series of swaps of non-conflicting instructions. Therefore Schedule 3 is conflict serializable.</p></li>
+</ol>
+<center>
+<p><img src="images/ch14/schedule6.png" style="width:75.0%" /></p>
+<a href="">Schedule 6 - a serial schedule that is equivalent to schedule 3</a>
+</center>
+<span class="math display">\[\\[.1cm]\]</span>
+g. <code>PRECEDENCE GRAPH</code> - a direct graph used for testing serializability where the vertices are the transactions
+- Ex.
+<center>
+<p><img src="images/ch14/precedence1.png" style="width:75.0%" /></p>
+<a href="">(a) is the precedence graph of schedule 1 and (b) is the precedence graph of schedule 2. (a) only has a single edge from T1 -&gt; T2 because all instructions of T1 are executed before the first instruction of T2. Same logic for (b).</a>
+</center>
+<span class="math display">\[\\[.1cm]\]</span>
+h. If a graph contains a cycle, then the schedule is not conflict serializable.
+- EX.
+<center>
+<p><img src="images/ch14/precedence2.png" style="width:50.0%" /></p>
+<a href="">This recedence graph for schedule 4 has T1 -&gt; T2 b/c T1 executes read(A) before T2 executes write(A). It also contains the edge T2 -&gt; T1 b/c T2 executes read(B) before T1 executes write(B).</a>
+</center>
+<span class="math display">\[\\[.1cm]\]</span>
+i. However, some non-serializable schedules can still maintain consistency
+- Ex.
+<center>
+<p><img src="images/ch14/schedule6.png" style="width:75.0%" /></p>
+<a href="">Schedule 7 - a nonserial schedule that maintains consistency and returns the same values as the serial schedule, &lt;T1, T5&gt;</a>
+</center>
+</div>
+<div id="isolation-and-atomicity" class="section level2" number="14.7">
+<h2><span class="header-section-number">14.7</span> Isolation and Atomicity</h2>
+<ol style="list-style-type: lower-alpha">
+<li><p>If T1 fails, we need to undo the effects of T1 to ensure atomicity</p></li>
+<li><p>IF T2 is dependent on T1 (i.e. T2 reads data written by T2), then T2 must also be aborted</p></li>
+</ol>
+<p>c.<code>RECOVERABLE SCHEDULE</code> - a schedule where for each pair of transactions T1 and T2, where T2 reads data previously written by T1, the commit for T1 must appear before the commit for T2
+- EX.</p>
+<center>
+<p><img src="images/ch14/schedule9.png" style="width:25.0%" /></p>
+<a href="">a partial (has no commit or abort operation after T6) and nonrecoverable (T7 commits before T6) schedule</a>
+</center>
+<span class="math display">\[\\[.1cm]\]</span>
+d.<code>CASCADING ROLLBACK</code> – a single transaction failure leads to a series of
+transaction rollbacks. Consider the following schedule where none of
+the transactions has yet committed (so the schedule is recoverable)
+- EX.
+<center>
+<p><img src="images/ch14/schedule10.png" style="width:50.0%" /></p>
+<a href="">If T8 fails, T9 and T10 must also be rolled back.Can lead to the undoing of a significant amount of work</a>
+</center>
+<p><span class="math display">\[\\[.1cm]\]</span></p>
+<ol start="5" style="list-style-type: lower-alpha">
+<li><code>CASCADELESS SCHEDULES</code> — schedules where cascading rollbacks cannot occur
+<ul>
+<li>For each pair of transactions T1 and T2 such that T2 reads a data item
+previously written by T1, the commit of T1 must appear before the read operation of T2</li>
+<li>every cascadeless schedule is also recoverable</li>
+<li>best to restrict the schedules to those that are cascadeless</li>
+</ul></li>
+</ol>
+</div>
+<div id="transaction-isolation-levels" class="section level2" number="14.8">
+<h2><span class="header-section-number">14.8</span> Transaction Isolation Levels</h2>
+<ol style="list-style-type: lower-alpha">
+<li>database systems offer isolation levels weaker than serializability to allow less re- striction of concurrency and thus improved performance
+<ul>
+<li>this introduces a risk of inconsistency that some applications find acceptable</li>
+</ul></li>
+</ol>
+<p><span class="math display">\[\\[.1cm]\]</span>
+b. SQL allows a transaction to specify the level it may executed in</p>
+<ol start="3" style="list-style-type: lower-alpha">
+<li>the isolation levels in SQL are
+<ul>
+<li>serializable is the default &amp; only allows serializable execution</li>
+<li>repeatable read allows only commited data to be read and requires that repeated reads of the same record must return the same value</li>
+<li>read committed allows only commited data to be read &amp; successive reads of record may return different (but committed) values</li>
+<li>read uncommitted allows uncommitted data to be read; lowest isolation level allowed by SQL</li>
+</ul></li>
 </ol>
 
 </div>
